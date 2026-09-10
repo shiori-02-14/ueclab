@@ -522,17 +522,25 @@ function scrollResultsTop() {
   }
 }
 
+function syncSearchChrome() {
+  const input = $("q");
+  if (!input) return;
+  input.placeholder = isCompact()
+    ? "号館、先生の名前、キーワード"
+    : "例　西10号館、AI、先生の名前";
+}
+
 function syncTopOffset() {
   const top = document.querySelector(".top");
   if (top) document.documentElement.style.setProperty("--top-h", `${top.offsetHeight}px`);
   const nav = document.querySelector(".site-nav");
   const search = document.querySelector(".top .search");
-  if (nav && search) {
-    document.documentElement.style.setProperty(
-      "--compact-sticky",
-      `${nav.offsetHeight + search.offsetHeight}px`
-    );
-  }
+  const toolbar = $("toolbar");
+  let sticky = 0;
+  if (nav) sticky += nav.offsetHeight;
+  if (search) sticky += search.offsetHeight;
+  if (isCompact() && toolbar) sticky += toolbar.offsetHeight;
+  document.documentElement.style.setProperty("--compact-sticky", `${sticky}px`);
 }
 
 function closeFilters() {
@@ -662,84 +670,77 @@ function renderFilters() {
   intro.textContent = "オープンラボやオープンキャンパスでは、号館から探すと居室が見つけやすいです。まずは自分の類からでも絞れます。";
   box.appendChild(intro);
 
-  box.appendChild(
-    filterBlock(
-      "自分の類",
-      countsFor(all, (l) => l.group, GROUP_ORDER),
-      state.groups,
-      (v, on) => {
-        on ? state.groups.add(v) : state.groups.delete(v);
-        persist();
-        renderFilters();
-        paint();
-      },
-      true
-    )
+  const groupBlock = filterBlock(
+    "自分の類",
+    countsFor(all, (l) => l.group, GROUP_ORDER),
+    state.groups,
+    (v, on) => {
+      on ? state.groups.add(v) : state.groups.delete(v);
+      persist();
+      renderFilters();
+      paint();
+    },
+    true
   );
-  box.appendChild(
-    filterBlock(
-      "プログラム",
-      countsFor(inGroup, (l) => l.program, PROGRAM_ORDER),
-      state.programs,
-      (v, on) => {
-        on ? state.programs.add(v) : state.programs.delete(v);
-        renderFilters();
-        paint();
-      },
-      state.groups.size > 0 || state.programs.size > 0,
-      shortProgram
-    )
+  const programBlock = filterBlock(
+    "プログラム",
+    countsFor(inGroup, (l) => l.program, PROGRAM_ORDER),
+    state.programs,
+    (v, on) => {
+      on ? state.programs.add(v) : state.programs.delete(v);
+      renderFilters();
+      paint();
+    },
+    state.programs.size > 0 || (!isCompact() && state.groups.size > 0),
+    shortProgram
   );
-  box.appendChild(
-    filterBlock(
-      "大学院（進学する人）",
-      countsFor(inProg, (l) => l.majors, MAJOR_ORDER),
-      state.majors,
-      (v, on) => {
-        on ? state.majors.add(v) : state.majors.delete(v);
-        renderFilters();
-        paint();
-      },
-      false,
-      shortMajor
-    )
+  const majorBlock = filterBlock(
+    "大学院（進学する人）",
+    countsFor(inProg, (l) => l.majors, MAJOR_ORDER),
+    state.majors,
+    (v, on) => {
+      on ? state.majors.add(v) : state.majors.delete(v);
+      renderFilters();
+      paint();
+    },
+    false,
+    shortMajor
   );
-  box.appendChild(
-    filterBlock(
-      "興味のある分野",
-      countsFor(inProg, (l) => l.fields, FIELD_ORDER),
-      state.fields,
-      (v, on) => {
-        on ? state.fields.add(v) : state.fields.delete(v);
-        renderFilters();
-        paint();
-      }
-    )
+  const fieldBlock = filterBlock(
+    "興味のある分野",
+    countsFor(inProg, (l) => l.fields, FIELD_ORDER),
+    state.fields,
+    (v, on) => {
+      on ? state.fields.add(v) : state.fields.delete(v);
+      renderFilters();
+      paint();
+    }
   );
-  box.appendChild(
-    filterBlock(
-      "号館（見学）",
-      countsFor(inProg, (l) => l.buildings, "building"),
-      state.buildings,
-      (v, on) => {
-        on ? state.buildings.add(v) : state.buildings.delete(v);
-        renderFilters();
-        paint();
-      }
-    )
+  const buildingBlock = filterBlock(
+    "号館（見学）",
+    countsFor(inProg, (l) => l.buildings, "building"),
+    state.buildings,
+    (v, on) => {
+      on ? state.buildings.add(v) : state.buildings.delete(v);
+      renderFilters();
+      paint();
+    }
   );
-  box.appendChild(
-    filterBlock(
-      "出身地・ゆかりの地",
-      countsFor(inProg, (l) => hometownRegions(l), REGION_ORDER),
-      state.hometowns,
-      (v, on) => {
-        on ? state.hometowns.add(v) : state.hometowns.delete(v);
-        renderFilters();
-        paint();
-      }
-    )
+  const hometownBlock = filterBlock(
+    "出身地・ゆかりの地",
+    countsFor(inProg, (l) => hometownRegions(l), REGION_ORDER),
+    state.hometowns,
+    (v, on) => {
+      on ? state.hometowns.add(v) : state.hometowns.delete(v);
+      renderFilters();
+      paint();
+    }
   );
+  if (isCompact()) {
+    box.append(groupBlock, buildingBlock, programBlock, fieldBlock, majorBlock, hometownBlock);
+  } else {
+    box.append(groupBlock, programBlock, majorBlock, fieldBlock, buildingBlock, hometownBlock);
+  }
 
   const extraWrap = document.createElement("details");
   extraWrap.className = "filter-block";
@@ -868,12 +869,13 @@ function renderToolbar(n) {
   view.className = "seg";
   view.setAttribute("role", "group");
   view.setAttribute("aria-label", "表示切替");
-  for (const [id, label] of [
+  const viewItems = [
     ["list", "リスト"],
     ["cards", "カード"],
     ["building", "号館"],
     ["hometown", "出身地"],
-  ]) {
+  ].filter(([id]) => !isCompact() || id !== "hometown" || state.view === "hometown");
+  for (const [id, label] of viewItems) {
     const b = document.createElement("button");
     b.type = "button";
     b.className = state.view === id ? "on" : "";
@@ -934,15 +936,22 @@ function renderToolbar(n) {
   tools.className = "toolbar-end";
   tools.append(count, view, sortWrap);
   bar.appendChild(tools);
+  syncTopOffset();
 }
 
 function renderInterest() {
   const box = $("interest");
   if (!box) return;
+  if (isCompact()) {
+    box.hidden = true;
+    box.replaceChildren();
+    return;
+  }
+  box.hidden = false;
   box.replaceChildren();
   const label = document.createElement("span");
   label.className = "label";
-  label.textContent = isCompact() ? "テーマ" : "テーマから探す";
+  label.textContent = "テーマから探す";
   box.appendChild(label);
   const q = state.q.trim();
   for (const theme of THEMES) {
@@ -963,11 +972,10 @@ function renderViewHint() {
   const el = $("view-hint");
   if (!el) return;
   const compact = isCompact();
-  if (state.view === "building") {
+  if (state.view === "building" && !compact) {
     el.hidden = false;
-    el.textContent = compact
-      ? "当日回るときの目安です。部屋はHPで確認してください。"
-      : "オープンラボやオープンキャンパスで回るときの目安です。部屋は変わっていることがあるので、行く前にHPで確認してください。";
+    el.textContent =
+      "オープンラボやオープンキャンパスで回るときの目安です。部屋は変わっていることがあるので、行く前にHPで確認してください。";
   } else if (state.view === "hometown" || state.sort === "hometown") {
     el.hidden = false;
     el.textContent = compact
@@ -1186,7 +1194,9 @@ function renderResults() {
     const p = document.createElement("p");
     p.textContent = state.onlySaved
       ? "気になる研究室はまだありません。一覧の星を押すと保存できます。"
-      : "条件に合う研究室がありません。テーマや類を変えてみてください。";
+      : isCompact()
+        ? "条件に合う研究室がありません。類や号館、検索を変えてみてください。"
+        : "条件に合う研究室がありません。テーマや類を変えてみてください。";
     empty.appendChild(p);
     if (activeFilterCount()) {
       const btn = document.createElement("button");
@@ -1325,7 +1335,10 @@ function linkBtn(href, label) {
 
 function mailLink(email, label) {
   const a = document.createElement("a");
-  a.href = "mailto:" + email;
+  const params = new URLSearchParams({ view: "cm", fs: "1", to: email });
+  a.href = "https://mail.google.com/mail/?" + params.toString();
+  a.target = "_blank";
+  a.rel = "noopener noreferrer";
   a.textContent = label || email;
   return a;
 }
@@ -1608,21 +1621,26 @@ function bind() {
     if (id) openLab(id, { fromHash: true });
     else closeDetail();
   });
+  syncSearchChrome();
   syncTopOffset();
   let compact = isCompact();
   window.addEventListener("resize", () => {
+    syncSearchChrome();
     syncTopOffset();
     const now = isCompact();
     if (now !== compact) {
       compact = now;
+      renderFilters();
       renderInterest();
       renderViewHint();
       renderToolbar(filtered().length);
     }
   });
   const top = document.querySelector(".top");
-  if (top && typeof ResizeObserver !== "undefined") {
-    new ResizeObserver(syncTopOffset).observe(top);
+  if (typeof ResizeObserver !== "undefined") {
+    if (top) new ResizeObserver(syncTopOffset).observe(top);
+    const toolbar = $("toolbar");
+    if (toolbar) new ResizeObserver(syncTopOffset).observe(toolbar);
   }
 }
 
