@@ -45,11 +45,11 @@ def main() -> None:
 
     slim = {
         "source": URL,
-        "note": "本文・写真URL・メッセージ等は含めていません。正本は公式ラボガイドを見てください。",
+        "note": "本文・メッセージ等は含めていません。写真は公式サイト上の URL のみです。正本は公式ラボガイドを見てください。",
         "labs": [slim_official_lab(lab) for lab in labs],
     }
     DEST.write_text(json.dumps(slim, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
-    print(f"書き出しました: {DEST}（{len(labs)} 件、要約のみ）")
+    print(f"書き出しました: {DEST}（{len(labs)} 件、本文なし。写真は公式 URL のみ）")
     print("続けて python3 server.py --build を実行してください。")
 
 

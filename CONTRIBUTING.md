@@ -1,6 +1,6 @@
 # 貢献ガイド
 
-Issue と Pull Request を歓迎します。このプロジェクトは [しおり](https://shiori-02-14.github.io/Homepage/works.html) が作成しています。電気通信大学の公式プロジェクトではないので、大学を代表する表現は入れないでください。
+Issue と Pull Request を歓迎します。このプロジェクトは [しおり🔖](https://shiori-02-14.github.io/Homepage/works.html) が作成しています。電気通信大学の公式プロジェクトではないので、大学を代表する表現は入れないでください。
 
 ソースコードは MIT、独自メタデータは CC BY-NC-SA 4.0 です。貢献するときは、このライセンスに同意したものとします。詳細は [TERMS.md](TERMS.md) と [このサイトについて](web/about.html) を見てください。
 
@@ -35,7 +35,7 @@ python3 server.py --no-open
 
 - **非公式**であることは、ヘッダー・注意書き・About・README から外さない
 - 公式ラボガイドより新しい・正確だと受け取られる書き方はしない
-- 研究室の本文・写真・メールは追加しない。未公開の個人情報も追加しない。公開してよいのは名前・キーワード・居室・公開 URL まで
+- 研究室の本文は追加しない。公開シラバス等に載っているメールは `emails.csv` に追加してよい。学内限定の連絡先や未公開の個人情報は追加しない。写真は公式 `labs.json` の `image_path`（`https://www.uec.ac.jp/arc/images/`）だけを使い、画像ファイルはリポジトリに置かない
 - 大学サイトから取るときは間隔を空け、User-Agent を付け、手元の `.cache/` を使う（`scripts/fetch_official.py`）
 - 秘密情報（`.env` や個人のメモ）はコミットしない
 - 気になる研究室とメモはブラウザの `localStorage` にだけ保存する（サーバへ送らない）

@@ -10,4 +10,3 @@ venv/
 .vscode/
 *.log
 .cache/
-emails.csv

@@ -16,9 +16,11 @@ ROOT = Path(__file__).resolve().parent
 WEB = ROOT / "web"
 DATA = ROOT / "data"
 CATALOG = ROOT / "catalog.csv"
+EMAILS = ROOT / "emails.csv"
 OFFICIAL = DATA / "official-labs.json"
+EMAIL_RE = re.compile(r"^[A-Za-z0-9._%+\-]+@[A-Za-z0-9.\-]+\.[A-Za-z]{2,}$")
 PORT = int(sys.argv[1]) if len(sys.argv) > 1 and sys.argv[1].isdigit() else 8765
-# 公開してよい備考キー。本文・写真・メッセージなど転載リスクのある項目は載せない
+# 公開してよい備考キー。本文・メッセージなど転載リスクのある項目は載せない
 BIKO_KEEP = {
     "専攻",
     "ラボガイド番号",
@@ -98,8 +100,16 @@ def slim_catalog_biko(raw: str) -> str:
     return " ｜ ".join(kept)
 
 
+def official_image(url: str) -> str:
+    """公式ラボガイド上の写真 URL だけ通す。ファイルはリポジトリに置かない。"""
+    text = (url or "").strip()
+    if text.startswith("https://www.uec.ac.jp/arc/images/"):
+        return text
+    return ""
+
+
 def slim_official_lab(src: dict) -> dict:
-    """公式 labs.json から、公開してよい識別情報とリンクだけ残す。"""
+    """公式 labs.json から、公開してよい識別情報・リンク・写真 URL だけ残す。"""
     return {
         "order": src.get("order"),
         "guidebook_name": src.get("guidebook_name") or "",
@@ -115,6 +125,7 @@ def slim_official_lab(src: dict) -> dict:
         "visiting_url": [u for u in (src.get("visiting_url") or []) if u],
         "yumenabi": [u for u in (src.get("yumenabi") or []) if u],
         "videouec": [u for u in (src.get("videouec") or []) if u],
+        "image_path": official_image(src.get("image_path") or ""),
     }
 
 
@@ -130,12 +141,41 @@ def buildings_of(room: str) -> list[str]:
     return list(dict.fromkeys(found))
 
 
+def parse_emails(raw: str) -> list[str]:
+    found: list[str] = []
+    for part in re.split(r"[;／/,、\s]+", raw or ""):
+        part = part.strip().strip("<>")
+        if EMAIL_RE.match(part) and part not in found:
+            found.append(part)
+    return found
+
+
+def load_email_index() -> dict[tuple[str, str], dict]:
+    """公開シラバス等のメール。キーは (研究室名, 学科)。"""
+    index: dict[tuple[str, str], dict] = {}
+    if not EMAILS.exists():
+        return index
+    with EMAILS.open(encoding="utf-8-sig", newline="") as fh:
+        for row in csv.DictReader(fh):
+            name = norm_name(row.get("研究室名") or "")
+            program = (row.get("学科") or "").strip()
+            emails = parse_emails(row.get("メールアドレス") or "")
+            if not name or not emails:
+                continue
+            index[(name, program)] = {
+                "emails": emails,
+                "emailSource": (row.get("出典URL") or "").strip(),
+            }
+    return index
+
+
 def load_labs() -> list[dict]:
     official = json.loads(OFFICIAL.read_text(encoding="utf-8"))["labs"]
     with CATALOG.open(encoding="utf-8-sig", newline="") as fh:
         catalog = list(csv.DictReader(fh))
     if len(official) != len(catalog):
         raise RuntimeError(f"件数不一致: labs.json={len(official)} catalog={len(catalog)}")
+    email_index = load_email_index()
 
     labs = []
     for src, row in zip(official, catalog):
@@ -148,13 +188,16 @@ def load_labs() -> list[dict]:
         extra = split_urls(biko.get("追加URL", ""))
         room = (row.get("号館・部屋") or "").strip()
         majors = [strip_num(m) for m in (src.get("major") or [])]
+        name = norm_name(row["研究室名"] or src.get("name") or "")
+        program = row.get("学科") or strip_num(src.get("program") or "")
+        mail = email_index.get((name, program), {})
         labs.append({
             "id": int(row["ID"]),
             "order": src.get("order"),
-            "name": norm_name(row["研究室名"] or src.get("name") or ""),
+            "name": name,
             "faculty": norm_name(row.get("所属教員") or ""),
             "group": row.get("学部") or src.get("group") or "",
-            "program": row.get("学科") or strip_num(src.get("program") or ""),
+            "program": program,
             "majors": majors,
             "guidebook": src.get("guidebook_name") or biko.get("ラボガイド番号") or "",
             "updatedAt": (src.get("updatedAt") or "")[:10],
@@ -170,6 +213,9 @@ def load_labs() -> list[dict]:
             "yumenabi": src.get("yumenabi") or [],
             "videos": src.get("videouec") or [],
             "roomSource": biko.get("居室出典") or "",
+            "emails": mail.get("emails") or [],
+            "emailSource": mail.get("emailSource") or "",
+            "image": official_image(src.get("image_path") or ""),
         })
 
     by_faculty: dict[str, list[int]] = {}
@@ -182,14 +228,14 @@ def load_labs() -> list[dict]:
 
 
 def rewrite_public_sources() -> None:
-    """手元のソースから本文・写真URL・メッセージを外す。"""
+    """手元のソースから本文・メッセージを外す。写真は公式 URL のみ残す。"""
     payload = json.loads(OFFICIAL.read_text(encoding="utf-8"))
     labs = payload.get("labs")
     if not isinstance(labs, list):
         raise RuntimeError("official-labs.json の形が想定と違います")
     slim = {
         "source": payload.get("source") or "https://www.uec.ac.jp/arc/assets/labs.json",
-        "note": "本文・写真URL・メッセージ等は含めていません。正本は公式ラボガイドを見てください。",
+        "note": "本文・メッセージ等は含めていません。写真は公式サイト上の URL のみです。正本は公式ラボガイドを見てください。",
         "labs": [slim_official_lab(lab) for lab in labs],
     }
     OFFICIAL.write_text(json.dumps(slim, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
@@ -213,7 +259,7 @@ def write_labs_js(labs: list[dict] | None = None) -> Path:
     dest = WEB / "labs-data.js"
     dest.write_text(
         "/* 自動生成。更新: python3 server.py --build\n"
-        " * 公開データは識別情報・キーワード・リンクのみ。本文・写真・メールは含めない。 */\n"
+        " * 公開データは識別情報・キーワード・リンク・公開メール・公式写真 URL。本文は含めない。 */\n"
         f"window.__LABS_DATA__ = {payload};\n",
         encoding="utf-8",
     )
@@ -281,7 +327,7 @@ def main() -> None:
         sys.exit(f"公式データが見つかりません: {OFFICIAL}")
     if "--sanitize" in sys.argv:
         rewrite_public_sources()
-        print("ソースを公開向けに整えました（本文・写真URL・メッセージを除外）", flush=True)
+        print("ソースを公開向けに整えました（本文・メッセージを除外。写真は公式 URL のみ）", flush=True)
     dest = write_labs_js()
     if "--build" in sys.argv or "--sanitize" in sys.argv:
         print(f"書き出しました: {dest}", flush=True)

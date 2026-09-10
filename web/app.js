@@ -299,6 +299,7 @@ function matches(lab) {
       lab.guidebook,
       lab.room,
       note,
+      ...(lab.emails || []),
       ...(lab.keywords || []),
       ...(lab.fields || []),
       ...(lab.majors || []),
@@ -865,11 +866,28 @@ function renderActiveFilters() {
 }
 
 function thumbEl(lab) {
-  const ph = document.createElement("div");
-  ph.className = "thumb-ph";
-  ph.setAttribute("aria-hidden", "true");
-  ph.textContent = (lab.faculty || lab.name || "?").trim().charAt(0);
-  return ph;
+  if (!lab.image) {
+    const ph = document.createElement("div");
+    ph.className = "thumb-ph";
+    ph.setAttribute("aria-hidden", "true");
+    ph.textContent = (lab.faculty || lab.name || "?").trim().charAt(0);
+    return ph;
+  }
+  const img = document.createElement("img");
+  img.className = "thumb";
+  img.alt = "";
+  img.loading = "lazy";
+  img.decoding = "async";
+  img.referrerPolicy = "no-referrer";
+  img.src = lab.image;
+  img.addEventListener("error", () => {
+    const ph = document.createElement("div");
+    ph.className = "thumb-ph";
+    ph.setAttribute("aria-hidden", "true");
+    ph.textContent = (lab.faculty || lab.name || "?").trim().charAt(0);
+    img.replaceWith(ph);
+  });
+  return img;
 }
 
 function alsoLabel(lab) {
@@ -1087,6 +1105,13 @@ function linkBtn(href, label) {
   return a;
 }
 
+function mailLink(email, label) {
+  const a = document.createElement("a");
+  a.href = "mailto:" + email;
+  a.textContent = label || email;
+  return a;
+}
+
 function section(title) {
   const wrap = document.createElement("section");
   wrap.className = "detail-sec";
@@ -1094,11 +1119,6 @@ function section(title) {
   h.textContent = title;
   wrap.appendChild(h);
   return wrap;
-}
-
-function firstHttp(text) {
-  const m = String(text || "").match(/https?:\/\/[^\s]+/);
-  return m ? m[0] : "";
 }
 
 function renderDetail(lab, { focusClose } = {}) {
@@ -1121,6 +1141,16 @@ function renderDetail(lab, { focusClose } = {}) {
 
   const hero = document.createElement("div");
   hero.className = "detail-hero";
+  if (lab.image) {
+    const img = document.createElement("img");
+    img.className = "hero";
+    img.alt = lab.faculty || "";
+    img.loading = "lazy";
+    img.decoding = "async";
+    img.referrerPolicy = "no-referrer";
+    img.src = lab.image;
+    hero.appendChild(img);
+  }
   const heroText = document.createElement("div");
   heroText.className = "detail-hero-text";
   const kicker = document.createElement("div");
@@ -1177,8 +1207,13 @@ function renderDetail(lab, { focusClose } = {}) {
     if (i === 0) a.classList.add("primary");
     links.appendChild(a);
   });
+  (lab.emails || []).forEach((addr, i) => {
+    const a = mailLink(addr, (lab.emails || []).length > 1 ? addr : "メールを送る");
+    if (!lab.urls.length && i === 0) a.classList.add("primary");
+    links.appendChild(a);
+  });
   const officialBtn = linkBtn("https://www.uec.ac.jp/arc/laboguide.html", "公式ラボガイドで見る");
-  if (!lab.urls.length) officialBtn.classList.add("primary");
+  if (!lab.urls.length && !(lab.emails || []).length) officialBtn.classList.add("primary");
   links.appendChild(officialBtn);
   lab.videos.forEach((u, i) => links.appendChild(linkBtn(u, lab.videos.length > 1 ? `動画 ${i + 1}` : "紹介動画を見る")));
   lab.extraUrls.forEach((u) => links.appendChild(linkBtn(u, "追加リンク")));
@@ -1193,8 +1228,9 @@ function renderDetail(lab, { focusClose } = {}) {
   }
   const contactHint = document.createElement("p");
   contactHint.className = "save-hint";
-  contactHint.textContent =
-    "メールアドレスと顔写真、ラボガイドの本文は掲載していません。連絡方法と研究内容は研究室HPか公式ラボガイドを見てください。";
+  contactHint.textContent = (lab.emails || []).length
+    ? "ラボガイドの本文は載せていません。写真は公式ラボガイドの公開画像です。連絡の前に、研究室HPか公式ラボガイドも確認してください。"
+    : "この研究室の公開メールはまだ載せていません。ラボガイドの本文は載せていません。写真は公式ラボガイドの公開画像です。連絡方法は研究室HPか公式ラボガイドを見てください。";
   next.appendChild(contactHint);
   const official = document.createElement("p");
   official.className = "save-hint";
@@ -1221,14 +1257,16 @@ function renderDetail(lab, { focusClose } = {}) {
     const dd = document.createElement("dd");
     dd.textContent = v || "—";
     kv.append(dt, dd);
-  }
-  const syllabus = firstHttp(lab.roomSource);
-  if (syllabus) {
-    const dt = document.createElement("dt");
-    dt.textContent = "居室の出典";
-    const dd = document.createElement("dd");
-    dd.appendChild(linkBtn(syllabus, "公開シラバス"));
-    kv.append(dt, dd);
+    if (k === "教員" && (lab.emails || []).length) {
+      const mailDt = document.createElement("dt");
+      mailDt.textContent = "メール";
+      const mailDd = document.createElement("dd");
+      lab.emails.forEach((addr, i) => {
+        if (i) mailDd.append(document.createTextNode("、"));
+        mailDd.appendChild(mailLink(addr, addr));
+      });
+      kv.append(mailDt, mailDd);
+    }
   }
   if (lab.alsoIds.length) {
     const dt = document.createElement("dt");
