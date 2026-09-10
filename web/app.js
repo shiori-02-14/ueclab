@@ -506,6 +506,11 @@ function syncSearchClear() {
   $("q-clear").hidden = !state.q.trim();
 }
 
+function syncFilterChrome() {
+  const clear = document.querySelector("#filters > button.ghost");
+  if (clear) clear.disabled = !activeFilterCount();
+}
+
 function isCompact() {
   return window.matchMedia("(max-width: 720px)").matches;
 }
@@ -692,6 +697,7 @@ function renderFilters() {
       state.majors,
       (v, on) => {
         on ? state.majors.add(v) : state.majors.delete(v);
+        renderFilters();
         paint();
       },
       false,
@@ -705,6 +711,7 @@ function renderFilters() {
       state.fields,
       (v, on) => {
         on ? state.fields.add(v) : state.fields.delete(v);
+        renderFilters();
         paint();
       }
     )
@@ -716,6 +723,7 @@ function renderFilters() {
       state.buildings,
       (v, on) => {
         on ? state.buildings.add(v) : state.buildings.delete(v);
+        renderFilters();
         paint();
       }
     )
@@ -727,6 +735,7 @@ function renderFilters() {
       state.hometowns,
       (v, on) => {
         on ? state.hometowns.add(v) : state.hometowns.delete(v);
+        renderFilters();
         paint();
       }
     )
@@ -743,10 +752,12 @@ function renderFilters() {
   extras.append(
     check("HPあり", state.hasHp, (v) => {
       state.hasHp = v;
+      renderFilters();
       paint();
     }),
     check("動画あり", state.hasVideo, (v) => {
       state.hasVideo = v;
+      renderFilters();
       paint();
     })
   );
@@ -1192,7 +1203,7 @@ function renderResults() {
   const groupedDefault =
     state.view !== "building" &&
     state.view !== "hometown" &&
-    state.sort !== "hometown" &&
+    state.sort === "guide" &&
     !state.q &&
     !state.programs.size &&
     !state.onlySaved;
@@ -1205,6 +1216,19 @@ function renderResults() {
         groups.get(key).push(lab);
       }
     }
+    const unknown = "号館不明";
+    const dir = state.sortDir < 0 ? -1 : 1;
+    const ordered = [...groups.keys()].sort((a, b) => {
+      if (a === unknown && b !== unknown) return 1;
+      if (b === unknown && a !== unknown) return -1;
+      const aa = buildingRank(a);
+      const bb = buildingRank(b);
+      return (aa[0] - bb[0] || aa[1] - bb[1] || aa[2].localeCompare(bb[2], "ja")) * dir;
+    });
+    const sorted = new Map();
+    for (const key of ordered) sorted.set(key, groups.get(key));
+    groups.clear();
+    for (const [key, labs] of sorted) groups.set(key, labs);
   } else if (state.view === "hometown" || state.sort === "hometown") {
     for (const lab of rows) {
       for (const key of hometownGroupKeys(lab)) {
@@ -1496,9 +1520,27 @@ function renderDetail(lab, { focusClose } = {}) {
   memo.placeholder = "見学で聞いたこと、雰囲気、先輩の話など";
   memo.value = e.memo || "";
   memo.addEventListener("input", () => {
+    const wasOn = e.on;
     e.memo = memo.value;
     if (e.memo.trim()) e.on = true;
     persist();
+    if (e.on !== wasOn) {
+      fav.classList.toggle("on", e.on);
+      fav.textContent = e.on ? "気になる（保存済）" : "気になるに追加";
+      const card = document.querySelector(`.card[data-id="${lab.id}"]`);
+      if (card) {
+        card.classList.toggle("saved", e.on);
+        const save = card.querySelector(".save-btn");
+        if (save) {
+          save.classList.toggle("on", e.on);
+          save.setAttribute("aria-pressed", e.on ? "true" : "false");
+          save.setAttribute("aria-label", e.on ? "気になるから外す" : "気になるに追加");
+          save.title = e.on ? "気になるから外す" : "気になるに追加";
+        }
+      }
+      renderStats();
+      renderToolbar(filtered().length);
+    }
   });
   const hint = document.createElement("p");
   hint.className = "save-hint";
@@ -1524,15 +1566,14 @@ function paint() {
   renderInterest();
   renderResults();
   if (state.selectedId) markActiveCard(state.selectedId);
+  syncFilterChrome();
 }
 
 function bind() {
   $("q").addEventListener("input", (ev) => {
     state.q = ev.target.value;
     syncSearchClear();
-    renderInterest();
-    renderResults();
-    renderStats();
+    paint();
     scrollResultsTop();
   });
   $("q").addEventListener("keydown", (ev) => {

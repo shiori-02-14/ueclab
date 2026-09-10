@@ -91,10 +91,6 @@ img { max-width: 100%; display: block; }
   object-fit: contain;
   object-position: left center;
 }
-.site-logo .unofficial {
-  margin-left: 2px;
-  flex: 0 0 auto;
-}
 .site-menu {
   display: flex;
   align-items: center;
@@ -139,9 +135,17 @@ img { max-width: 100%; display: block; }
 }
 .top .search {
   grid-column: 1;
-  padding: 8px 0 10px;
+  grid-row: 2;
+  align-self: stretch;
+  display: flex;
+  align-items: center;
+  padding: 10px 0;
 }
-.top .top-stats { grid-column: 2; }
+.top .top-stats {
+  grid-column: 2;
+  grid-row: 2;
+  align-self: stretch;
+}
 .brand { min-width: 0; }
 .eyebrow {
   margin: 0 0 2px;
@@ -169,22 +173,10 @@ img { max-width: 100%; display: block; }
   text-decoration: none;
 }
 .lede a:hover { text-decoration: underline; }
-.unofficial {
-  display: inline-block;
-  margin-left: 8px;
-  padding: 2px 8px;
-  border-radius: 999px;
-  background: #fff4e5;
-  color: #9a3412;
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 0.04em;
-  vertical-align: middle;
-  line-height: 1.4;
-}
 .site-notice {
   display: flex;
   align-items: flex-start;
+  flex-wrap: wrap;
   gap: 8px;
   flex: 0 0 auto;
   margin: 0;
@@ -211,7 +203,7 @@ img { max-width: 100%; display: block; }
 .site-notice .notice-long,
 .site-notice .notice-short {
   min-width: 0;
-  flex: 1 1 auto;
+  flex: 1 1 8rem;
 }
 .site-notice a {
   color: #9a3412;
@@ -285,8 +277,10 @@ img { max-width: 100%; display: block; }
 .search-icon {
   position: absolute;
   left: 12px;
+  top: 50%;
   width: 18px;
   height: 18px;
+  margin-top: -9px;
   color: var(--muted);
   pointer-events: none;
 }
@@ -309,6 +303,8 @@ img { max-width: 100%; display: block; }
 .search-kbd {
   position: absolute;
   right: 12px;
+  top: 50%;
+  margin-top: -0.7em;
   min-width: 22px;
   padding: 1px 6px;
   border: 1px solid var(--line);
@@ -331,6 +327,8 @@ button.linkish {
 .search-clear {
   position: absolute;
   right: 8px;
+  top: 50%;
+  transform: translateY(-50%);
   border: 0;
   background: transparent;
   color: var(--muted);
@@ -344,15 +342,15 @@ button.linkish {
   display: flex;
   gap: 8px;
   white-space: nowrap;
-  align-self: center;
-  padding-bottom: 4px;
+  align-items: center;
+  padding: 10px 0;
   min-width: 0;
   flex-shrink: 1;
 }
 .stat {
   border: 0;
   background: transparent;
-  padding: 0;
+  padding: 2px 8px;
   text-align: right;
   cursor: default;
   color: var(--muted);
@@ -361,6 +359,7 @@ button.linkish {
   display: flex;
   flex-direction: column;
   align-items: flex-end;
+  justify-content: center;
   min-width: 4.75em;
 }
 .stat b {
@@ -441,6 +440,8 @@ button.linkish {
   font-size: 12px;
   cursor: pointer;
   border-radius: 999px;
+  flex: 0 0 auto;
+  max-width: 100%;
 }
 .chip.on,
 .check:has(input:checked) {
@@ -519,6 +520,7 @@ button.linkish {
   gap: 8px;
   align-items: center;
   margin-left: auto;
+  min-width: 0;
 }
 .seg {
   display: inline-flex;
@@ -527,6 +529,8 @@ button.linkish {
   border-radius: var(--radius);
   overflow: hidden;
   margin-left: 4px;
+  flex: 0 0 auto;
+  min-width: 0;
 }
 .seg button {
   border: 0;
@@ -534,6 +538,7 @@ button.linkish {
   padding: 6px 10px;
   cursor: pointer;
   font-size: 12px;
+  white-space: nowrap;
 }
 .seg button.on {
   background: var(--accent);
@@ -598,12 +603,15 @@ select.sort {
   gap: 6px;
   align-items: center;
   margin: 0 0 12px;
+  min-width: 0;
+  max-width: 100%;
 }
 .interest[hidden] { display: none; }
 .interest .label {
   font-size: 12px;
   color: var(--muted);
   font-weight: 700;
+  flex: 0 0 auto;
 }
 .view-hint {
   margin: 0 0 12px;
@@ -617,11 +625,13 @@ select.sort {
   gap: 6px;
   align-items: center;
   margin: 0 0 12px;
+  min-width: 0;
+  max-width: 100%;
 }
 .active-filters[hidden] { display: none; }
 .active-filters .chip { padding-right: 8px; }
 .active-filters .chip .x { margin-left: 4px; opacity: 0.6; }
-.results.list { display: grid; gap: 8px; }
+.results.list { display: grid; gap: 8px; min-width: 0; }
 .results.cards {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(min(250px, 100%), 1fr));
@@ -713,7 +723,7 @@ select.sort {
   width: 100%;
   height: 148px;
 }
-.meta { min-width: 0; overflow-wrap: anywhere; }
+.meta { min-width: 0; max-width: 100%; overflow-wrap: anywhere; }
 .kicker {
   display: flex;
   flex-wrap: wrap;
@@ -728,6 +738,7 @@ select.sort {
   font-size: 16px;
   font-weight: 700;
   line-height: 1.4;
+  max-width: 100%;
   overflow-wrap: anywhere;
   word-break: keep-all;
 }
@@ -736,6 +747,7 @@ select.sort {
   font-size: 13px;
   color: #434a53;
   line-height: 1.5;
+  max-width: 100%;
   overflow-wrap: anywhere;
   word-break: keep-all;
 }
@@ -947,6 +959,7 @@ select.sort {
   font-weight: 700;
   margin: 0 0 6px;
   line-height: 1.35;
+  max-width: 100%;
   overflow-wrap: anywhere;
   word-break: keep-all;
 }
@@ -955,6 +968,7 @@ select.sort {
   margin: 0;
   color: #434a53;
   line-height: 1.55;
+  max-width: 100%;
   overflow-wrap: anywhere;
   word-break: keep-all;
 }
@@ -1027,7 +1041,7 @@ select.sort {
   font-size: 13px;
 }
 
-.group-chips { display: flex; flex-wrap: wrap; gap: 6px; }
+.group-chips { display: flex; flex-wrap: wrap; gap: 6px; min-width: 0; }
 .filter-toggle {
   display: none;
   border: 1px solid var(--line);
@@ -1126,9 +1140,10 @@ select.sort {
   .search { min-width: 0; }
   .search input {
     font-size: 16px;
-    padding: 12px 64px 12px 38px;
+    padding: 12px 16px 12px 38px;
     min-height: 44px;
   }
+  .search:has(.search-clear:not([hidden])) input { padding-right: 64px; }
   .search-clear {
     min-width: 44px;
     min-height: 44px;
@@ -1140,9 +1155,18 @@ select.sort {
   }
   .main {
     padding: 0 16px calc(48px + var(--safe-bottom));
-    overflow-x: clip;
+    overflow: visible;
   }
   .toolbar { top: var(--top-h, 0px); }
+  .site-foot {
+    grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
+  }
+  .foot-navs {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px 24px;
+    align-items: start;
+  }
   .filters {
     display: none;
     position: fixed;
@@ -1190,18 +1214,28 @@ select.sort {
     min-height: 40px;
     padding: 8px 14px;
     font-weight: 700;
+    flex: 0 0 auto;
   }
   .card { grid-template-columns: 64px minmax(0, 1fr) auto; gap: 12px; }
   .thumb, .thumb-ph { width: 64px; height: 64px; }
-  .toolbar .count { margin-left: 0; }
-  .toolbar-end {
-    width: 100%;
+  .toolbar .count {
     margin-left: 0;
-    justify-content: flex-end;
+    flex: 0 0 auto;
+    white-space: nowrap;
+  }
+  .group-chips {
+    flex: 1 1 auto;
     min-width: 0;
   }
-  .seg { min-width: 0; }
-  .group-chips { min-width: 0; }
+  .toolbar-end {
+    flex: 1 1 100%;
+    width: 100%;
+    margin-left: 0;
+    justify-content: flex-start;
+    min-width: 0;
+  }
+  .seg { flex: 0 0 auto; min-width: 0; }
+  .sort-field { flex: 0 0 auto; }
   .search-kbd { display: none; }
   .links a,
   .links button.plain {
@@ -1213,6 +1247,16 @@ select.sort {
   .detail .close {
     min-height: 40px;
     padding: 8px 16px;
+  }
+  body.doc .site-nav {
+    padding: 0 16px;
+    padding-top: var(--safe-top);
+  }
+  body.doc .site-notice { padding: 8px 16px; }
+  .doc-main { padding-left: 16px; padding-right: 16px; }
+  body.doc > .site-foot {
+    padding-left: 16px;
+    padding-right: 16px;
   }
 }
 
@@ -1246,7 +1290,6 @@ select.sort {
   .site-menu .nav-extra { display: none; }
   .site-menu a { padding: 8px 8px; font-size: 13px; }
   .top-stats { display: none; }
-  .unofficial { margin-left: 4px; font-size: 10px; padding: 1px 6px; }
   .top .search {
     min-width: 0;
     margin: 0 -12px;
@@ -1280,7 +1323,7 @@ select.sort {
   }
   .main {
     padding: 0 12px calc(32px + var(--safe-bottom));
-    overflow-x: clip;
+    overflow: visible;
   }
   .toolbar {
     position: static;
@@ -1314,21 +1357,15 @@ select.sort {
   .interest,
   .active-filters {
     display: flex;
-    flex-wrap: nowrap;
+    flex-wrap: wrap;
     gap: 6px;
-    overflow-x: auto;
-    overflow-y: hidden;
-    -webkit-overflow-scrolling: touch;
-    overscroll-behavior-x: contain;
-    scrollbar-width: none;
+    overflow: visible;
     min-width: 0;
   }
-  .group-chips::-webkit-scrollbar,
-  .interest::-webkit-scrollbar,
-  .active-filters::-webkit-scrollbar { display: none; }
   .group-chips {
     grid-column: 1 / -1;
     grid-row: 2;
+    flex: none;
   }
   .group-chips .chip,
   .interest .chip,
@@ -1391,8 +1428,8 @@ select.sort {
     overflow-wrap: anywhere;
   }
   .interest {
-    margin: 0 -12px 8px;
-    padding: 0 12px;
+    margin: 0 0 8px;
+    padding: 0;
   }
   .interest .label {
     display: flex;
