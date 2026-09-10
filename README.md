@@ -61,7 +61,7 @@ URL は https://shiori-02-14.github.io/ueclab/ です。手元で静的確認す
 ueclab/
 ├── data/
 │   ├── catalog.csv           # 居室・HP など手元のカタログ（本文は含めない）
-│   ├── emails.csv            # 公開シラバス等の教員メール（出典 URL 付き）
+│   ├── emails.csv            # 公開されている教員メール
 │   └── official-labs.json    # 公式 labs.json の要約（本文なし。写真は公式 URL のみ）
 ├── scripts/
 │   ├── server.py             # データ結合 + ローカル HTTP
@@ -79,7 +79,7 @@ ueclab/
 └── CONTRIBUTING.md
 ```
 
-`scripts/server.py` は `data/catalog.csv` と `data/official-labs.json` を突き合わせ、公開シラバス由来のメールがあれば `data/emails.csv` から足して `web/js/labs-data.js` を書き出します。件数は公式側とカタログで一致している必要があります。ラボガイドの本文は公開データに含めません。写真は公式サイトの URL だけ残します。
+`scripts/server.py` は `data/catalog.csv` と `data/official-labs.json` を突き合わせ、公開メールがあれば `data/emails.csv` から足して `web/js/labs-data.js` を書き出します。件数は公式側とカタログで一致している必要があります。ラボガイドの本文は公開データに含めません。写真は公式サイトの URL だけ残します。
 
 ## データの出典
 
@@ -87,9 +87,9 @@ ueclab/
 
 - [公式ラボガイド](https://www.uec.ac.jp/arc/laboguide.html)
 - `https://www.uec.ac.jp/arc/assets/labs.json`（タイトル・キーワード・公開 URL・写真 URL。本文は取り込まない）
-- 公開シラバス（居室・教員メール。出典 URL はカタログの備考および `data/emails.csv`）
+- 公開シラバス（居室。出典はカタログの備考）
 
-再配布・改変したデータを使うときも、[利用規約](TERMS.md) と各研究室の権利、大学の利用条件に従ってください。負荷の高いクローリングはしないでください。学内限定の連絡先は公開しません。公開シラバス等に載っているメールは `data/emails.csv` から掲載します。
+再配布・改変したデータを使うときも、[利用規約](TERMS.md) と各研究室の権利、大学の利用条件に従ってください。負荷の高いクローリングはしないでください。学内限定の連絡先は公開しません。公開されている教員メールは `data/emails.csv` から掲載します。
 
 データを差し替える手順は次のとおりです。
 

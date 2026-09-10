@@ -18,6 +18,8 @@ DATA = ROOT / "data"
 CATALOG = DATA / "catalog.csv"
 EMAILS = DATA / "emails.csv"
 OFFICIAL = DATA / "official-labs.json"
+CATALOG_FIELDS = ["学部", "学科", "研究室名", "所属教員", "号館・部屋", "公式HP", "備考"]
+EMAILS_FIELDS = ["研究室名", "学科", "メールアドレス"]
 EMAIL_RE = re.compile(r"^[A-Za-z0-9._%+\-]+@[A-Za-z0-9.\-]+\.[A-Za-z]{2,}$")
 PORT = int(sys.argv[1]) if len(sys.argv) > 1 and sys.argv[1].isdigit() else 8765
 # 公開してよい備考キー。本文・メッセージなど転載リスクのある項目は載せない
@@ -176,9 +178,9 @@ def parse_emails(raw: str) -> list[str]:
     return found
 
 
-def load_email_index() -> dict[tuple[str, str], dict]:
-    """公開シラバス等のメール。キーは (研究室名, 学科)。"""
-    index: dict[tuple[str, str], dict] = {}
+def load_email_index() -> dict[tuple[str, str], list[str]]:
+    """公開されている教員メール。キーは (研究室名, 学科)。"""
+    index: dict[tuple[str, str], list[str]] = {}
     if not EMAILS.exists():
         return index
     with EMAILS.open(encoding="utf-8-sig", newline="") as fh:
@@ -188,10 +190,7 @@ def load_email_index() -> dict[tuple[str, str], dict]:
             emails = parse_emails(row.get("メールアドレス") or "")
             if not name or not emails:
                 continue
-            index[(name, program)] = {
-                "emails": emails,
-                "emailSource": (row.get("出典URL") or "").strip(),
-            }
+            index[(name, program)] = emails
     return index
 
 
@@ -204,7 +203,7 @@ def load_labs() -> list[dict]:
     email_index = load_email_index()
 
     labs = []
-    for src, row in zip(official, catalog):
+    for i, (src, row) in enumerate(zip(official, catalog), start=1):
         src = slim_official_lab(src)
         biko = parse_biko(slim_catalog_biko(row.get("備考") or ""))
         urls = [u for u in (src.get("url") or []) if u]
@@ -216,9 +215,8 @@ def load_labs() -> list[dict]:
         majors = [strip_num(m) for m in (src.get("major") or [])]
         name = norm_name(row["研究室名"] or src.get("name") or "")
         program = row.get("学科") or strip_num(src.get("program") or "")
-        mail = email_index.get((name, program), {})
         labs.append({
-            "id": int(row["ID"]),
+            "id": int(src.get("order") or i),
             "order": src.get("order"),
             "name": name,
             "faculty": norm_name(row.get("所属教員") or ""),
@@ -230,7 +228,6 @@ def load_labs() -> list[dict]:
             "title": src.get("title") or "",
             "keywords": src.get("keywords") or [],
             "fields": [clean_field(f) for f in (src.get("fields") or [])],
-            "campus": (row.get("主キャンパス") or "").strip(),
             "room": room,
             "buildings": buildings_of(room),
             "urls": urls,
@@ -239,8 +236,7 @@ def load_labs() -> list[dict]:
             "yumenabi": src.get("yumenabi") or [],
             "videos": src.get("videouec") or [],
             "roomSource": biko.get("居室出典") or "",
-            "emails": mail.get("emails") or [],
-            "emailSource": mail.get("emailSource") or "",
+            "emails": email_index.get((name, program), []),
             "image": official_image(src.get("image_path") or ""),
             "birthplaces": parse_birthplaces(src.get("birthplace") or []),
         })
@@ -269,16 +265,30 @@ def rewrite_public_sources() -> None:
 
     with CATALOG.open(encoding="utf-8-sig", newline="") as fh:
         reader = csv.DictReader(fh)
-        fieldnames = reader.fieldnames
-        if not fieldnames:
+        if not reader.fieldnames:
             raise RuntimeError("catalog.csv にヘッダがありません")
         rows = list(reader)
+    slim_rows = []
     for row in rows:
-        row["備考"] = slim_catalog_biko(row.get("備考") or "")
+        out = {key: row.get(key, "") for key in CATALOG_FIELDS}
+        out["備考"] = slim_catalog_biko(out.get("備考") or "")
+        slim_rows.append(out)
     with CATALOG.open("w", encoding="utf-8-sig", newline="") as fh:
-        writer = csv.DictWriter(fh, fieldnames=fieldnames)
+        writer = csv.DictWriter(fh, fieldnames=CATALOG_FIELDS)
         writer.writeheader()
-        writer.writerows(rows)
+        writer.writerows(slim_rows)
+
+    if EMAILS.exists():
+        with EMAILS.open(encoding="utf-8-sig", newline="") as fh:
+            reader = csv.DictReader(fh)
+            if not reader.fieldnames:
+                raise RuntimeError("emails.csv にヘッダがありません")
+            email_rows = list(reader)
+        slim_emails = [{key: row.get(key, "") for key in EMAILS_FIELDS} for row in email_rows]
+        with EMAILS.open("w", encoding="utf-8-sig", newline="") as fh:
+            writer = csv.DictWriter(fh, fieldnames=EMAILS_FIELDS)
+            writer.writeheader()
+            writer.writerows(slim_emails)
 
 
 def write_labs_js(labs: list[dict] | None = None) -> Path:

@@ -26,6 +26,6 @@ body:
     id: detail
     attributes:
       label: 内容
-      description: どの項目か、正しい情報、出典 URL があれば書いてください。取り下げの場合は対象（氏名、居室、メール、リンクなど）を特定してください。既存 ID を変える提案なら、その理由も書いてください。
+      description: どの項目か、正しい情報、出典 URL があれば書いてください。取り下げの場合は対象（氏名、居室、メール、リンクなど）を特定してください。
     validations:
       required: true
