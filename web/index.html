@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="description" content="電気通信大学の研究室を探す非公式サイトです。大学公式ではありません。正本は公式ラボガイドを確認してください。" />
+    <meta name="theme-color" content="#1d4f91" />
+    <title>UEC ラボ（非公式）</title>
+    <link
+      rel="icon"
+      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%231d4f91'/%3E%3Ctext x='16' y='22' text-anchor='middle' fill='white' font-size='15' font-family='sans-serif' font-weight='700'%3EU%3C/text%3E%3C/svg%3E"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <a class="skip" href="#results">一覧へスキップ</a>
+
+    <header class="top">
+      <div class="brand">
+        <p class="eyebrow">電気通信大学 · 非公式</p>
+        <h1>UEC ラボ <span class="unofficial">非公式</span></h1>
+        <p class="lede">大学の公式サイトではありません</p>
+      </div>
+      <label class="search">
+        <svg class="search-icon" viewBox="0 0 24 24" aria-hidden="true">
+          <circle cx="10.5" cy="10.5" r="6.5" fill="none" stroke="currentColor" stroke-width="1.8" />
+          <path d="M15.5 15.5 20 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" />
+        </svg>
+        <span class="sr">検索</span>
+        <input
+          id="q"
+          type="search"
+          placeholder="AI、ロボット、号館、先生の名前"
+          autocomplete="off"
+          autocorrect="off"
+          spellcheck="false"
+          enterkeyhint="search"
+          inputmode="search"
+        />
+        <kbd class="search-kbd" aria-hidden="true">/</kbd>
+        <button type="button" class="search-clear" id="q-clear" hidden>クリア</button>
+      </label>
+      <div class="top-stats" id="top-stats"></div>
+      <p class="site-notice">
+        <strong>非公式</strong>
+        このページは大学・公式ラボガイドとは無関係です。情報の正本は
+        <a href="https://www.uec.ac.jp/arc/laboguide.html" target="_blank" rel="noopener noreferrer">公式ラボガイド</a>
+        を確認してください。
+      </p>
+    </header>
+
+    <div class="shell">
+      <aside class="filters" id="filters" aria-label="絞り込み"></aside>
+      <main class="main" id="main">
+        <div class="toolbar" id="toolbar"></div>
+        <div class="welcome" id="welcome" hidden></div>
+        <div class="interest" id="interest"></div>
+        <div class="active-filters" id="active-filters" hidden></div>
+        <p class="view-hint" id="view-hint" hidden></p>
+        <div id="results" class="results"></div>
+        <p class="site-foot">
+          有志による非公式の研究室検索です。電気通信大学は運営に関与していません。
+          <a href="https://www.uec.ac.jp/arc/laboguide.html" target="_blank" rel="noopener noreferrer">公式ラボガイド</a>
+        </p>
+      </main>
+    </div>
+
+    <button type="button" class="filter-scrim" id="filter-scrim" hidden>絞り込みを閉じる</button>
+
+    <div class="detail-root" id="detail-root" hidden>
+      <div class="detail-backdrop" data-close-detail></div>
+      <article class="detail" id="detail" role="dialog" aria-modal="true" aria-labelledby="detail-title"></article>
+    </div>
+
+    <div class="compare" id="compare" hidden></div>
+    <script src="labs-data.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>
