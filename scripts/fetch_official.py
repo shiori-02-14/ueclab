@@ -11,7 +11,7 @@ import urllib.request
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-sys.path.insert(0, str(ROOT))
+sys.path.insert(0, str(Path(__file__).resolve().parent))
 from server import slim_official_lab  # noqa: E402
 
 CACHE = ROOT / ".cache"
@@ -50,7 +50,7 @@ def main() -> None:
     }
     DEST.write_text(json.dumps(slim, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     print(f"書き出しました: {DEST}（{len(labs)} 件、本文なし。写真は公式 URL のみ）")
-    print("続けて python3 server.py --build を実行してください。")
+    print("続けて python3 scripts/server.py --build を実行してください。")
 
 
 if __name__ == "__main__":

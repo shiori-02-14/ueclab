@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="web/logo.png" alt="UEC ラボ" width="420" />
+  <img src="web/assets/logo.png" alt="UEC ラボ" width="420" />
 </p>
 
 # UEC ラボ（非公式）
@@ -34,52 +34,52 @@ Python 3.9 以降があれば足ります。追加のパッケージは不要で
 ```bash
 git clone https://github.com/shiori-02-14/ueclab.git
 cd ueclab
-python3 server.py
+python3 scripts/server.py
 ```
 
 ブラウザが http://127.0.0.1:8765/ を開きます。止めるときは `Ctrl+C` です。このサイトについてのページは http://127.0.0.1:8765/about.html です。
 
 | コマンド | 内容 |
 | --- | --- |
-| `python3 server.py` | データを組み立ててローカルサーバを起動し、ブラウザを開く |
-| `python3 server.py --no-open` | 起動だけする |
-| `python3 server.py 8080` | ポートを指定する |
-| `python3 server.py --build` | `web/labs-data.js` だけ生成して終了する |
-| `python3 server.py --sanitize` | ソースから本文・メッセージを外して再生成する（写真は公式 URL のみ残す） |
+| `python3 scripts/server.py` | データを組み立ててローカルサーバを起動し、ブラウザを開く |
+| `python3 scripts/server.py --no-open` | 起動だけする |
+| `python3 scripts/server.py 8080` | ポートを指定する |
+| `python3 scripts/server.py --build` | `web/js/labs-data.js` だけ生成して終了する |
+| `python3 scripts/server.py --sanitize` | ソースから本文・メッセージを外して再生成する（写真は公式 URL のみ残す） |
 
-macOS では `ラボガイドを開く.command` でも `web/index.html` を開けますが、`file://` だと環境によってデータが読めません。通常は `python3 server.py` を使ってください。
+macOS では `ラボガイドを開く.command` でも `web/index.html` を開けますが、`file://` だと環境によってデータが読めません。通常は `python3 scripts/server.py` を使ってください。
 
 ## 公開（GitHub Pages）
 
 `web/` を GitHub Pages で配信します。ブランチの `/docs` ではなく、Actions から上げます。リポジトリの **Settings → Pages → Source** は **GitHub Actions** です。`main` へ push すると `.github/workflows/pages.yml` が `web/` を公開します。
 
-URL は https://shiori-02-14.github.io/ueclab/ です。手元で静的確認するときは `python3 server.py --build` のあと `web/` を配信してください。
+URL は https://shiori-02-14.github.io/ueclab/ です。手元で静的確認するときは `python3 scripts/server.py --build` のあと `web/` を配信してください。
 
 ## 構成
 
 ```
 ueclab/
-├── server.py                 # データ結合 + ローカル HTTP
-├── scripts/fetch_official.py # 公式 labs.json の取得（間隔・キャッシュ付き）
-├── catalog.csv               # 居室・HP など手元のカタログ（本文は含めない）
-├── emails.csv                # 公開シラバス等の教員メール（出典 URL 付き）
-├── data/official-labs.json   # 公式 labs.json の要約コピー（本文なし。写真は公式 URL のみ）
+├── data/
+│   ├── catalog.csv           # 居室・HP など手元のカタログ（本文は含めない）
+│   ├── emails.csv            # 公開シラバス等の教員メール（出典 URL 付き）
+│   └── official-labs.json    # 公式 labs.json の要約（本文なし。写真は公式 URL のみ）
+├── scripts/
+│   ├── server.py             # データ結合 + ローカル HTTP
+│   └── fetch_official.py     # 公式 labs.json の取得（間隔・キャッシュ付き）
 ├── web/
 │   ├── index.html            # 研究室ブラウザ
 │   ├── about.html            # このサイトについて / 利用規約
-│   ├── logo.png
-│   ├── favicon.png
-│   ├── apple-touch-icon.png
-│   ├── robots.txt
-│   ├── app.js
-│   └── labs-data.js          # 生成物。更新は --build
+│   ├── css/styles.css
+│   ├── js/app.js
+│   ├── js/labs-data.js       # 生成物。更新は --build
+│   └── assets/               # ロゴ・favicon・OGP
 ├── TERMS.md                  # 利用規約
 ├── LICENSE                   # ソフトウェアは MIT
 ├── LICENSE-DATA.md           # 独自メタデータは CC BY-NC-SA 4.0
 └── CONTRIBUTING.md
 ```
 
-`server.py` は `catalog.csv` と `data/official-labs.json` を突き合わせ、公開シラバス由来のメールがあれば `emails.csv` から足して `web/labs-data.js` を書き出します。件数は公式側とカタログで一致している必要があります。ラボガイドの本文は公開データに含めません。写真は公式サイトの URL だけ残します。
+`scripts/server.py` は `data/catalog.csv` と `data/official-labs.json` を突き合わせ、公開シラバス由来のメールがあれば `data/emails.csv` から足して `web/js/labs-data.js` を書き出します。件数は公式側とカタログで一致している必要があります。ラボガイドの本文は公開データに含めません。写真は公式サイトの URL だけ残します。
 
 ## データの出典
 
@@ -87,21 +87,21 @@ ueclab/
 
 - [公式ラボガイド](https://www.uec.ac.jp/arc/laboguide.html)
 - `https://www.uec.ac.jp/arc/assets/labs.json`（タイトル・キーワード・公開 URL・写真 URL。本文は取り込まない）
-- 公開シラバス（居室・教員メール。出典 URL はカタログの備考および `emails.csv`）
+- 公開シラバス（居室・教員メール。出典 URL はカタログの備考および `data/emails.csv`）
 
-再配布・改変したデータを使うときも、[利用規約](TERMS.md) と各研究室の権利、大学の利用条件に従ってください。負荷の高いクローリングはしないでください。学内限定の連絡先は公開しません。公開シラバス等に載っているメールは `emails.csv` から掲載します。
+再配布・改変したデータを使うときも、[利用規約](TERMS.md) と各研究室の権利、大学の利用条件に従ってください。負荷の高いクローリングはしないでください。学内限定の連絡先は公開しません。公開シラバス等に載っているメールは `data/emails.csv` から掲載します。
 
 データを差し替える手順は次のとおりです。
 
 1. `python3 scripts/fetch_official.py` で公式の `labs.json` を取得する（User-Agent 付き、1 秒空けて `.cache/` にも残す。書き出すのは要約。写真は公式 URL のみ）
-2. `catalog.csv` を必要なら直す（研究室の件数を公式側と揃える。本文は入れない。写真ファイルも置かない）。公開メールは `emails.csv` を直す
-3. `python3 server.py --build` で `web/labs-data.js` を再生成する
+2. `data/catalog.csv` を必要なら直す（研究室の件数を公式側と揃える。本文は入れない。写真ファイルも置かない）。公開メールは `data/emails.csv` を直す
+3. `python3 scripts/server.py --build` で `web/js/labs-data.js` を再生成する
 
 誤りや掲載取り下げは [Issue](https://github.com/shiori-02-14/ueclab/issues) へ。
 
 ## ライセンス
 
-- **ソフトウェア**（`server.py`、`web/` の HTML / CSS / JS など）は [MIT License](LICENSE) です。
+- **ソフトウェア**（`scripts/server.py`、`web/` の HTML / CSS / JS など）は [MIT License](LICENSE) です。
 - **独自に付与したメタデータとデータ構造**は [CC BY-NC-SA 4.0](LICENSE-DATA.md) です。電気通信大学の学生・教職員の利用は、規約上は非営利とみなします。
 - **研究室の本文・写真・ロゴ・連絡先など**は、各権利者および電気通信大学に帰属します。MIT / CC の対象外です。本プロジェクトはそれらを再許諾しません。写真は公式ラボガイドの URL を参照するだけで、ファイル自体はリポジトリに含めません。
 

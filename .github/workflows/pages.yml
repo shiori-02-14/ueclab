@@ -27,7 +27,7 @@ jobs:
         with:
           python-version: "3.12"
       - name: Build static data
-        run: python3 server.py --build
+        run: python3 scripts/server.py --build
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:

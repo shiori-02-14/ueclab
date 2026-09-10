@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""UEC ラボ — index.html を直接開けます。データ更新: python3 server.py --build"""
+"""UEC ラボ — データ更新: python3 scripts/server.py --build"""
 
 from __future__ import annotations
 
@@ -12,11 +12,11 @@ from http.server import ThreadingHTTPServer, SimpleHTTPRequestHandler
 from pathlib import Path
 from urllib.parse import unquote, urlparse
 
-ROOT = Path(__file__).resolve().parent
+ROOT = Path(__file__).resolve().parents[1]
 WEB = ROOT / "web"
 DATA = ROOT / "data"
-CATALOG = ROOT / "catalog.csv"
-EMAILS = ROOT / "emails.csv"
+CATALOG = DATA / "catalog.csv"
+EMAILS = DATA / "emails.csv"
 OFFICIAL = DATA / "official-labs.json"
 EMAIL_RE = re.compile(r"^[A-Za-z0-9._%+\-]+@[A-Za-z0-9.\-]+\.[A-Za-z]{2,}$")
 PORT = int(sys.argv[1]) if len(sys.argv) > 1 and sys.argv[1].isdigit() else 8765
@@ -283,9 +283,10 @@ def rewrite_public_sources() -> None:
 
 def write_labs_js(labs: list[dict] | None = None) -> Path:
     payload = json.dumps({"labs": labs if labs is not None else load_labs()}, ensure_ascii=False)
-    dest = WEB / "labs-data.js"
+    dest = WEB / "js" / "labs-data.js"
+    dest.parent.mkdir(parents=True, exist_ok=True)
     dest.write_text(
-        "/* 自動生成。更新: python3 server.py --build\n"
+        "/* 自動生成。更新: python3 scripts/server.py --build\n"
         " * 公開データは識別情報・キーワード・リンク・公開メール・公式写真 URL。本文は含めない。 */\n"
         f"window.__LABS_DATA__ = {payload};\n",
         encoding="utf-8",

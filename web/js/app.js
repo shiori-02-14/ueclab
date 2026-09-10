@@ -1631,7 +1631,7 @@ function boot() {
   const data = window.__LABS_DATA__;
   if (!data || !Array.isArray(data.labs) || !data.labs.length) {
     $("results").innerHTML =
-      "<div class='empty'><p>研究室データがありません。<code>python3 server.py --build</code> で <code>web/labs-data.js</code> を生成してください。</p></div>";
+      "<div class='empty'><p>研究室データがありません。<code>python3 scripts/server.py --build</code> で <code>web/js/labs-data.js</code> を生成してください。</p></div>";
     return;
   }
   state.labs = data.labs;

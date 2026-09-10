@@ -26,7 +26,7 @@ Issue と Pull Request を歓迎します。このプロジェクトは [しお�
 依存パッケージはありません。Python 3.9 以降があれば動きます。
 
 ```bash
-python3 server.py --no-open
+python3 scripts/server.py --no-open
 ```
 
 ブラウザで http://127.0.0.1:8765/ を開いて確認してください。`web/index.html` を直接開くと、CSS やデータが読めないことがあります。About は http://127.0.0.1:8765/about.html です。
@@ -35,7 +35,7 @@ python3 server.py --no-open
 
 - **非公式**であることは、注意書き・About・README から外さない
 - 公式ラボガイドより新しい・正確だと受け取られる書き方はしない
-- 研究室の本文は追加しない。公開シラバス等に載っているメールは `emails.csv` に追加してよい。学内限定の連絡先や未公開の個人情報は追加しない。写真は公式 `labs.json` の `image_path`（`https://www.uec.ac.jp/arc/images/`）だけを使い、画像ファイルはリポジトリに置かない
+- 研究室の本文は追加しない。公開シラバス等に載っているメールは `data/emails.csv` に追加してよい。学内限定の連絡先や未公開の個人情報は追加しない。写真は公式 `labs.json` の `image_path`（`https://www.uec.ac.jp/arc/images/`）だけを使い、画像ファイルはリポジトリに置かない
 - 大学サイトから取るときは間隔を空け、User-Agent を付け、手元の `.cache/` を使う（`scripts/fetch_official.py`）
 - 秘密情報（`.env` や個人のメモ）はコミットしない
 - 気になる研究室とメモはブラウザの `localStorage` にだけ保存する（サーバへ送らない）
@@ -47,7 +47,7 @@ python3 server.py --no-open
 
 ```bash
 python3 scripts/fetch_official.py
-python3 server.py --build
+python3 scripts/server.py --build
 ```
 
-`catalog.csv` の件数は公式の `labs.json` と揃えてください。`web/labs-data.js` は生成ファイルです。データ側を直したら必ず再生成してください。
+`data/catalog.csv` の件数は公式の `labs.json` と揃えてください。`web/js/labs-data.js` は生成ファイルです。データ側を直したら必ず再生成してください。
