@@ -29,7 +29,8 @@
       "videouec": [
         "https://www.youtube.com/shorts/A5YpiZBfvH4"
       ],
-      "image_path": "https://www.uec.ac.jp/arc/images/hironori_egi.jpg"
+      "image_path": "https://www.uec.ac.jp/arc/images/hironori_egi.jpg",
+      "birthplace": []
     },
     {
       "order": 2,
@@ -59,7 +60,8 @@
       ],
       "yumenabi": [],
       "videouec": [],
-      "image_path": "https://www.uec.ac.jp/arc/images/kazunori_ohkawara.jpg"
+      "image_path": "https://www.uec.ac.jp/arc/images/kazunori_ohkawara.jpg",
+      "birthplace": []
     },
     {
       "order": 3,
@@ -91,7 +93,8 @@
       "visiting_url": [],
       "yumenabi": [],
       "videouec": [],
-      "image_path": "https://www.uec.ac.jp/arc/images/osuga_akihiko.yuichi_sei.jpg"
+      "image_path": "https://www.uec.ac.jp/arc/images/osuga_akihiko.yuichi_sei.jpg",
+      "birthplace": []
     },
     {
       "order": 4,
@@ -126,7 +129,8 @@
       "visiting_url": [],
       "yumenabi": [],
       "videouec": [],
-      "image_path": "https://www.uec.ac.jp/arc/images/takeshi_oda.jpg"
+      "image_path": "https://www.uec.ac.jp/arc/images/takeshi_oda.jpg",
+      "birthplace": []
     },
     {
       "order": 5,
@@ -160,7 +164,10 @@
         "https://www.youtube.com/watch?v=6ONLu_h60_g",
         "https://www.youtube.com/shorts/zK8hHr2lqpU"
       ],
-      "image_path": "https://www.uec.ac.jp/arc/images/akihiro_kashihara.jpg"
+      "image_path": "https://www.uec.ac.jp/arc/images/akihiro_kashihara.jpg",
+      "birthplace": [
+        "54.近畿地方"
+      ]
     },
     {
       "order": 6,
@@ -197,7 +204,11 @@
         "https://www.youtube.com/watch?v=gSjk116Iweg",
         "https://www.youtube.com/shorts/wzrb6pxzafc"
       ],
-      "image_path": "https://www.uec.ac.jp/arc/images/hiroyuki_kajimoto.jpg"
+      "image_path": "https://www.uec.ac.jp/arc/images/hiroyuki_kajimoto.jpg",
+      "birthplace": [
+        "14.神奈川県",
+        "52.関東地方"
+      ]
     },
     {
       "order": 7,
@@ -227,7 +238,8 @@
       "visiting_url": [],
       "yumenabi": [],
       "videouec": [],
-      "image_path": "https://www.uec.ac.jp/arc/images/kimura_kohei.png"
+      "image_path": "https://www.uec.ac.jp/arc/images/kimura_kohei.png",
+      "birthplace": []
     },
     {
       "order": 8,
@@ -257,7 +269,8 @@
       "visiting_url": [],
       "yumenabi": [],
       "videouec": [],
-      "image_path": "https://www.uec.ac.jp/arc/images/shunsuke_kudoh.jpg"
+      "image_path": "https://www.uec.ac.jp/arc/images/shunsuke_kudoh.jpg",
+      "birthplace": []
     },
     {
       "order": 9,
@@ -291,7 +304,11 @@
         "https://ipsj-one.org/2023/videos/ipsjone2023_each_talk_light/speaker14_koizumi_light.mp4",
         "https://www.youtube.com/channel/UCWZmSka6pSaQKZR87EACqPw"
       ],
-      "image_path": "https://www.uec.ac.jp/arc/images/naoya_koizumi.jpg"
+      "image_path": "https://www.uec.ac.jp/arc/images/naoya_koizumi.jpg",
+      "birthplace": [
+        "09.栃木県",
+        "52.関東地方"
+      ]
     },
     {
       "order": 10,
@@ -321,7 +338,11 @@
       "videouec": [
         "https://www.youtube.com/watch?v=GEeubZ0pMp4"
       ],
-      "image_path": "https://www.uec.ac.jp/arc/images/sachiko_kodama.jpg"
+      "image_path": "https://www.uec.ac.jp/arc/images/sachiko_kodama.jpg",
+      "birthplace": [
+        "22.静岡県",
+        "53.中部地方"
+      ]
     },
     {
       "order": 11,
@@ -356,7 +377,8 @@
       "videouec": [
         "https://www.youtube.com/channel/UCq5f7id9SbIL__LgL57HbdQ"
       ],
-      "image_path": "https://www.uec.ac.jp/arc/images/maki_sakamoto.png"
+      "image_path": "https://www.uec.ac.jp/arc/images/maki_sakamoto.png",
+      "birthplace": []
     },
     {
       "order": 12,
@@ -385,7 +407,8 @@
       "visiting_url": [],
       "yumenabi": [],
       "videouec": [],
-      "image_path": "https://www.uec.ac.jp/arc/images/haruka_matsukura.png"
+      "image_path": "https://www.uec.ac.jp/arc/images/haruka_matsukura.png",
+      "birthplace": []
     },
     {
       "order": 13,
@@ -414,7 +437,8 @@
       "visiting_url": [],
       "yumenabi": [],
       "videouec": [],
-      "image_path": "https://www.uec.ac.jp/arc/images/sato_koya.jpg"
+      "image_path": "https://www.uec.ac.jp/arc/images/sato_koya.jpg",
+      "birthplace": []
     },
     {
       "order": 14,
@@ -442,7 +466,8 @@
       "visiting_url": [],
       "yumenabi": [],
       "videouec": [],
-      "image_path": "https://www.uec.ac.jp/arc/images/hiroyuki_sato.png"
+      "image_path": "https://www.uec.ac.jp/arc/images/hiroyuki_sato.png",
+      "birthplace": []
     },
     {
       "order": 15,
@@ -479,7 +504,11 @@
         "https://www.youtube.com/watch?v=5GOAP60PDiM",
         "https://www.youtube.com/watch?v=_AWRwMB2pJA"
       ],
-      "image_path": "https://www.uec.ac.jp/arc/images/hayaru_shouno.png"
+      "image_path": "https://www.uec.ac.jp/arc/images/hayaru_shouno.png",
+      "birthplace": [
+        "04.宮城県",
+        "51.北海道・東北地方"
+      ]
     },
     {
       "order": 16,
@@ -508,7 +537,8 @@
       "visiting_url": [],
       "yumenabi": [],
       "videouec": [],
-      "image_path": "https://www.uec.ac.jp/arc/images/guanghao_sun.jpg"
+      "image_path": "https://www.uec.ac.jp/arc/images/guanghao_sun.jpg",
+      "birthplace": []
     },
     {
       "order": 17,
@@ -538,7 +568,11 @@
       "visiting_url": [],
       "yumenabi": [],
       "videouec": [],
-      "image_path": "https://www.uec.ac.jp/arc/images/takagi_kazuyuki.jpg"
+      "image_path": "https://www.uec.ac.jp/arc/images/takagi_kazuyuki.jpg",
+      "birthplace": [
+        "13.東京都",
+        "08.茨城県"
+      ]
     },
     {
       "order": 18,
@@ -565,7 +599,8 @@
       "visiting_url": [],
       "yumenabi": [],
       "videouec": [],
-      "image_path": "https://www.uec.ac.jp/arc/images/hiroki_takahashi.jpg"
+      "image_path": "https://www.uec.ac.jp/arc/images/hiroki_takahashi.jpg",
+      "birthplace": []
     },
     {
       "order": 19,
@@ -597,7 +632,11 @@
       "visiting_url": [],
       "yumenabi": [],
       "videouec": [],
-      "image_path": "https://www.uec.ac.jp/arc/images/yasuyuki_tahara.jpg"
+      "image_path": "https://www.uec.ac.jp/arc/images/yasuyuki_tahara.jpg",
+      "birthplace": [
+        "54.近畿地方",
+        "28.兵庫県"
+      ]
     },
     {
       "order": 20,
@@ -626,7 +665,8 @@
       "visiting_url": [],
       "yumenabi": [],
       "videouec": [],
-      "image_path": "https://www.uec.ac.jp/arc/images/tetsuro_nishino.mitsuo_wakatsuki.jpg"
+      "image_path": "https://www.uec.ac.jp/arc/images/tetsuro_nishino.mitsuo_wakatsuki.jpg",
+      "birthplace": []
     },
     {
       "order": 21,
@@ -663,7 +703,10 @@
       "videouec": [
         "https://www.youtube.com/watch?v=A0qz6lf0_10"
       ],
-      "image_path": "https://www.uec.ac.jp/arc/images/naoki_hashimoto.png"
+      "image_path": "https://www.uec.ac.jp/arc/images/naoki_hashimoto.png",
+      "birthplace": [
+        "53.中部地方"
+      ]
     },
     {
       "order": 22,
@@ -693,7 +736,10 @@
       "visiting_url": [],
       "yumenabi": [],
       "videouec": [],
-      "image_path": "https://www.uec.ac.jp/arc/images/tomonori_hashiyama.jpg"
+      "image_path": "https://www.uec.ac.jp/arc/images/tomonori_hashiyama.jpg",
+      "birthplace": [
+        "51.北海道・東北地方"
+      ]
     },
     {
       "order": 23,
@@ -735,7 +781,10 @@
         "https://www.youtube.com/watch?v=BtPH6Og5tSg",
         "https://www.youtube.com/shorts/_8I4HPc0X8s"
       ],
-      "image_path": "https://www.uec.ac.jp/arc/images/yoichi_haneda.jpg"
+      "image_path": "https://www.uec.ac.jp/arc/images/yoichi_haneda.jpg",
+      "birthplace": [
+        "51.北海道・東北地方"
+      ]
     },
     {
       "order": 24,
@@ -772,7 +821,8 @@
       "visiting_url": [],
       "yumenabi": [],
       "videouec": [],
-      "image_path": "https://www.uec.ac.jp/arc/images/masaki_hisano.jpg"
+      "image_path": "https://www.uec.ac.jp/arc/images/masaki_hisano.jpg",
+      "birthplace": []
     },
     {
       "order": 25,
@@ -807,7 +857,8 @@
       "videouec": [
         "https://www.youtube.com/watch?v=9P9z5m4jMNk"
       ],
-      "image_path": "https://www.uec.ac.jp/arc/images/kouichi_hirota.takuya_nojima.jpg"
+      "image_path": "https://www.uec.ac.jp/arc/images/kouichi_hirota.takuya_nojima.jpg",
+      "birthplace": []
     },
     {
       "order": 26,
@@ -856,7 +907,10 @@
       "videouec": [
         "https://www.youtube.com/shorts/kFRez7XD9kU"
       ],
-      "image_path": "https://www.uec.ac.jp/arc/images/yoichi_miyawaki.jpg"
+      "image_path": "https://www.uec.ac.jp/arc/images/yoichi_miyawaki.jpg",
+      "birthplace": [
+        "53.中部地方"
+      ]
     },
     {
       "order": 27,
@@ -897,7 +951,10 @@
       "videouec": [
         "https://www.youtube.com/watch?v=IXPlgjGz2Mg"
       ],
-      "image_path": "https://www.uec.ac.jp/arc/images/yanai_keiji.png"
+      "image_path": "https://www.uec.ac.jp/arc/images/yanai_keiji.png",
+      "birthplace": [
+        "58.日本国外・その他"
+      ]
     },
     {
       "order": 28,
@@ -922,7 +979,8 @@
       "visiting_url": [],
       "yumenabi": [],
       "videouec": [],
-      "image_path": "https://www.uec.ac.jp/arc/images/tomoyuki_amano.jpg"
+      "image_path": "https://www.uec.ac.jp/arc/images/tomoyuki_amano.jpg",
+      "birthplace": []
     },
     {
       "order": 29,
@@ -951,7 +1009,8 @@
       "visiting_url": [],
       "yumenabi": [],
       "videouec": [],
-      "image_path": "https://www.uec.ac.jp/arc/images/naoaki_itakura.jpg"
+      "image_path": "https://www.uec.ac.jp/arc/images/naoaki_itakura.jpg",
+      "birthplace": []
     },
     {
       "order": 30,
@@ -982,7 +1041,8 @@
       "visiting_url": [],
       "yumenabi": [],
       "videouec": [],
-      "image_path": "https://www.uec.ac.jp/arc/images/michimasa_inaba.jpg"
+      "image_path": "https://www.uec.ac.jp/arc/images/michimasa_inaba.jpg",
+      "birthplace": []
     },
     {
       "order": 31,
@@ -1014,7 +1074,8 @@
       ],
       "yumenabi": [],
       "videouec": [],
-      "image_path": "https://www.uec.ac.jp/arc/images/atsushi_iwasaki.jpg"
+      "image_path": "https://www.uec.ac.jp/arc/images/atsushi_iwasaki.jpg",
+      "birthplace": []
     },
     {
       "order": 32,
@@ -1045,7 +1106,8 @@
         "https://www.youtube.com/watch?v=AAAYJxXC4Qk",
         "https://www.youtube.com/shorts/HHmRAitPjp8"
       ],
-      "image_path": "https://www.uec.ac.jp/arc/images/akira_utsumi.jpg"
+      "image_path": "https://www.uec.ac.jp/arc/images/akira_utsumi.jpg",
+      "birthplace": []
     },
     {
       "order": 33,
@@ -1073,7 +1135,8 @@
       "visiting_url": [],
       "yumenabi": [],
       "videouec": [],
-      "image_path": "https://www.uec.ac.jp/arc/images/kazushi_okamoto.jpg"
+      "image_path": "https://www.uec.ac.jp/arc/images/kazushi_okamoto.jpg",
+      "birthplace": []
     },
     {
       "order": 34,
@@ -1103,7 +1166,10 @@
       "visiting_url": [],
       "yumenabi": [],
       "videouec": [],
-      "image_path": "https://www.uec.ac.jp/arc/images/yuki_kinoshita.jpg"
+      "image_path": "https://www.uec.ac.jp/arc/images/yuki_kinoshita.jpg",
+      "birthplace": [
+        "09.栃木県"
+      ]
     },
     {
       "order": 35,
@@ -1140,7 +1206,8 @@
       ],
       "yumenabi": [],
       "videouec": [],
-      "image_path": "https://www.uec.ac.jp/arc/images/lu_jin.jpg"
+      "image_path": "https://www.uec.ac.jp/arc/images/lu_jin.jpg",
+      "birthplace": []
     },
     {
       "order": 36,
@@ -1177,7 +1244,10 @@
       "visiting_url": [],
       "yumenabi": [],
       "videouec": [],
-      "image_path": "https://www.uec.ac.jp/arc/images/masanori_takagi.jpg"
+      "image_path": "https://www.uec.ac.jp/arc/images/masanori_takagi.jpg",
+      "birthplace": [
+        "53.中部地方"
+      ]
     },
     {
       "order": 37,
@@ -1207,7 +1277,11 @@
       "visiting_url": [],
       "yumenabi": [],
       "videouec": [],
-      "image_path": "https://www.uec.ac.jp/arc/images/nagahama_akihito.jpg"
+      "image_path": "https://www.uec.ac.jp/arc/images/nagahama_akihito.jpg",
+      "birthplace": [
+        "27.大阪府",
+        "54.近畿地方"
+      ]
     },
     {
       "order": 38,
@@ -1236,7 +1310,8 @@
       "visiting_url": [],
       "yumenabi": [],
       "videouec": [],
-      "image_path": "https://www.uec.ac.jp/arc/images/tota_mizuno.jpg"
+      "image_path": "https://www.uec.ac.jp/arc/images/tota_mizuno.jpg",
+      "birthplace": []
     },
     {
       "order": 39,
@@ -1270,7 +1345,10 @@
       "videouec": [
         "https://www.youtube.com/watch?v=PqeeVjOq3s0"
       ],
-      "image_path": "https://www.uec.ac.jp/arc/images/kazuyuki_mito.jpg"
+      "image_path": "https://www.uec.ac.jp/arc/images/kazuyuki_mito.jpg",
+      "birthplace": [
+        "51.北海道・東北地方"
+      ]
     },
     {
       "order": 40,
@@ -1298,7 +1376,11 @@
       "visiting_url": [],
       "yumenabi": [],
       "videouec": [],
-      "image_path": "https://www.uec.ac.jp/arc/images/miyamoto_tomoki.jpg"
+      "image_path": "https://www.uec.ac.jp/arc/images/miyamoto_tomoki.jpg",
+      "birthplace": [
+        "14.神奈川県",
+        "52.関東地方"
+      ]
     },
     {
       "order": 41,
@@ -1334,7 +1416,8 @@
       "visiting_url": [],
       "yumenabi": [],
       "videouec": [],
-      "image_path": "https://www.uec.ac.jp/arc/images/tetsuo_yamada.jpg"
+      "image_path": "https://www.uec.ac.jp/arc/images/tetsuo_yamada.jpg",
+      "birthplace": []
     },
     {
       "order": 42,
@@ -1361,7 +1444,8 @@
       "visiting_url": [],
       "yumenabi": [],
       "videouec": [],
-      "image_path": "https://www.uec.ac.jp/arc/images/yuichi_yamada.jpg"
+      "image_path": "https://www.uec.ac.jp/arc/images/yuichi_yamada.jpg",
+      "birthplace": []
     },
     {
       "order": 43,
@@ -1413,7 +1497,11 @@
       "videouec": [
         "https://www.youtube.com/@%E9%9B%BB%E6%B0%97%E9%80%9A%E4%BF%A1%E5%A4%A7%E5%AD%A6_%E5%B1%B1%E6%9C%AC%E4%BD%B3"
       ],
-      "image_path": "https://www.uec.ac.jp/arc/images/yamamoto_kayoko.jpg"
+      "image_path": "https://www.uec.ac.jp/arc/images/yamamoto_kayoko.jpg",
+      "birthplace": [
+        "37.香川県",
+        "56.四国地方"
+      ]
     },
     {
       "order": 44,
@@ -1448,7 +1536,10 @@
       "videouec": [
         "https://youtu.be/6XQw4o0L8qY?si=Ad-NOUGeN3K7rbKh"
       ],
-      "image_path": "https://www.uec.ac.jp/arc/images/shinji_yokogawa.png"
+      "image_path": "https://www.uec.ac.jp/arc/images/shinji_yokogawa.png",
+      "birthplace": [
+        "56.四国地方"
+      ]
     },
     {
       "order": 45,
@@ -1480,7 +1571,8 @@
       "visiting_url": [],
       "yumenabi": [],
       "videouec": [],
-      "image_path": "https://www.uec.ac.jp/arc/images/mio_tsubakimoto.png"
+      "image_path": "https://www.uec.ac.jp/arc/images/mio_tsubakimoto.png",
+      "birthplace": []
     },
     {
       "order": 46,
@@ -1509,7 +1601,11 @@
       "visiting_url": [],
       "yumenabi": [],
       "videouec": [],
-      "image_path": "https://www.uec.ac.jp/arc/images/haruhisa_ishida.jpg"
+      "image_path": "https://www.uec.ac.jp/arc/images/haruhisa_ishida.jpg",
+      "birthplace": [
+        "27.大阪府",
+        "54.近畿地方"
+      ]
     },
     {
       "order": 47,
@@ -1537,7 +1633,8 @@
       "visiting_url": [],
       "yumenabi": [],
       "videouec": [],
-      "image_path": "https://www.uec.ac.jp/arc/images/maomi_ueno.jpg"
+      "image_path": "https://www.uec.ac.jp/arc/images/maomi_ueno.jpg",
+      "birthplace": []
     },
     {
       "order": 48,
@@ -1565,7 +1662,8 @@
       "visiting_url": [],
       "yumenabi": [],
       "videouec": [],
-      "image_path": "https://www.uec.ac.jp/arc/images/masaki_uto.png"
+      "image_path": "https://www.uec.ac.jp/arc/images/masaki_uto.png",
+      "birthplace": []
     },
     {
       "order": 49,
@@ -1605,7 +1703,11 @@
       ],
       "yumenabi": [],
       "videouec": [],
-      "image_path": "https://www.uec.ac.jp/arc/images/yoshio_okamoto.jpg"
+      "image_path": "https://www.uec.ac.jp/arc/images/yoshio_okamoto.jpg",
+      "birthplace": [
+        "53.中部地方",
+        "23.愛知県"
+      ]
     },
     {
       "order": 50,
@@ -1634,7 +1736,8 @@
       "visiting_url": [],
       "yumenabi": [],
       "videouec": [],
-      "image_path": "https://www.uec.ac.jp/arc/images/hidenori_ogata.jpg"
+      "image_path": "https://www.uec.ac.jp/arc/images/hidenori_ogata.jpg",
+      "birthplace": []
     },
     {
       "order": 51,
@@ -1660,7 +1763,8 @@
       "visiting_url": [],
       "yumenabi": [],
       "videouec": [],
-      "image_path": "https://www.uec.ac.jp/arc/images/kudo_shuhei.jpg"
+      "image_path": "https://www.uec.ac.jp/arc/images/kudo_shuhei.jpg",
+      "birthplace": []
     },
     {
       "order": 52,
@@ -1688,7 +1792,8 @@
       "visiting_url": [],
       "yumenabi": [],
       "videouec": [],
-      "image_path": "https://www.uec.ac.jp/arc/images/tsuneyasu_komiya.jpg"
+      "image_path": "https://www.uec.ac.jp/arc/images/tsuneyasu_komiya.jpg",
+      "birthplace": []
     },
     {
       "order": 53,
@@ -1716,7 +1821,8 @@
       "visiting_url": [],
       "yumenabi": [],
       "videouec": [],
-      "image_path": "https://www.uec.ac.jp/arc/images/daisuke_koyama.jpg"
+      "image_path": "https://www.uec.ac.jp/arc/images/daisuke_koyama.jpg",
+      "birthplace": []
     },
     {
       "order": 54,
@@ -1741,7 +1847,8 @@
       "visiting_url": [],
       "yumenabi": [],
       "videouec": [],
-      "image_path": "https://www.uec.ac.jp/arc/images/saito_hirokazu.jpg"
+      "image_path": "https://www.uec.ac.jp/arc/images/saito_hirokazu.jpg",
+      "birthplace": []
     },
     {
       "order": 55,
@@ -1771,7 +1878,13 @@
         "https://douga.yumenavi.info/Lecture/PublishDetail/2021000100?back="
       ],
       "videouec": [],
-      "image_path": "https://www.uec.ac.jp/arc/images/takahashi_satoshi.jpg"
+      "image_path": "https://www.uec.ac.jp/arc/images/takahashi_satoshi.jpg",
+      "birthplace": [
+        "03.岩手県",
+        "51.北海道・東北地方",
+        "08.茨城県",
+        "52.関東地方"
+      ]
     },
     {
       "order": 56,
@@ -1800,7 +1913,8 @@
       "visiting_url": [],
       "yumenabi": [],
       "videouec": [],
-      "image_path": "https://www.uec.ac.jp/arc/images/yasuhiko_takenaga.jpg"
+      "image_path": "https://www.uec.ac.jp/arc/images/yasuhiko_takenaga.jpg",
+      "birthplace": []
     },
     {
       "order": 57,
@@ -1839,7 +1953,8 @@
       "visiting_url": [],
       "yumenabi": [],
       "videouec": [],
-      "image_path": "https://www.uec.ac.jp/arc/images/tomoya_tatsuno.png"
+      "image_path": "https://www.uec.ac.jp/arc/images/tomoya_tatsuno.png",
+      "birthplace": []
     },
     {
       "order": 58,
@@ -1868,7 +1983,8 @@
       "visiting_url": [],
       "yumenabi": [],
       "videouec": [],
-      "image_path": "https://www.uec.ac.jp/arc/images/yu_nishiyama.jpg"
+      "image_path": "https://www.uec.ac.jp/arc/images/yu_nishiyama.jpg",
+      "birthplace": []
     },
     {
       "order": 59,
@@ -1896,7 +2012,8 @@
       "visiting_url": [],
       "yumenabi": [],
       "videouec": [],
-      "image_path": "https://www.uec.ac.jp/arc/images/hoki_kunihito.jpg"
+      "image_path": "https://www.uec.ac.jp/arc/images/hoki_kunihito.jpg",
+      "birthplace": []
     },
     {
       "order": 60,
@@ -1925,7 +2042,8 @@
       "visiting_url": [],
       "yumenabi": [],
       "videouec": [],
-      "image_path": "https://www.uec.ac.jp/arc/images/hiroki_honda.shinobu_miwa.hayato_yamaki.jpg"
+      "image_path": "https://www.uec.ac.jp/arc/images/hiroki_honda.shinobu_miwa.hayato_yamaki.jpg",
+      "birthplace": []
     },
     {
       "order": 61,
@@ -1950,7 +2068,8 @@
       "visiting_url": [],
       "yumenabi": [],
       "videouec": [],
-      "image_path": "https://www.uec.ac.jp/arc/images/marugame_taiji.jpg"
+      "image_path": "https://www.uec.ac.jp/arc/images/marugame_taiji.jpg",
+      "birthplace": []
     },
     {
       "order": 62,
@@ -1984,7 +2103,8 @@
         "https://douga.yumenavi.info/Lecture/PublishDetail/2023002426"
       ],
       "videouec": [],
-      "image_path": "https://www.uec.ac.jp/arc/images/yamazaki_tadashi.jpg"
+      "image_path": "https://www.uec.ac.jp/arc/images/yamazaki_tadashi.jpg",
+      "birthplace": []
     },
     {
       "order": 63,
@@ -2018,7 +2138,8 @@
       "visiting_url": [],
       "yumenabi": [],
       "videouec": [],
-      "image_path": "https://www.uec.ac.jp/arc/images/yusaku_yamamoto.jpg"
+      "image_path": "https://www.uec.ac.jp/arc/images/yusaku_yamamoto.jpg",
+      "birthplace": []
     },
     {
       "order": 64,
@@ -2043,7 +2164,8 @@
       "visiting_url": [],
       "yumenabi": [],
       "videouec": [],
-      "image_path": "https://www.uec.ac.jp/arc/images/hideo_akaike.jpg"
+      "image_path": "https://www.uec.ac.jp/arc/images/hideo_akaike.jpg",
+      "birthplace": []
     },
     {
       "order": 65,
@@ -2072,7 +2194,8 @@
       "visiting_url": [],
       "yumenabi": [],
       "videouec": [],
-      "image_path": "https://www.uec.ac.jp/arc/images/takeshi_ito.jpeg"
+      "image_path": "https://www.uec.ac.jp/arc/images/takeshi_ito.jpeg",
+      "birthplace": []
     },
     {
       "order": 66,
@@ -2104,7 +2227,14 @@
       "videouec": [
         "https://www.youtube.com/watch?v=7VR5WTmlo0Y"
       ],
-      "image_path": "https://www.uec.ac.jp/arc/images/hiro_ito.takuya_mieno.png"
+      "image_path": "https://www.uec.ac.jp/arc/images/hiro_ito.takuya_mieno.png",
+      "birthplace": [
+        "44.大分県",
+        "40.福岡県",
+        "01.北海道",
+        "51.北海道・東北地方",
+        "57.九州・沖縄地方"
+      ]
     },
     {
       "order": 67,
@@ -2132,7 +2262,8 @@
       "visiting_url": [],
       "yumenabi": [],
       "videouec": [],
-      "image_path": "https://www.uec.ac.jp/arc/images/ohmori_tadashi.jpg"
+      "image_path": "https://www.uec.ac.jp/arc/images/ohmori_tadashi.jpg",
+      "birthplace": []
     },
     {
       "order": 68,
@@ -2159,7 +2290,8 @@
       "visiting_url": [],
       "yumenabi": [],
       "videouec": [],
-      "image_path": "https://www.uec.ac.jp/arc/images/ken_kaneiwa.jpg"
+      "image_path": "https://www.uec.ac.jp/arc/images/ken_kaneiwa.jpg",
+      "birthplace": []
     },
     {
       "order": 69,
@@ -2186,7 +2318,8 @@
       "visiting_url": [],
       "yumenabi": [],
       "videouec": [],
-      "image_path": "https://www.uec.ac.jp/arc/images/hisashi_koga.jpg"
+      "image_path": "https://www.uec.ac.jp/arc/images/hisashi_koga.jpg",
+      "birthplace": []
     },
     {
       "order": 70,
@@ -2224,7 +2357,8 @@
       "visiting_url": [],
       "yumenabi": [],
       "videouec": [],
-      "image_path": "https://www.uec.ac.jp/arc/images/satoshi_kobayashi.jpg"
+      "image_path": "https://www.uec.ac.jp/arc/images/satoshi_kobayashi.jpg",
+      "birthplace": []
     },
     {
       "order": 71,
@@ -2255,7 +2389,8 @@
       "visiting_url": [],
       "yumenabi": [],
       "videouec": [],
-      "image_path": "https://www.uec.ac.jp/arc/images/akashi_satoh.jpg"
+      "image_path": "https://www.uec.ac.jp/arc/images/akashi_satoh.jpg",
+      "birthplace": []
     },
     {
       "order": 72,
@@ -2286,7 +2421,8 @@
       "visiting_url": [],
       "yumenabi": [],
       "videouec": [],
-      "image_path": "https://www.uec.ac.jp/arc/images/shigeyuki_sato.png"
+      "image_path": "https://www.uec.ac.jp/arc/images/shigeyuki_sato.png",
+      "birthplace": []
     },
     {
       "order": 73,
@@ -2314,7 +2450,8 @@
       "visiting_url": [],
       "yumenabi": [],
       "videouec": [],
-      "image_path": "https://www.uec.ac.jp/arc/images/takahiko_shintani.jpg"
+      "image_path": "https://www.uec.ac.jp/arc/images/takahiko_shintani.jpg",
+      "birthplace": []
     },
     {
       "order": 74,
@@ -2351,7 +2488,8 @@
       "visiting_url": [],
       "yumenabi": [],
       "videouec": [],
-      "image_path": "https://www.uec.ac.jp/arc/images/shinnosuke_seki.jpg"
+      "image_path": "https://www.uec.ac.jp/arc/images/shinnosuke_seki.jpg",
+      "birthplace": []
     },
     {
       "order": 75,
@@ -2384,7 +2522,8 @@
       "visiting_url": [],
       "yumenabi": [],
       "videouec": [],
-      "image_path": "https://www.uec.ac.jp/arc/images/suhua_tang.jpg"
+      "image_path": "https://www.uec.ac.jp/arc/images/suhua_tang.jpg",
+      "birthplace": []
     },
     {
       "order": 76,
@@ -2414,7 +2553,8 @@
       "visiting_url": [],
       "yumenabi": [],
       "videouec": [],
-      "image_path": "https://www.uec.ac.jp/arc/images/wu_celimuge.jpg"
+      "image_path": "https://www.uec.ac.jp/arc/images/wu_celimuge.jpg",
+      "birthplace": []
     },
     {
       "order": 77,
@@ -2447,7 +2587,8 @@
       "visiting_url": [],
       "yumenabi": [],
       "videouec": [],
-      "image_path": "https://www.uec.ac.jp/arc/images/takahisa_toda.png"
+      "image_path": "https://www.uec.ac.jp/arc/images/takahisa_toda.png",
+      "birthplace": []
     },
     {
       "order": 78,
@@ -2485,7 +2626,8 @@
       "visiting_url": [],
       "yumenabi": [],
       "videouec": [],
-      "image_path": "https://www.uec.ac.jp/arc/images/toru_nakashika.jpg"
+      "image_path": "https://www.uec.ac.jp/arc/images/toru_nakashika.jpg",
+      "birthplace": []
     },
     {
       "order": 79,
@@ -2511,7 +2653,8 @@
       "visiting_url": [],
       "yumenabi": [],
       "videouec": [],
-      "image_path": "https://www.uec.ac.jp/arc/images/yasuichi_nakayama.jpg"
+      "image_path": "https://www.uec.ac.jp/arc/images/yasuichi_nakayama.jpg",
+      "birthplace": []
     },
     {
       "order": 80,
@@ -2545,7 +2688,11 @@
       "videouec": [
         "https://www.youtube.com/watch?v=NnYfsesanRc"
       ],
-      "image_path": "https://www.uec.ac.jp/arc/images/tetsu_narumi.png"
+      "image_path": "https://www.uec.ac.jp/arc/images/tetsu_narumi.png",
+      "birthplace": [
+        "56.四国地方",
+        "38.愛媛県"
+      ]
     },
     {
       "order": 81,
@@ -2574,7 +2721,8 @@
       "visiting_url": [],
       "yumenabi": [],
       "videouec": [],
-      "image_path": "https://www.uec.ac.jp/arc/images/hideyuki_fujita.png"
+      "image_path": "https://www.uec.ac.jp/arc/images/hideyuki_fujita.png",
+      "birthplace": []
     },
     {
       "order": 82,
@@ -2606,7 +2754,8 @@
         "https://douga.yumenavi.info/Lecture/PublishDetail/2018223510?back="
       ],
       "videouec": [],
-      "image_path": "https://www.uec.ac.jp/arc/images/yasuhiro_minami.jpg"
+      "image_path": "https://www.uec.ac.jp/arc/images/yasuhiro_minami.jpg",
+      "birthplace": []
     },
     {
       "order": 83,
@@ -2634,7 +2783,11 @@
       "visiting_url": [],
       "yumenabi": [],
       "videouec": [],
-      "image_path": "https://www.uec.ac.jp/arc/images/hiroyoshi_watanabe.jpg"
+      "image_path": "https://www.uec.ac.jp/arc/images/hiroyoshi_watanabe.jpg",
+      "birthplace": [
+        "09.栃木県",
+        "52.関東地方"
+      ]
     },
     {
       "order": 84,
@@ -2661,7 +2814,11 @@
       "visiting_url": [],
       "yumenabi": [],
       "videouec": [],
-      "image_path": "https://www.uec.ac.jp/arc/images/yazaki_syunji.jpg"
+      "image_path": "https://www.uec.ac.jp/arc/images/yazaki_syunji.jpg",
+      "birthplace": [
+        "11.埼玉県",
+        "52.関東地方"
+      ]
     },
     {
       "order": 85,
@@ -2701,7 +2858,11 @@
       "videouec": [
         "https://www.youtube.com/shorts/hWbkILHpCOY"
       ],
-      "image_path": "https://www.uec.ac.jp/arc/images/tsutomu_yoshinaga.jpg"
+      "image_path": "https://www.uec.ac.jp/arc/images/tsutomu_yoshinaga.jpg",
+      "birthplace": [
+        "10.群馬県",
+        "52.関東地方"
+      ]
     },
     {
       "order": 86,
@@ -2730,7 +2891,10 @@
       "visiting_url": [],
       "yumenabi": [],
       "videouec": [],
-      "image_path": "https://www.uec.ac.jp/arc/images/aohan_li.jpeg"
+      "image_path": "https://www.uec.ac.jp/arc/images/aohan_li.jpeg",
+      "birthplace": [
+        "58.日本国外・その他"
+      ]
     },
     {
       "order": 87,
@@ -2758,7 +2922,8 @@
       "visiting_url": [],
       "yumenabi": [],
       "videouec": [],
-      "image_path": "https://www.uec.ac.jp/arc/images/kazushi_okamoto.jpg"
+      "image_path": "https://www.uec.ac.jp/arc/images/kazushi_okamoto.jpg",
+      "birthplace": []
     },
     {
       "order": 88,
@@ -2793,7 +2958,11 @@
         "https://www.youtube.com/watch?v=5GOAP60PDiM",
         "https://www.youtube.com/watch?v=_AWRwMB2pJA"
       ],
-      "image_path": "https://www.uec.ac.jp/arc/images/hayaru_shouno.png"
+      "image_path": "https://www.uec.ac.jp/arc/images/hayaru_shouno.png",
+      "birthplace": [
+        "04.宮城県",
+        "51.北海道・東北地方"
+      ]
     },
     {
       "order": 89,
@@ -2821,7 +2990,11 @@
       "visiting_url": [],
       "yumenabi": [],
       "videouec": [],
-      "image_path": "https://www.uec.ac.jp/arc/images/satoshi_hara.jpg"
+      "image_path": "https://www.uec.ac.jp/arc/images/satoshi_hara.jpg",
+      "birthplace": [
+        "11.埼玉県",
+        "52.関東地方"
+      ]
     },
     {
       "order": 90,
@@ -2853,7 +3026,10 @@
       "visiting_url": [],
       "yumenabi": [],
       "videouec": [],
-      "image_path": "https://www.uec.ac.jp/arc/images/harada_kei.jpg"
+      "image_path": "https://www.uec.ac.jp/arc/images/harada_kei.jpg",
+      "birthplace": [
+        "56.四国地方"
+      ]
     },
     {
       "order": 91,
@@ -2882,7 +3058,8 @@
       "visiting_url": [],
       "yumenabi": [],
       "videouec": [],
-      "image_path": "https://www.uec.ac.jp/arc/images/shogo_matsuno.png"
+      "image_path": "https://www.uec.ac.jp/arc/images/shogo_matsuno.png",
+      "birthplace": []
     },
     {
       "order": 92,
@@ -2920,7 +3097,10 @@
       "videouec": [
         "https://www.youtube.com/watch?v=IXPlgjGz2Mg"
       ],
-      "image_path": "https://www.uec.ac.jp/arc/images/yanai_keiji.png"
+      "image_path": "https://www.uec.ac.jp/arc/images/yanai_keiji.png",
+      "birthplace": [
+        "58.日本国外・その他"
+      ]
     },
     {
       "order": 93,
@@ -2950,7 +3130,8 @@
       "visiting_url": [],
       "yumenabi": [],
       "videouec": [],
-      "image_path": "https://www.uec.ac.jp/arc/images/atushi_shibata.jpeg"
+      "image_path": "https://www.uec.ac.jp/arc/images/atushi_shibata.jpeg",
+      "birthplace": []
     },
     {
       "order": 94,
@@ -2988,7 +3169,8 @@
       "visiting_url": [],
       "yumenabi": [],
       "videouec": [],
-      "image_path": "https://www.uec.ac.jp/arc/images/Chie_Hieida.jpeg"
+      "image_path": "https://www.uec.ac.jp/arc/images/Chie_Hieida.jpeg",
+      "birthplace": []
     },
     {
       "order": 95,
@@ -3018,7 +3200,8 @@
       "visiting_url": [],
       "yumenabi": [],
       "videouec": [],
-      "image_path": "https://www.uec.ac.jp/arc/images/Ryuichi_Kanoh.png"
+      "image_path": "https://www.uec.ac.jp/arc/images/Ryuichi_Kanoh.png",
+      "birthplace": []
     },
     {
       "order": 96,
@@ -3044,7 +3227,8 @@
       "visiting_url": [],
       "yumenabi": [],
       "videouec": [],
-      "image_path": "https://www.uec.ac.jp/arc/images/yoshiyasu_ishigami.jpg"
+      "image_path": "https://www.uec.ac.jp/arc/images/yoshiyasu_ishigami.jpg",
+      "birthplace": []
     },
     {
       "order": 97,
@@ -3071,7 +3255,8 @@
       "visiting_url": [],
       "yumenabi": [],
       "videouec": [],
-      "image_path": "https://www.uec.ac.jp/arc/images/masatsugu_ichino.jpg"
+      "image_path": "https://www.uec.ac.jp/arc/images/masatsugu_ichino.jpg",
+      "birthplace": []
     },
     {
       "order": 98,
@@ -3100,7 +3285,10 @@
       "visiting_url": [],
       "yumenabi": [],
       "videouec": [],
-      "image_path": "https://www.uec.ac.jp/arc/images/mitsugu_iwamoto.watanabe_yohei.png"
+      "image_path": "https://www.uec.ac.jp/arc/images/mitsugu_iwamoto.watanabe_yohei.png",
+      "birthplace": [
+        "57.九州・沖縄地方"
+      ]
     },
     {
       "order": 99,
@@ -3133,7 +3321,8 @@
       "visiting_url": [],
       "yumenabi": [],
       "videouec": [],
-      "image_path": "https://www.uec.ac.jp/arc/images/naoya_enomoto.jpg"
+      "image_path": "https://www.uec.ac.jp/arc/images/naoya_enomoto.jpg",
+      "birthplace": []
     },
     {
       "order": 100,
@@ -3166,7 +3355,8 @@
       "visiting_url": [],
       "yumenabi": [],
       "videouec": [],
-      "image_path": "https://www.uec.ac.jp/arc/images/yuntao_wang.png"
+      "image_path": "https://www.uec.ac.jp/arc/images/yuntao_wang.png",
+      "birthplace": []
     },
     {
       "order": 101,
@@ -3192,7 +3382,8 @@
       "visiting_url": [],
       "yumenabi": [],
       "videouec": [],
-      "image_path": "https://www.uec.ac.jp/arc/images/satoshi_ohzahata.jpg"
+      "image_path": "https://www.uec.ac.jp/arc/images/satoshi_ohzahata.jpg",
+      "birthplace": []
     },
     {
       "order": 102,
@@ -3219,7 +3410,8 @@
       "visiting_url": [],
       "yumenabi": [],
       "videouec": [],
-      "image_path": "https://www.uec.ac.jp/arc/images/masahiro_ohno.jpg"
+      "image_path": "https://www.uec.ac.jp/arc/images/masahiro_ohno.jpg",
+      "birthplace": []
     },
     {
       "order": 103,
@@ -3257,7 +3449,10 @@
         "https://douga.yumenavi.info/Lecture/PublishDetail/2021000423?back="
       ],
       "videouec": [],
-      "image_path": "https://www.uec.ac.jp/arc/images/kazuo_sakiyama.li_yang.miyahara_daiki.jpg"
+      "image_path": "https://www.uec.ac.jp/arc/images/kazuo_sakiyama.li_yang.miyahara_daiki.jpg",
+      "birthplace": [
+        "51.北海道・東北地方"
+      ]
     },
     {
       "order": 104,
@@ -3286,7 +3481,8 @@
       "visiting_url": [],
       "yumenabi": [],
       "videouec": [],
-      "image_path": "https://www.uec.ac.jp/arc/images/takeshi_sugawara.jpg"
+      "image_path": "https://www.uec.ac.jp/arc/images/takeshi_sugawara.jpg",
+      "birthplace": []
     },
     {
       "order": 105,
@@ -3315,7 +3511,8 @@
       ],
       "yumenabi": [],
       "videouec": [],
-      "image_path": "https://www.uec.ac.jp/arc/images/tetsuji_takada.jpg"
+      "image_path": "https://www.uec.ac.jp/arc/images/tetsuji_takada.jpg",
+      "birthplace": []
     },
     {
       "order": 106,
@@ -3344,7 +3541,8 @@
       "visiting_url": [],
       "yumenabi": [],
       "videouec": [],
-      "image_path": "https://www.uec.ac.jp/arc/images/mitsuharu_matsumoto.jpg"
+      "image_path": "https://www.uec.ac.jp/arc/images/mitsuharu_matsumoto.jpg",
+      "birthplace": []
     },
     {
       "order": 107,
@@ -3373,7 +3571,8 @@
       "visiting_url": [],
       "yumenabi": [],
       "videouec": [],
-      "image_path": "https://www.uec.ac.jp/arc/images/kazuhiko_yamaguchi.jpg"
+      "image_path": "https://www.uec.ac.jp/arc/images/kazuhiko_yamaguchi.jpg",
+      "birthplace": []
     },
     {
       "order": 108,
@@ -3401,7 +3600,11 @@
       "visiting_url": [],
       "yumenabi": [],
       "videouec": [],
-      "image_path": "https://www.uec.ac.jp/arc/images/ryo_yamamoto.jpg"
+      "image_path": "https://www.uec.ac.jp/arc/images/ryo_yamamoto.jpg",
+      "birthplace": [
+        "11.埼玉県",
+        "52.関東地方"
+      ]
     },
     {
       "order": 109,
@@ -3430,7 +3633,8 @@
       "visiting_url": [],
       "yumenabi": [],
       "videouec": [],
-      "image_path": "https://www.uec.ac.jp/arc/images/ryo_ishikawa.jpg"
+      "image_path": "https://www.uec.ac.jp/arc/images/ryo_ishikawa.jpg",
+      "birthplace": []
     },
     {
       "order": 110,
@@ -3464,7 +3668,11 @@
       "visiting_url": [],
       "yumenabi": [],
       "videouec": [],
-      "image_path": "https://www.uec.ac.jp/arc/images/koji_ishibashi.jpeg"
+      "image_path": "https://www.uec.ac.jp/arc/images/koji_ishibashi.jpeg",
+      "birthplace": [
+        "19.山梨県",
+        "53.中部地方"
+      ]
     },
     {
       "order": 111,
@@ -3496,7 +3704,8 @@
       "videouec": [
         "https://www.youtube.com/shorts/ti_kJrf-8RU"
       ],
-      "image_path": "https://www.uec.ac.jp/arc/images/yasutada_ohama.bagus_santoso.jpg"
+      "image_path": "https://www.uec.ac.jp/arc/images/yasutada_ohama.bagus_santoso.jpg",
+      "birthplace": []
     },
     {
       "order": 112,
@@ -3527,7 +3736,8 @@
       "visiting_url": [],
       "yumenabi": [],
       "videouec": [],
-      "image_path": "https://www.uec.ac.jp/arc/images/tomohiro_ogawa.jpg"
+      "image_path": "https://www.uec.ac.jp/arc/images/tomohiro_ogawa.jpg",
+      "birthplace": []
     },
     {
       "order": 113,
@@ -3555,7 +3765,8 @@
       "visiting_url": [],
       "yumenabi": [],
       "videouec": [],
-      "image_path": "https://www.uec.ac.jp/arc/images/nattapong_kitsuwan.jpg"
+      "image_path": "https://www.uec.ac.jp/arc/images/nattapong_kitsuwan.jpg",
+      "birthplace": []
     },
     {
       "order": 114,
@@ -3584,7 +3795,8 @@
       "visiting_url": [],
       "yumenabi": [],
       "videouec": [],
-      "image_path": "https://www.uec.ac.jp/arc/images/masazumi_kurihara.jpg"
+      "image_path": "https://www.uec.ac.jp/arc/images/masazumi_kurihara.jpg",
+      "birthplace": []
     },
     {
       "order": 115,
@@ -3613,7 +3825,8 @@
       "visiting_url": [],
       "yumenabi": [],
       "videouec": [],
-      "image_path": "https://www.uec.ac.jp/arc/images/fang_shang.jpg"
+      "image_path": "https://www.uec.ac.jp/arc/images/fang_shang.jpg",
+      "birthplace": []
     },
     {
       "order": 116,
@@ -3645,7 +3858,11 @@
       ],
       "yumenabi": [],
       "videouec": [],
-      "image_path": "https://www.uec.ac.jp/arc/images/jun_suzuki.jpg"
+      "image_path": "https://www.uec.ac.jp/arc/images/jun_suzuki.jpg",
+      "birthplace": [
+        "11.埼玉県",
+        "52.関東地方"
+      ]
     },
     {
       "order": 117,
@@ -3672,7 +3889,8 @@
       "visiting_url": [],
       "yumenabi": [],
       "videouec": [],
-      "image_path": "https://www.uec.ac.jp/arc/images/hisa-aki_tanaka.jpg"
+      "image_path": "https://www.uec.ac.jp/arc/images/hisa-aki_tanaka.jpg",
+      "birthplace": []
     },
     {
       "order": 118,
@@ -3700,7 +3918,8 @@
       "visiting_url": [],
       "yumenabi": [],
       "videouec": [],
-      "image_path": "https://www.uec.ac.jp/arc/images/cong-kha_pham.jpg"
+      "image_path": "https://www.uec.ac.jp/arc/images/cong-kha_pham.jpg",
+      "birthplace": []
     },
     {
       "order": 119,
@@ -3728,7 +3947,8 @@
       "visiting_url": [],
       "yumenabi": [],
       "videouec": [],
-      "image_path": "https://www.uec.ac.jp/arc/images/takeo_fuji.jpg"
+      "image_path": "https://www.uec.ac.jp/arc/images/takeo_fuji.jpg",
+      "birthplace": []
     },
     {
       "order": 120,
@@ -3757,7 +3977,8 @@
       "visiting_url": [],
       "yumenabi": [],
       "videouec": [],
-      "image_path": "https://www.uec.ac.jp/arc/images/hoang_trong_thuc.jpg"
+      "image_path": "https://www.uec.ac.jp/arc/images/hoang_trong_thuc.jpg",
+      "birthplace": []
     },
     {
       "order": 121,
@@ -3787,7 +4008,8 @@
       "videouec": [
         "https://www.youtube.com/watch?v=3diy1DqrIRE"
       ],
-      "image_path": "https://www.uec.ac.jp/arc/images/keisuke_hosokawa.png"
+      "image_path": "https://www.uec.ac.jp/arc/images/keisuke_hosokawa.png",
+      "birthplace": []
     },
     {
       "order": 122,
@@ -3820,7 +4042,8 @@
       "videouec": [
         "https://www.youtube.com/watch?v=dlviaXbRsK4"
       ],
-      "image_path": "https://www.uec.ac.jp/arc/images/motoharu_matsuura.png"
+      "image_path": "https://www.uec.ac.jp/arc/images/motoharu_matsuura.png",
+      "birthplace": []
     },
     {
       "order": 123,
@@ -3851,7 +4074,11 @@
       "visiting_url": [],
       "yumenabi": [],
       "videouec": [],
-      "image_path": "https://www.uec.ac.jp/arc/images/hideki_yagi.jpg"
+      "image_path": "https://www.uec.ac.jp/arc/images/hideki_yagi.jpg",
+      "birthplace": [
+        "14.神奈川県",
+        "52.関東地方"
+      ]
     },
     {
       "order": 124,
@@ -3884,7 +4111,8 @@
       "visiting_url": [],
       "yumenabi": [],
       "videouec": [],
-      "image_path": "https://www.uec.ac.jp/arc/images/yoshiaki_ando.jpg"
+      "image_path": "https://www.uec.ac.jp/arc/images/yoshiaki_ando.jpg",
+      "birthplace": []
     },
     {
       "order": 125,
@@ -3914,7 +4142,8 @@
       "visiting_url": [],
       "yumenabi": [],
       "videouec": [],
-      "image_path": "https://www.uec.ac.jp/arc/images/kazuo_uchida.takeyoshi_tajiri.jpg"
+      "image_path": "https://www.uec.ac.jp/arc/images/kazuo_uchida.takeyoshi_tajiri.jpg",
+      "birthplace": []
     },
     {
       "order": 126,
@@ -3943,7 +4172,8 @@
       ],
       "yumenabi": [],
       "videouec": [],
-      "image_path": "https://www.uec.ac.jp/arc/images/satoshi_ono.png"
+      "image_path": "https://www.uec.ac.jp/arc/images/satoshi_ono.png",
+      "birthplace": []
     },
     {
       "order": 127,
@@ -3970,7 +4200,8 @@
       "visiting_url": [],
       "yumenabi": [],
       "videouec": [],
-      "image_path": "https://www.uec.ac.jp/arc/images/kayano_yoshiki.jpg"
+      "image_path": "https://www.uec.ac.jp/arc/images/kayano_yoshiki.jpg",
+      "birthplace": []
     },
     {
       "order": 128,
@@ -3999,7 +4230,8 @@
       "visiting_url": [],
       "yumenabi": [],
       "videouec": [],
-      "image_path": "https://www.uec.ac.jp/arc/images/hiroshi_kikuchi.jpg"
+      "image_path": "https://www.uec.ac.jp/arc/images/hiroshi_kikuchi.jpg",
+      "birthplace": []
     },
     {
       "order": 129,
@@ -4042,7 +4274,10 @@
         "https://douga.yumenavi.info/Lecture/PublishDetail/2017256160?back="
       ],
       "videouec": [],
-      "image_path": "https://www.uec.ac.jp/arc/images/shouhei_kidera.png"
+      "image_path": "https://www.uec.ac.jp/arc/images/shouhei_kidera.png",
+      "birthplace": [
+        "54.近畿地方"
+      ]
     },
     {
       "order": 130,
@@ -4069,7 +4304,8 @@
       "visiting_url": [],
       "yumenabi": [],
       "videouec": [],
-      "image_path": "https://www.uec.ac.jp/arc/images/xiao_fengchao.jpg"
+      "image_path": "https://www.uec.ac.jp/arc/images/xiao_fengchao.jpg",
+      "birthplace": []
     },
     {
       "order": 131,
@@ -4102,7 +4338,11 @@
       "videouec": [
         "https://www.youtube.com/watch?v=BqEm1QJWHWM"
       ],
-      "image_path": "https://www.uec.ac.jp/arc/images/kota_takahashi.jpg"
+      "image_path": "https://www.uec.ac.jp/arc/images/kota_takahashi.jpg",
+      "birthplace": [
+        "13.東京都",
+        "52.関東地方"
+      ]
     },
     {
       "order": 132,
@@ -4132,7 +4372,8 @@
       "visiting_url": [],
       "yumenabi": [],
       "videouec": [],
-      "image_path": "https://www.uec.ac.jp/arc/images/xi_zhang.jpg"
+      "image_path": "https://www.uec.ac.jp/arc/images/xi_zhang.jpg",
+      "birthplace": []
     },
     {
       "order": 133,
@@ -4172,7 +4413,8 @@
       ],
       "yumenabi": [],
       "videouec": [],
-      "image_path": "https://www.uec.ac.jp/arc/images/takuo_tsuda.jpg"
+      "image_path": "https://www.uec.ac.jp/arc/images/takuo_tsuda.jpg",
+      "birthplace": []
     },
     {
       "order": 134,
@@ -4200,7 +4442,8 @@
       "visiting_url": [],
       "yumenabi": [],
       "videouec": [],
-      "image_path": "https://www.uec.ac.jp/arc/images/kazuki_nishi.jpg"
+      "image_path": "https://www.uec.ac.jp/arc/images/kazuki_nishi.jpg",
+      "birthplace": []
     },
     {
       "order": 135,
@@ -4238,7 +4481,8 @@
         "https://douga.yumenavi.info/Lecture/PublishDetail/2023002427"
       ],
       "videouec": [],
-      "image_path": "https://www.uec.ac.jp/arc/images/hideyuki_nomura.jpg"
+      "image_path": "https://www.uec.ac.jp/arc/images/hideyuki_nomura.jpg",
+      "birthplace": []
     },
     {
       "order": 136,
@@ -4270,7 +4514,8 @@
         "https://talk.yumenavi.info/archives/1710?site=d&close=true"
       ],
       "videouec": [],
-      "image_path": "https://www.uec.ac.jp/arc/images/yasuhide_hobara.jpg"
+      "image_path": "https://www.uec.ac.jp/arc/images/yasuhide_hobara.jpg",
+      "birthplace": []
     },
     {
       "order": 137,
@@ -4298,7 +4543,11 @@
       "visiting_url": [],
       "yumenabi": [],
       "videouec": [],
-      "image_path": "https://www.uec.ac.jp/arc/images/murakami_yasutaka.jpg"
+      "image_path": "https://www.uec.ac.jp/arc/images/murakami_yasutaka.jpg",
+      "birthplace": [
+        "06.山形県",
+        "51.北海道・東北地方"
+      ]
     },
     {
       "order": 138,
@@ -4327,7 +4576,11 @@
       "visiting_url": [],
       "yumenabi": [],
       "videouec": [],
-      "image_path": "https://www.uec.ac.jp/arc/images/taichi_yoshida.jpg"
+      "image_path": "https://www.uec.ac.jp/arc/images/taichi_yoshida.jpg",
+      "birthplace": [
+        "14.神奈川県",
+        "52.関東地方"
+      ]
     },
     {
       "order": 139,
@@ -4356,7 +4609,8 @@
       "visiting_url": [],
       "yumenabi": [],
       "videouec": [],
-      "image_path": "https://www.uec.ac.jp/arc/images/kun_li.png"
+      "image_path": "https://www.uec.ac.jp/arc/images/kun_li.png",
+      "birthplace": []
     },
     {
       "order": 140,
@@ -4385,7 +4639,10 @@
       "visiting_url": [],
       "yumenabi": [],
       "videouec": [],
-      "image_path": "https://www.uec.ac.jp/arc/images/liu_zhi.jpg"
+      "image_path": "https://www.uec.ac.jp/arc/images/liu_zhi.jpg",
+      "birthplace": [
+        "58.日本国外・その他"
+      ]
     },
     {
       "order": 141,
@@ -4421,7 +4678,8 @@
       "visiting_url": [],
       "yumenabi": [],
       "videouec": [],
-      "image_path": "https://www.uec.ac.jp/arc/images/yoshikazu_washizawa.jpg"
+      "image_path": "https://www.uec.ac.jp/arc/images/yoshikazu_washizawa.jpg",
+      "birthplace": []
     },
     {
       "order": 142,
@@ -4455,7 +4713,10 @@
         "https://douga.yumenavi.info/Lecture/PublishDetail/2025005298"
       ],
       "videouec": [],
-      "image_path": "https://www.uec.ac.jp/arc/images/koji_wada.jpg"
+      "image_path": "https://www.uec.ac.jp/arc/images/koji_wada.jpg",
+      "birthplace": [
+        "54.近畿地方"
+      ]
     },
     {
       "order": 143,
@@ -4482,7 +4743,8 @@
       "visiting_url": [],
       "yumenabi": [],
       "videouec": [],
-      "image_path": "https://www.uec.ac.jp/arc/images/manabu_akita.jpg"
+      "image_path": "https://www.uec.ac.jp/arc/images/manabu_akita.jpg",
+      "birthplace": []
     },
     {
       "order": 144,
@@ -4511,7 +4773,10 @@
       "visiting_url": [],
       "yumenabi": [],
       "videouec": [],
-      "image_path": "https://www.uec.ac.jp/arc/images/soichi_ando.jpg"
+      "image_path": "https://www.uec.ac.jp/arc/images/soichi_ando.jpg",
+      "birthplace": [
+        "54.近畿地方"
+      ]
     },
     {
       "order": 145,
@@ -4542,7 +4807,10 @@
       "videouec": [
         "https://www.youtube.com/watch?v=lmAVWi9UMpM"
       ],
-      "image_path": "https://www.uec.ac.jp/arc/images/hidetaka_okada.jpg"
+      "image_path": "https://www.uec.ac.jp/arc/images/hidetaka_okada.jpg",
+      "birthplace": [
+        "55.中国地方"
+      ]
     },
     {
       "order": 146,
@@ -4581,7 +4849,8 @@
         "https://douga.yumenavi.info/Lecture/PublishDetail/2018253520?back="
       ],
       "videouec": [],
-      "image_path": "https://www.uec.ac.jp/arc/images/osamu_kaneko.jpg"
+      "image_path": "https://www.uec.ac.jp/arc/images/osamu_kaneko.jpg",
+      "birthplace": []
     },
     {
       "order": 147,
@@ -4618,7 +4887,8 @@
       "videouec": [
         "https://www.youtube.com/watch?v=BPGMCNE2pLE"
       ],
-      "image_path": "https://www.uec.ac.jp/arc/images/takuji_koike.jpg"
+      "image_path": "https://www.uec.ac.jp/arc/images/takuji_koike.jpg",
+      "birthplace": []
     },
     {
       "order": 148,
@@ -4659,7 +4929,8 @@
       "visiting_url": [],
       "yumenabi": [],
       "videouec": [],
-      "image_path": "https://www.uec.ac.jp/arc/images/kiminao_kogiso.jpg"
+      "image_path": "https://www.uec.ac.jp/arc/images/kiminao_kogiso.jpg",
+      "birthplace": []
     },
     {
       "order": 149,
@@ -4705,7 +4976,8 @@
       ],
       "yumenabi": [],
       "videouec": [],
-      "image_path": "https://www.uec.ac.jp/arc/images/yutaka_sakaguchi.shunji_satoh.eriko_aiba.jpg"
+      "image_path": "https://www.uec.ac.jp/arc/images/yutaka_sakaguchi.shunji_satoh.eriko_aiba.jpg",
+      "birthplace": []
     },
     {
       "order": 150,
@@ -4744,7 +5016,10 @@
       "videouec": [
         "https://www.youtube.com/shorts/2WFuiPycrNg"
       ],
-      "image_path": "https://www.uec.ac.jp/arc/images/tomonori_sadamoto.jpg"
+      "image_path": "https://www.uec.ac.jp/arc/images/tomonori_sadamoto.jpg",
+      "birthplace": [
+        "56.四国地方"
+      ]
     },
     {
       "order": 151,
@@ -4776,7 +5051,11 @@
       "visiting_url": [],
       "yumenabi": [],
       "videouec": [],
-      "image_path": "https://www.uec.ac.jp/arc/images/osuga_akihiko.yuichi_sei.jpg"
+      "image_path": "https://www.uec.ac.jp/arc/images/osuga_akihiko.yuichi_sei.jpg",
+      "birthplace": [
+        "42.長崎県",
+        "57.九州・沖縄地方"
+      ]
     },
     {
       "order": 152,
@@ -4805,7 +5084,8 @@
       "visiting_url": [],
       "yumenabi": [],
       "videouec": [],
-      "image_path": "https://www.uec.ac.jp/arc/images/guanghao_sun.jpg"
+      "image_path": "https://www.uec.ac.jp/arc/images/guanghao_sun.jpg",
+      "birthplace": []
     },
     {
       "order": 153,
@@ -4836,7 +5116,11 @@
       "videouec": [
         "https://drive.google.com/file/d/1BhrweeHmaIPCjV7PdUlWvMXKfTowbhD1/view?t=122"
       ],
-      "image_path": "https://www.uec.ac.jp/arc/images/tetsuro_funato.jpg"
+      "image_path": "https://www.uec.ac.jp/arc/images/tetsuro_funato.jpg",
+      "birthplace": [
+        "14.神奈川県",
+        "52.関東地方"
+      ]
     },
     {
       "order": 154,
@@ -4871,7 +5155,10 @@
       "visiting_url": [],
       "yumenabi": [],
       "videouec": [],
-      "image_path": "https://www.uec.ac.jp/arc/images/masamoto_kazuto.masaaki_oshita.jpeg"
+      "image_path": "https://www.uec.ac.jp/arc/images/masamoto_kazuto.masaaki_oshita.jpeg",
+      "birthplace": [
+        "14.神奈川県"
+      ]
     },
     {
       "order": 155,
@@ -4913,7 +5200,11 @@
       "videouec": [
         "https://www.youtube.com/shorts/v9R00jvkdjQ"
       ],
-      "image_path": "https://www.uec.ac.jp/arc/images/dairoku_muramatsu.jpg"
+      "image_path": "https://www.uec.ac.jp/arc/images/dairoku_muramatsu.jpg",
+      "birthplace": [
+        "20.長野県",
+        "53.中部地方"
+      ]
     },
     {
       "order": 156,
@@ -4964,7 +5255,10 @@
       "videouec": [
         "https://www.youtube.com/shorts/kFRez7XD9kU"
       ],
-      "image_path": "https://www.uec.ac.jp/arc/images/yoichi_miyawaki.jpg"
+      "image_path": "https://www.uec.ac.jp/arc/images/yoichi_miyawaki.jpg",
+      "birthplace": [
+        "53.中部地方"
+      ]
     },
     {
       "order": 157,
@@ -4995,7 +5289,8 @@
       ],
       "yumenabi": [],
       "videouec": [],
-      "image_path": "https://www.uec.ac.jp/arc/images/masafumi_uchida.jpg"
+      "image_path": "https://www.uec.ac.jp/arc/images/masafumi_uchida.jpg",
+      "birthplace": []
     },
     {
       "order": 158,
@@ -5040,7 +5335,11 @@
       "videouec": [
         "https://www.youtube.com/watch?v=VfyTzg6hAJk"
       ],
-      "image_path": "https://www.uec.ac.jp/arc/images/chisato_kanamori.jpg"
+      "image_path": "https://www.uec.ac.jp/arc/images/chisato_kanamori.jpg",
+      "birthplace": [
+        "13.東京都",
+        "52.関東地方"
+      ]
     },
     {
       "order": 159,
@@ -5072,7 +5371,11 @@
       ],
       "yumenabi": [],
       "videouec": [],
-      "image_path": "https://www.uec.ac.jp/arc/images/tetsuo_kan.jpg"
+      "image_path": "https://www.uec.ac.jp/arc/images/tetsuo_kan.jpg",
+      "birthplace": [
+        "42.長崎県",
+        "57.九州・沖縄地方"
+      ]
     },
     {
       "order": 160,
@@ -5102,7 +5405,8 @@
       "visiting_url": [],
       "yumenabi": [],
       "videouec": [],
-      "image_path": "https://www.uec.ac.jp/arc/images/kimura_kohei.png"
+      "image_path": "https://www.uec.ac.jp/arc/images/kimura_kohei.png",
+      "birthplace": []
     },
     {
       "order": 161,
@@ -5132,7 +5436,8 @@
       "visiting_url": [],
       "yumenabi": [],
       "videouec": [],
-      "image_path": "https://www.uec.ac.jp/arc/images/shunsuke_kudoh.jpg"
+      "image_path": "https://www.uec.ac.jp/arc/images/shunsuke_kudoh.jpg",
+      "birthplace": []
     },
     {
       "order": 162,
@@ -5175,7 +5480,10 @@
       "videouec": [
         "https://www.youtube.com/watch?v=w7TP2yjjCpU"
       ],
-      "image_path": "https://www.uec.ac.jp/arc/images/norihiro_koizumi.jpg"
+      "image_path": "https://www.uec.ac.jp/arc/images/norihiro_koizumi.jpg",
+      "birthplace": [
+        "54.近畿地方"
+      ]
     },
     {
       "order": 163,
@@ -5210,7 +5518,8 @@
       "videouec": [
         "https://www.youtube.com/shorts/EwcyVHMwf_Q"
       ],
-      "image_path": "https://www.uec.ac.jp/arc/images/yinlai_jiang.jpg"
+      "image_path": "https://www.uec.ac.jp/arc/images/yinlai_jiang.jpg",
+      "birthplace": []
     },
     {
       "order": 164,
@@ -5239,7 +5548,8 @@
       "visiting_url": [],
       "yumenabi": [],
       "videouec": [],
-      "image_path": "https://www.uec.ac.jp/arc/images/jun_shintake.jpg"
+      "image_path": "https://www.uec.ac.jp/arc/images/jun_shintake.jpg",
+      "birthplace": []
     },
     {
       "order": 165,
@@ -5266,7 +5576,8 @@
       "visiting_url": [],
       "yumenabi": [],
       "videouec": [],
-      "image_path": "https://www.uec.ac.jp/arc/images/masao_sugi.jpg"
+      "image_path": "https://www.uec.ac.jp/arc/images/masao_sugi.jpg",
+      "birthplace": []
     },
     {
       "order": 166,
@@ -5297,7 +5608,8 @@
       "visiting_url": [],
       "yumenabi": [],
       "videouec": [],
-      "image_path": "https://www.uec.ac.jp/arc/images/kazuo_tanaka.jpg"
+      "image_path": "https://www.uec.ac.jp/arc/images/kazuo_tanaka.jpg",
+      "birthplace": []
     },
     {
       "order": 167,
@@ -5337,7 +5649,12 @@
         "https://www.youtube.com/watch?v=APcQquCc0wI",
         "https://www.youtube.com/shorts/WimyI5p8AkY"
       ],
-      "image_path": "https://www.uec.ac.jp/arc/images/motoyasu_tanaka.jpg"
+      "image_path": "https://www.uec.ac.jp/arc/images/motoyasu_tanaka.jpg",
+      "birthplace": [
+        "51.北海道・東北地方",
+        "13.東京都",
+        "52.関東地方"
+      ]
     },
     {
       "order": 168,
@@ -5369,7 +5686,11 @@
         "https://www.youtube.com/shorts/seFCYBK93SE",
         "https://www.youtube.com/channel/UC10spcvW8-pCTLKy5rrDHyw"
       ],
-      "image_path": "https://www.uec.ac.jp/arc/images/syunta_togo.jpg"
+      "image_path": "https://www.uec.ac.jp/arc/images/syunta_togo.jpg",
+      "birthplace": [
+        "21.岐阜県",
+        "53.中部地方"
+      ]
     },
     {
       "order": 169,
@@ -5402,7 +5723,11 @@
       "videouec": [
         "https://youtu.be/UXuQ1RgxPdQ"
       ],
-      "image_path": "https://www.uec.ac.jp/arc/images/nakata_yoshihiro.jpg"
+      "image_path": "https://www.uec.ac.jp/arc/images/nakata_yoshihiro.jpg",
+      "birthplace": [
+        "27.大阪府",
+        "54.近畿地方"
+      ]
     },
     {
       "order": 170,
@@ -5431,7 +5756,8 @@
       "visiting_url": [],
       "yumenabi": [],
       "videouec": [],
-      "image_path": "https://www.uec.ac.jp/arc/images/tomoaki_nakamura.jpg"
+      "image_path": "https://www.uec.ac.jp/arc/images/tomoaki_nakamura.jpg",
+      "birthplace": []
     },
     {
       "order": 171,
@@ -5467,7 +5793,11 @@
       "visiting_url": [],
       "yumenabi": [],
       "videouec": [],
-      "image_path": "https://www.uec.ac.jp/arc/images/aiguo_ming.sato_ryuki.jpg"
+      "image_path": "https://www.uec.ac.jp/arc/images/aiguo_ming.sato_ryuki.jpg",
+      "birthplace": [
+        "13.東京都",
+        "52.関東地方"
+      ]
     },
     {
       "order": 172,
@@ -5510,7 +5840,8 @@
       "videouec": [
         "https://www.youtube.com/watch?v=QtA_PD4CMd4"
       ],
-      "image_path": "https://www.uec.ac.jp/arc/images/hiroshi_yokoi.jpg"
+      "image_path": "https://www.uec.ac.jp/arc/images/hiroshi_yokoi.jpg",
+      "birthplace": []
     },
     {
       "order": 173,
@@ -5544,7 +5875,8 @@
       "visiting_url": [],
       "yumenabi": [],
       "videouec": [],
-      "image_path": "https://www.uec.ac.jp/arc/images/ayato_kanada.jpeg"
+      "image_path": "https://www.uec.ac.jp/arc/images/ayato_kanada.jpeg",
+      "birthplace": []
     },
     {
       "order": 174,
@@ -5572,7 +5904,11 @@
       "visiting_url": [],
       "yumenabi": [],
       "videouec": [],
-      "image_path": "https://www.uec.ac.jp/arc/images/yohei_inoue.jpg"
+      "image_path": "https://www.uec.ac.jp/arc/images/yohei_inoue.jpg",
+      "birthplace": [
+        "15.新潟県",
+        "53.中部地方"
+      ]
     },
     {
       "order": 175,
@@ -5603,7 +5939,11 @@
       "visiting_url": [],
       "yumenabi": [],
       "videouec": [],
-      "image_path": "https://www.uec.ac.jp/arc/images/tomio_okawa.jpg"
+      "image_path": "https://www.uec.ac.jp/arc/images/tomio_okawa.jpg",
+      "birthplace": [
+        "12.千葉県",
+        "52.関東地方"
+      ]
     },
     {
       "order": 176,
@@ -5642,7 +5982,8 @@
       "visiting_url": [],
       "yumenabi": [],
       "videouec": [],
-      "image_path": "https://www.uec.ac.jp/arc/images/takashi_kuboki.shohei_kajikawa.jpg"
+      "image_path": "https://www.uec.ac.jp/arc/images/takashi_kuboki.shohei_kajikawa.jpg",
+      "birthplace": []
     },
     {
       "order": 177,
@@ -5669,7 +6010,8 @@
       "visiting_url": [],
       "yumenabi": [],
       "videouec": [],
-      "image_path": "https://www.uec.ac.jp/arc/images/yuri_shinohara.jpg"
+      "image_path": "https://www.uec.ac.jp/arc/images/yuri_shinohara.jpg",
+      "birthplace": []
     },
     {
       "order": 178,
@@ -5705,7 +6047,11 @@
       "videouec": [
         "https://www.youtube.com/shorts/64scqC-Snjk"
       ],
-      "image_path": "https://www.uec.ac.jp/arc/images/kazuhisa_chiba.jpg"
+      "image_path": "https://www.uec.ac.jp/arc/images/kazuhisa_chiba.jpg",
+      "birthplace": [
+        "12.千葉県",
+        "52.関東地方"
+      ]
     },
     {
       "order": 179,
@@ -5737,7 +6083,11 @@
       "videouec": [
         "https://www.youtube.com/shorts/vnAEUXyUM5U"
       ],
-      "image_path": "https://www.uec.ac.jp/arc/images/hideaki_nagamatsu.jpg"
+      "image_path": "https://www.uec.ac.jp/arc/images/hideaki_nagamatsu.jpg",
+      "birthplace": [
+        "13.東京都",
+        "52.関東地方"
+      ]
     },
     {
       "order": 180,
@@ -5777,7 +6127,11 @@
       "visiting_url": [],
       "yumenabi": [],
       "videouec": [],
-      "image_path": "https://www.uec.ac.jp/arc/images/hiroshi_masuda.jpg"
+      "image_path": "https://www.uec.ac.jp/arc/images/hiroshi_masuda.jpg",
+      "birthplace": [
+        "13.東京都",
+        "52.関東地方"
+      ]
     },
     {
       "order": 181,
@@ -5804,7 +6158,8 @@
       "visiting_url": [],
       "yumenabi": [],
       "videouec": [],
-      "image_path": "https://www.uec.ac.jp/arc/images/takashi_matsumura.jpg"
+      "image_path": "https://www.uec.ac.jp/arc/images/takashi_matsumura.jpg",
+      "birthplace": []
     },
     {
       "order": 182,
@@ -5833,7 +6188,8 @@
       "visiting_url": [],
       "yumenabi": [],
       "videouec": [],
-      "image_path": "https://www.uec.ac.jp/arc/images/hangs-georg_matuttis.jpg"
+      "image_path": "https://www.uec.ac.jp/arc/images/hangs-georg_matuttis.jpg",
+      "birthplace": []
     },
     {
       "order": 183,
@@ -5864,7 +6220,8 @@
       ],
       "yumenabi": [],
       "videouec": [],
-      "image_path": "https://www.uec.ac.jp/arc/images/hiroya_mamori.jpg"
+      "image_path": "https://www.uec.ac.jp/arc/images/hiroya_mamori.jpg",
+      "birthplace": []
     },
     {
       "order": 184,
@@ -5897,7 +6254,11 @@
       "videouec": [
         "https://www.youtube.com/shorts/QcTS8r2fwH0"
       ],
-      "image_path": "https://www.uec.ac.jp/arc/images/koichi_morishige.jpeg"
+      "image_path": "https://www.uec.ac.jp/arc/images/koichi_morishige.jpeg",
+      "birthplace": [
+        "13.東京都",
+        "52.関東地方"
+      ]
     },
     {
       "order": 185,
@@ -5924,7 +6285,11 @@
       "visiting_url": [],
       "yumenabi": [],
       "videouec": [],
-      "image_path": "https://www.uec.ac.jp/arc/images/yuki_hironobu.png"
+      "image_path": "https://www.uec.ac.jp/arc/images/yuki_hironobu.png",
+      "birthplace": [
+        "14.神奈川県",
+        "52.関東地方"
+      ]
     },
     {
       "order": 186,
@@ -5957,7 +6322,8 @@
       "visiting_url": [],
       "yumenabi": [],
       "videouec": [],
-      "image_path": "https://www.uec.ac.jp/arc/images/yusa_yasunori.png"
+      "image_path": "https://www.uec.ac.jp/arc/images/yusa_yasunori.png",
+      "birthplace": []
     },
     {
       "order": 187,
@@ -5987,7 +6353,8 @@
       "videouec": [
         "https://www.youtube.com/watch?v=_YvE1Zlj1-o"
       ],
-      "image_path": "https://www.uec.ac.jp/arc/images/hideo_isshiki.jpg"
+      "image_path": "https://www.uec.ac.jp/arc/images/hideo_isshiki.jpg",
+      "birthplace": []
     },
     {
       "order": 188,
@@ -6023,7 +6390,8 @@
         "https://www.youtube.com/watch?v=6ITNL1rDn9c",
         "https://www.youtube.com/watch?v=T9Y6kdSdEhw"
       ],
-      "image_path": "https://www.uec.ac.jp/arc/images/okuno_tsuyoshi.jpg"
+      "image_path": "https://www.uec.ac.jp/arc/images/okuno_tsuyoshi.jpg",
+      "birthplace": []
     },
     {
       "order": 189,
@@ -6052,7 +6420,8 @@
       "visiting_url": [],
       "yumenabi": [],
       "videouec": [],
-      "image_path": "https://www.uec.ac.jp/arc/images/toshiyuki_kaizu.jpg"
+      "image_path": "https://www.uec.ac.jp/arc/images/toshiyuki_kaizu.jpg",
+      "birthplace": []
     },
     {
       "order": 190,
@@ -6082,7 +6451,8 @@
       "videouec": [
         "https://www.youtube.com/watch?v=2ck1mIpSWv0"
       ],
-      "image_path": "https://www.uec.ac.jp/arc/images/takeshi_sakai.jpg"
+      "image_path": "https://www.uec.ac.jp/arc/images/takeshi_sakai.jpg",
+      "birthplace": []
     },
     {
       "order": 191,
@@ -6110,7 +6480,8 @@
       "visiting_url": [],
       "yumenabi": [],
       "videouec": [],
-      "image_path": "https://www.uec.ac.jp/arc/images/katsuyoshi_sakamoto.jpg"
+      "image_path": "https://www.uec.ac.jp/arc/images/katsuyoshi_sakamoto.jpg",
+      "birthplace": []
     },
     {
       "order": 192,
@@ -6136,7 +6507,8 @@
       "visiting_url": [],
       "yumenabi": [],
       "videouec": [],
-      "image_path": "https://www.uec.ac.jp/arc/images/tomokazu_shiga.jpg"
+      "image_path": "https://www.uec.ac.jp/arc/images/tomokazu_shiga.jpg",
+      "birthplace": []
     },
     {
       "order": 193,
@@ -6174,7 +6546,8 @@
       ],
       "yumenabi": [],
       "videouec": [],
-      "image_path": "https://www.uec.ac.jp/arc/images/hiroshi_shimada.jpg"
+      "image_path": "https://www.uec.ac.jp/arc/images/hiroshi_shimada.jpg",
+      "birthplace": []
     },
     {
       "order": 194,
@@ -6205,7 +6578,8 @@
       "visiting_url": [],
       "yumenabi": [],
       "videouec": [],
-      "image_path": "https://www.uec.ac.jp/arc/images/sogabe_tomah.jpg"
+      "image_path": "https://www.uec.ac.jp/arc/images/sogabe_tomah.jpg",
+      "birthplace": []
     },
     {
       "order": 195,
@@ -6234,7 +6608,8 @@
       "visiting_url": [],
       "yumenabi": [],
       "videouec": [],
-      "image_path": "https://www.uec.ac.jp/arc/images/takahiro_tsukamoto.jpg"
+      "image_path": "https://www.uec.ac.jp/arc/images/takahiro_tsukamoto.jpg",
+      "birthplace": []
     },
     {
       "order": 196,
@@ -6269,7 +6644,10 @@
       "videouec": [
         "https://www.youtube.com/watch?v=972M_sn--88"
       ],
-      "image_path": "https://www.uec.ac.jp/arc/images/jun_nakamura.naoki_shinyoshi.jpeg"
+      "image_path": "https://www.uec.ac.jp/arc/images/jun_nakamura.naoki_shinyoshi.jpeg",
+      "birthplace": [
+        "57.九州・沖縄地方"
+      ]
     },
     {
       "order": 197,
@@ -6301,7 +6679,10 @@
       "videouec": [
         "https://www.youtube.com/shorts/Ue8Ph4VVpjQ"
       ],
-      "image_path": "https://www.uec.ac.jp/arc/images/rei_furukawa.jpg"
+      "image_path": "https://www.uec.ac.jp/arc/images/rei_furukawa.jpg",
+      "birthplace": [
+        "58.日本国外・その他"
+      ]
     },
     {
       "order": 198,
@@ -6338,7 +6719,10 @@
         "https://www.youtube.com/watch?v=b7_Txz7aiB0",
         "https://www.youtube.com/shorts/QfZ8u5ghO2A"
       ],
-      "image_path": "https://www.uec.ac.jp/arc/images/yoshinao_mizugaki.jpg"
+      "image_path": "https://www.uec.ac.jp/arc/images/yoshinao_mizugaki.jpg",
+      "birthplace": [
+        "51.北海道・東北地方"
+      ]
     },
     {
       "order": 199,
@@ -6365,7 +6749,8 @@
       "visiting_url": [],
       "yumenabi": [],
       "videouec": [],
-      "image_path": "https://www.uec.ac.jp/arc/images/naoya_miyashita.jpg"
+      "image_path": "https://www.uec.ac.jp/arc/images/naoya_miyashita.jpg",
+      "birthplace": []
     },
     {
       "order": 200,
@@ -6407,7 +6792,8 @@
       "videouec": [
         "https://www.youtube.com/watch?v=Yhe4DuTfksU"
       ],
-      "image_path": "https://www.uec.ac.jp/arc/images/kouichi_yamaguchi.jpg"
+      "image_path": "https://www.uec.ac.jp/arc/images/kouichi_yamaguchi.jpg",
+      "birthplace": []
     },
     {
       "order": 201,
@@ -6436,7 +6822,8 @@
       "visiting_url": [],
       "yumenabi": [],
       "videouec": [],
-      "image_path": "https://www.uec.ac.jp/arc/images/akifumi_asahara.jpg"
+      "image_path": "https://www.uec.ac.jp/arc/images/akifumi_asahara.jpg",
+      "birthplace": []
     },
     {
       "order": 202,
@@ -6475,7 +6862,8 @@
       "visiting_url": [],
       "yumenabi": [],
       "videouec": [],
-      "image_path": "https://www.uec.ac.jp/arc/images/yoshiyasu_ueno.jpg"
+      "image_path": "https://www.uec.ac.jp/arc/images/yoshiyasu_ueno.jpg",
+      "birthplace": []
     },
     {
       "order": 203,
@@ -6503,7 +6891,11 @@
       "visiting_url": [],
       "yumenabi": [],
       "videouec": [],
-      "image_path": "https://www.uec.ac.jp/arc/images/chiaki_ooae.png"
+      "image_path": "https://www.uec.ac.jp/arc/images/chiaki_ooae.png",
+      "birthplace": [
+        "33.岡山県",
+        "55.中国地方"
+      ]
     },
     {
       "order": 204,
@@ -6533,7 +6925,10 @@
       ],
       "yumenabi": [],
       "videouec": [],
-      "image_path": "https://www.uec.ac.jp/arc/images/masayuki_katsuragawa.chiaki_ooae.jpg"
+      "image_path": "https://www.uec.ac.jp/arc/images/masayuki_katsuragawa.chiaki_ooae.jpg",
+      "birthplace": [
+        "54.近畿地方"
+      ]
     },
     {
       "order": 205,
@@ -6564,7 +6959,12 @@
       "visiting_url": [],
       "yumenabi": [],
       "videouec": [],
-      "image_path": "https://www.uec.ac.jp/arc/images/takashi_kato.jpg"
+      "image_path": "https://www.uec.ac.jp/arc/images/takashi_kato.jpg",
+      "birthplace": [
+        "12.千葉県",
+        "52.関東地方",
+        "14.神奈川県"
+      ]
     },
     {
       "order": 206,
@@ -6593,7 +6993,8 @@
       "visiting_url": [],
       "yumenabi": [],
       "videouec": [],
-      "image_path": "https://www.uec.ac.jp/arc/images/yun_zhang.jpg"
+      "image_path": "https://www.uec.ac.jp/arc/images/yun_zhang.jpg",
+      "birthplace": []
     },
     {
       "order": 207,
@@ -6622,7 +7023,8 @@
       "visiting_url": [],
       "yumenabi": [],
       "videouec": [],
-      "image_path": "https://www.uec.ac.jp/arc/images/satoru_shoji.jpg"
+      "image_path": "https://www.uec.ac.jp/arc/images/satoru_shoji.jpg",
+      "birthplace": []
     },
     {
       "order": 208,
@@ -6650,7 +7052,8 @@
       "visiting_url": [],
       "yumenabi": [],
       "videouec": [],
-      "image_path": "https://www.uec.ac.jp/arc/images/akira_shirakawa.jpg"
+      "image_path": "https://www.uec.ac.jp/arc/images/akira_shirakawa.jpg",
+      "birthplace": []
     },
     {
       "order": 209,
@@ -6685,7 +7088,8 @@
       "visiting_url": [],
       "yumenabi": [],
       "videouec": [],
-      "image_path": "https://www.uec.ac.jp/arc/images/shen_qing.png"
+      "image_path": "https://www.uec.ac.jp/arc/images/shen_qing.png",
+      "birthplace": []
     },
     {
       "order": 210,
@@ -6713,7 +7117,11 @@
       "visiting_url": [],
       "yumenabi": [],
       "videouec": [],
-      "image_path": "https://www.uec.ac.jp/arc/images/tokurakawa_masaki.jpg"
+      "image_path": "https://www.uec.ac.jp/arc/images/tokurakawa_masaki.jpg",
+      "birthplace": [
+        "09.栃木県",
+        "52.関東地方"
+      ]
     },
     {
       "order": 211,
@@ -6741,7 +7149,8 @@
       "visiting_url": [],
       "yumenabi": [],
       "videouec": [],
-      "image_path": "https://www.uec.ac.jp/arc/images/hajime_nishioka.jpg"
+      "image_path": "https://www.uec.ac.jp/arc/images/hajime_nishioka.jpg",
+      "birthplace": []
     },
     {
       "order": 212,
@@ -6777,7 +7186,8 @@
       "videouec": [
         "https://www.youtube.com/shorts/clOiqInXmuk"
       ],
-      "image_path": "https://www.uec.ac.jp/arc/images/kaoru_minoshima.jpg"
+      "image_path": "https://www.uec.ac.jp/arc/images/kaoru_minoshima.jpg",
+      "birthplace": []
     },
     {
       "order": 213,
@@ -6803,7 +7213,8 @@
       "visiting_url": [],
       "yumenabi": [],
       "videouec": [],
-      "image_path": "https://www.uec.ac.jp/arc/images/mitsuru_musha.jpg"
+      "image_path": "https://www.uec.ac.jp/arc/images/mitsuru_musha.jpg",
+      "birthplace": []
     },
     {
       "order": 214,
@@ -6834,7 +7245,8 @@
       "videouec": [
         "https://www.youtube.com/watch?v=e5Bbs2zgR6Y"
       ],
-      "image_path": "https://www.uec.ac.jp/arc/images/hitoki_yoneda.jpg"
+      "image_path": "https://www.uec.ac.jp/arc/images/hitoki_yoneda.jpg",
+      "birthplace": []
     },
     {
       "order": 215,
@@ -6870,7 +7282,8 @@
       "visiting_url": [],
       "yumenabi": [],
       "videouec": [],
-      "image_path": "https://www.uec.ac.jp/arc/images/eriko_watanabe.jpg"
+      "image_path": "https://www.uec.ac.jp/arc/images/eriko_watanabe.jpg",
+      "birthplace": []
     },
     {
       "order": 216,
@@ -6906,7 +7319,11 @@
       "visiting_url": [],
       "yumenabi": [],
       "videouec": [],
-      "image_path": "https://www.uec.ac.jp/arc/images/masato_sakano.png"
+      "image_path": "https://www.uec.ac.jp/arc/images/masato_sakano.png",
+      "birthplace": [
+        "13.東京都",
+        "52.関東地方"
+      ]
     },
     {
       "order": 217,
@@ -6936,7 +7353,11 @@
       "visiting_url": [],
       "yumenabi": [],
       "videouec": [],
-      "image_path": "https://www.uec.ac.jp/arc/images/ikeda_akihiko.jpg"
+      "image_path": "https://www.uec.ac.jp/arc/images/ikeda_akihiko.jpg",
+      "birthplace": [
+        "13.東京都",
+        "52.関東地方"
+      ]
     },
     {
       "order": 218,
@@ -6964,7 +7385,8 @@
       "visiting_url": [],
       "yumenabi": [],
       "videouec": [],
-      "image_path": "https://www.uec.ac.jp/arc/images/kana_iwakuni.jpg"
+      "image_path": "https://www.uec.ac.jp/arc/images/kana_iwakuni.jpg",
+      "birthplace": []
     },
     {
       "order": 219,
@@ -6991,7 +7413,8 @@
       "visiting_url": [],
       "yumenabi": [],
       "videouec": [],
-      "image_path": "https://www.uec.ac.jp/arc/images/shimpei_endo.jpg"
+      "image_path": "https://www.uec.ac.jp/arc/images/shimpei_endo.jpg",
+      "birthplace": []
     },
     {
       "order": 220,
@@ -7017,7 +7440,8 @@
       "visiting_url": [],
       "yumenabi": [],
       "videouec": [],
-      "image_path": "https://www.uec.ac.jp/arc/images/yukiyasu_ozeki.jpg"
+      "image_path": "https://www.uec.ac.jp/arc/images/yukiyasu_ozeki.jpg",
+      "birthplace": []
     },
     {
       "order": 221,
@@ -7045,7 +7469,8 @@
       "visiting_url": [],
       "yumenabi": [],
       "videouec": [],
-      "image_path": "https://www.uec.ac.jp/arc/images/kishimoto_tetsuo.jpg"
+      "image_path": "https://www.uec.ac.jp/arc/images/kishimoto_tetsuo.jpg",
+      "birthplace": []
     },
     {
       "order": 222,
@@ -7071,7 +7496,8 @@
       "visiting_url": [],
       "yumenabi": [],
       "videouec": [],
-      "image_path": "https://www.uec.ac.jp/arc/images/kuwahara_daisuke.jpg"
+      "image_path": "https://www.uec.ac.jp/arc/images/kuwahara_daisuke.jpg",
+      "birthplace": []
     },
     {
       "order": 223,
@@ -7099,7 +7525,8 @@
       "visiting_url": [],
       "yumenabi": [],
       "videouec": [],
-      "image_path": "https://www.uec.ac.jp/arc/images/nobuhito_kokubo.png"
+      "image_path": "https://www.uec.ac.jp/arc/images/nobuhito_kokubo.png",
+      "birthplace": []
     },
     {
       "order": 224,
@@ -7133,7 +7560,8 @@
       "videouec": [
         "https://www.youtube.com/shorts/Pwo2NzoMtTk"
       ],
-      "image_path": "https://www.uec.ac.jp/arc/images/hiroki_saito.jpg"
+      "image_path": "https://www.uec.ac.jp/arc/images/hiroki_saito.jpg",
+      "birthplace": []
     },
     {
       "order": 225,
@@ -7168,7 +7596,8 @@
       "videouec": [
         "https://www.youtube.com/watch?v=vH3kEJZBXgk"
       ],
-      "image_path": "https://www.uec.ac.jp/arc/images/naruo_sasaki.png"
+      "image_path": "https://www.uec.ac.jp/arc/images/naruo_sasaki.png",
+      "birthplace": []
     },
     {
       "order": 226,
@@ -7196,7 +7625,8 @@
       "visiting_url": [],
       "yumenabi": [],
       "videouec": [],
-      "image_path": "https://www.uec.ac.jp/arc/images/ryousuke_shimizu.jpg"
+      "image_path": "https://www.uec.ac.jp/arc/images/ryousuke_shimizu.jpg",
+      "birthplace": []
     },
     {
       "order": 227,
@@ -7224,7 +7654,8 @@
       "visiting_url": [],
       "yumenabi": [],
       "videouec": [],
-      "image_path": "https://www.uec.ac.jp/arc/images/junko_taniguchi.jpg"
+      "image_path": "https://www.uec.ac.jp/arc/images/junko_taniguchi.jpg",
+      "birthplace": []
     },
     {
       "order": 228,
@@ -7259,7 +7690,8 @@
         "https://talk.yumenavi.info/archives/2386?site=d&close=true"
       ],
       "videouec": [],
-      "image_path": "https://www.uec.ac.jp/arc/images/haruka_tanji-suzuki.jpg"
+      "image_path": "https://www.uec.ac.jp/arc/images/haruka_tanji-suzuki.jpg",
+      "birthplace": []
     },
     {
       "order": 229,
@@ -7287,7 +7719,8 @@
       "visiting_url": [],
       "yumenabi": [],
       "videouec": [],
-      "image_path": "https://www.uec.ac.jp/arc/images/kenichi_nakagawa.jpg"
+      "image_path": "https://www.uec.ac.jp/arc/images/kenichi_nakagawa.jpg",
+      "birthplace": []
     },
     {
       "order": 230,
@@ -7316,7 +7749,11 @@
       "visiting_url": [],
       "yumenabi": [],
       "videouec": [],
-      "image_path": "https://www.uec.ac.jp/arc/images/nakamura_jin.jpg"
+      "image_path": "https://www.uec.ac.jp/arc/images/nakamura_jin.jpg",
+      "birthplace": [
+        "14.神奈川県",
+        "52.関東地方"
+      ]
     },
     {
       "order": 231,
@@ -7357,7 +7794,11 @@
       "videouec": [
         "https://www.youtube.com/watch?v=b1H3PjIpTSU"
       ],
-      "image_path": "https://www.uec.ac.jp/arc/images/nobuyuki_nakamura.jpg"
+      "image_path": "https://www.uec.ac.jp/arc/images/nobuyuki_nakamura.jpg",
+      "birthplace": [
+        "09.栃木県",
+        "52.関東地方"
+      ]
     },
     {
       "order": 232,
@@ -7386,7 +7827,10 @@
       "visiting_url": [],
       "yumenabi": [],
       "videouec": [],
-      "image_path": "https://www.uec.ac.jp/arc/images/kali_prasanna_nayak.jpg"
+      "image_path": "https://www.uec.ac.jp/arc/images/kali_prasanna_nayak.jpg",
+      "birthplace": [
+        "58.日本国外・その他"
+      ]
     },
     {
       "order": 233,
@@ -7413,7 +7857,8 @@
       "visiting_url": [],
       "yumenabi": [],
       "videouec": [],
-      "image_path": "https://www.uec.ac.jp/arc/images/kazuyuki_matsubayashi.jpg"
+      "image_path": "https://www.uec.ac.jp/arc/images/kazuyuki_matsubayashi.jpg",
+      "birthplace": []
     },
     {
       "order": 234,
@@ -7447,7 +7892,11 @@
         "https://douga.yumenavi.info/Lecture/PublishDetail/2019255210?back="
       ],
       "videouec": [],
-      "image_path": "https://www.uec.ac.jp/arc/images/yoko_miyamoto.jpg"
+      "image_path": "https://www.uec.ac.jp/arc/images/yoko_miyamoto.jpg",
+      "birthplace": [
+        "40.福岡県",
+        "57.九州・沖縄地方"
+      ]
     },
     {
       "order": 235,
@@ -7475,7 +7924,8 @@
       "visiting_url": [],
       "yumenabi": [],
       "videouec": [],
-      "image_path": "https://www.uec.ac.jp/arc/images/takahiro_muranaka.jpg"
+      "image_path": "https://www.uec.ac.jp/arc/images/takahiro_muranaka.jpg",
+      "birthplace": []
     },
     {
       "order": 236,
@@ -7503,7 +7953,8 @@
       "visiting_url": [],
       "yumenabi": [],
       "videouec": [],
-      "image_path": "https://www.uec.ac.jp/arc/images/toru_morishita.jpg"
+      "image_path": "https://www.uec.ac.jp/arc/images/toru_morishita.jpg",
+      "birthplace": []
     },
     {
       "order": 237,
@@ -7530,7 +7981,8 @@
       "visiting_url": [],
       "yumenabi": [],
       "videouec": [],
-      "image_path": "https://www.uec.ac.jp/arc/images/makoto_morinaga.jpg"
+      "image_path": "https://www.uec.ac.jp/arc/images/makoto_morinaga.jpg",
+      "birthplace": []
     },
     {
       "order": 238,
@@ -7559,7 +8011,8 @@
       "visiting_url": [],
       "yumenabi": [],
       "videouec": [],
-      "image_path": "https://www.uec.ac.jp/arc/images/hidetomo_usui.png"
+      "image_path": "https://www.uec.ac.jp/arc/images/hidetomo_usui.png",
+      "birthplace": []
     },
     {
       "order": 239,
@@ -7601,7 +8054,8 @@
         "https://douga.yumenavi.info/Lecture/PublishDetail/2014225882?back="
       ],
       "videouec": [],
-      "image_path": "https://www.uec.ac.jp/arc/images/takayuki_ishida.jpg"
+      "image_path": "https://www.uec.ac.jp/arc/images/takayuki_ishida.jpg",
+      "birthplace": []
     },
     {
       "order": 240,
@@ -7631,7 +8085,8 @@
       ],
       "yumenabi": [],
       "videouec": [],
-      "image_path": "https://www.uec.ac.jp/arc/images/masahiro_kako.jpg"
+      "image_path": "https://www.uec.ac.jp/arc/images/masahiro_kako.jpg",
+      "birthplace": []
     },
     {
       "order": 241,
@@ -7663,7 +8118,8 @@
       "videouec": [
         "https://www.youtube.com/watch?v=ZCdb5MpbC_U"
       ],
-      "image_path": "https://www.uec.ac.jp/arc/images/yutaka_kano.png"
+      "image_path": "https://www.uec.ac.jp/arc/images/yutaka_kano.png",
+      "birthplace": []
     },
     {
       "order": 242,
@@ -7694,7 +8150,11 @@
       ],
       "yumenabi": [],
       "videouec": [],
-      "image_path": "https://www.uec.ac.jp/arc/images/nobuo_kitada.jpg"
+      "image_path": "https://www.uec.ac.jp/arc/images/nobuo_kitada.jpg",
+      "birthplace": [
+        "14.神奈川県",
+        "52.関東地方"
+      ]
     },
     {
       "order": 243,
@@ -7726,7 +8186,8 @@
       "videouec": [
         "https://www.youtube.com/watch?v=r-Myrx_WsDE"
       ],
-      "image_path": "https://www.uec.ac.jp/arc/images/hideki_shirakawa.jpg"
+      "image_path": "https://www.uec.ac.jp/arc/images/hideki_shirakawa.jpg",
+      "birthplace": []
     },
     {
       "order": 244,
@@ -7764,7 +8225,8 @@
       "visiting_url": [],
       "yumenabi": [],
       "videouec": [],
-      "image_path": "https://www.uec.ac.jp/arc/images/masumi_taki.png"
+      "image_path": "https://www.uec.ac.jp/arc/images/masumi_taki.png",
+      "birthplace": []
     },
     {
       "order": 245,
@@ -7792,7 +8254,8 @@
       "visiting_url": [],
       "yumenabi": [],
       "videouec": [],
-      "image_path": "https://www.uec.ac.jp/arc/images/makiko_tanaka.jpg"
+      "image_path": "https://www.uec.ac.jp/arc/images/makiko_tanaka.jpg",
+      "birthplace": []
     },
     {
       "order": 246,
@@ -7833,7 +8296,13 @@
         "https://www.youtube.com/watch?v=T6uv6RpZQ3Q&t=1832s",
         "https://www.youtube.com/watch?v=v73dCWQDeRY"
       ],
-      "image_path": "https://www.uec.ac.jp/arc/images/daisuke_nakane.jpeg"
+      "image_path": "https://www.uec.ac.jp/arc/images/daisuke_nakane.jpeg",
+      "birthplace": [
+        "54.近畿地方",
+        "27.大阪府",
+        "42.長崎県",
+        "13.東京都"
+      ]
     },
     {
       "order": 247,
@@ -7869,7 +8338,10 @@
       "videouec": [
         "https://www.youtube.com/shorts/b9f8l6xyvqA"
       ],
-      "image_path": "https://www.uec.ac.jp/arc/images/atsushi_nakamura.jpg"
+      "image_path": "https://www.uec.ac.jp/arc/images/atsushi_nakamura.jpg",
+      "birthplace": [
+        "54.近畿地方"
+      ]
     },
     {
       "order": 248,
@@ -7898,7 +8370,8 @@
       "visiting_url": [],
       "yumenabi": [],
       "videouec": [],
-      "image_path": "https://www.uec.ac.jp/arc/images/shuzo_hirata.jpg"
+      "image_path": "https://www.uec.ac.jp/arc/images/shuzo_hirata.jpg",
+      "birthplace": []
     },
     {
       "order": 249,
@@ -7932,7 +8405,11 @@
         "https://yumenavi.info/vue/lecture.html?University=V&SearchMod=4&SerKbn=3&ProId=WNF026&Page=1&GNKCD=g005626&KeyWord=%E9%9B%BB%E6%B0%97%E9%80%9A%E4%BF%A1%E5%A4%A7%E5%AD%A6&back=&CLGAKOCD=033840&mxorder=&gakubunm=&gakkanm=&From=portal"
       ],
       "videouec": [],
-      "image_path": "https://www.uec.ac.jp/arc/images/takashi_hirano.jpg"
+      "image_path": "https://www.uec.ac.jp/arc/images/takashi_hirano.jpg",
+      "birthplace": [
+        "11.埼玉県",
+        "52.関東地方"
+      ]
     },
     {
       "order": 250,
@@ -7962,7 +8439,8 @@
       ],
       "yumenabi": [],
       "videouec": [],
-      "image_path": "https://www.uec.ac.jp/arc/images/hoshino_daisuke.jpg"
+      "image_path": "https://www.uec.ac.jp/arc/images/hoshino_daisuke.jpg",
+      "birthplace": []
     },
     {
       "order": 251,
@@ -8000,7 +8478,11 @@
       ],
       "yumenabi": [],
       "videouec": [],
-      "image_path": "https://www.uec.ac.jp/arc/images/shojiro_maki.jpg"
+      "image_path": "https://www.uec.ac.jp/arc/images/shojiro_maki.jpg",
+      "birthplace": [
+        "14.神奈川県",
+        "52.関東地方"
+      ]
     },
     {
       "order": 252,
@@ -8035,7 +8517,8 @@
         "https://www.youtube.com/watch?v=yFs-TSBXmb4",
         "https://www.youtube.com/shorts/W38J9VlMQrc"
       ],
-      "image_path": "https://www.uec.ac.jp/arc/images/shinji_matsuda.jpg"
+      "image_path": "https://www.uec.ac.jp/arc/images/shinji_matsuda.jpg",
+      "birthplace": []
     },
     {
       "order": 253,
@@ -8065,7 +8548,10 @@
       ],
       "yumenabi": [],
       "videouec": [],
-      "image_path": "https://www.uec.ac.jp/arc/images/hiroko_miwa.png"
+      "image_path": "https://www.uec.ac.jp/arc/images/hiroko_miwa.png",
+      "birthplace": [
+        "13.東京都"
+      ]
     },
     {
       "order": 254,
@@ -8099,7 +8585,8 @@
       "videouec": [
         "https://qpcrbk.es.uec.ac.jp/Open%20Campus%202020.mp4"
       ],
-      "image_path": "https://www.uec.ac.jp/arc/images/yoshihiro_yamakita.jpg"
+      "image_path": "https://www.uec.ac.jp/arc/images/yoshihiro_yamakita.jpg",
+      "birthplace": []
     }
   ]
 }

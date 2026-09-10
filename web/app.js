@@ -180,7 +180,7 @@ function loadStore() {
     if (data && (data.view === "list" || data.view === "cards" || data.view === "building")) {
       state.view = data.view;
     }
-    if (data && ["guide", "name", "room", "updated", "saved"].includes(data.sort)) {
+    if (data && ["guide", "name", "room", "updated", "saved", "hometown"].includes(data.sort)) {
       state.sort = data.sort;
     }
     if (data && (data.sortDir === 1 || data.sortDir === -1)) {
@@ -252,6 +252,45 @@ function buildingRank(name) {
   return [m[1] === "西" ? 0 : 1, Number(m[2]), name];
 }
 
+const HOMETOWN_NONE = "出身地の掲載なし";
+
+function hometownPlaces(lab) {
+  const places = lab && lab.birthplaces ? lab.birthplaces : [];
+  const prefs = places.filter((p) => p && p.code > 0 && p.code <= 47 && p.name);
+  return prefs.length ? prefs : places.filter((p) => p && p.name);
+}
+
+function hometownLabel(lab) {
+  return hometownPlaces(lab)
+    .map((p) => p.name)
+    .join("・");
+}
+
+function hometownRank(lab) {
+  const places = hometownPlaces(lab);
+  if (!places.length) return [999, ""];
+  const best = [...places].sort(
+    (a, b) => a.code - b.code || String(a.name).localeCompare(String(b.name), "ja")
+  )[0];
+  return [best.code, best.name || ""];
+}
+
+function hometownGroupKeys(lab) {
+  const places = hometownPlaces(lab);
+  if (!places.length) return [HOMETOWN_NONE];
+  return [...new Set(places.map((p) => p.name))];
+}
+
+function hometownCodeForName(name) {
+  if (name === HOMETOWN_NONE) return 999;
+  for (const lab of state.labs) {
+    for (const p of lab.birthplaces || []) {
+      if (p && p.name === name) return p.code;
+    }
+  }
+  return 500;
+}
+
 function countsFor(list, keyFn, order) {
   const map = new Map();
   for (const lab of list) {
@@ -298,6 +337,7 @@ function matches(lab) {
       lab.title,
       lab.guidebook,
       lab.room,
+      hometownLabel(lab),
       note,
       ...(lab.emails || []),
       ...(lab.keywords || []),
@@ -320,10 +360,22 @@ function filtered() {
       return aa[0] - bb[0] || aa[1] - bb[1] || (a.room || "").localeCompare(b.room || "", "ja") || a.id - b.id;
     },
     saved: (a, b) => Number(isSaved(b.id)) - Number(isSaved(a.id)) || a.id - b.id,
+    hometown: (a, b) => {
+      const aa = hometownRank(a);
+      const bb = hometownRank(b);
+      return aa[0] - bb[0] || aa[1].localeCompare(bb[1], "ja") || a.id - b.id;
+    },
   };
   const cmp = sorters[state.sort] || sorters.guide;
   const dir = state.sortDir < 0 ? -1 : 1;
-  return rows.sort((a, b) => cmp(a, b) * dir);
+  return rows.sort((a, b) => {
+    if (state.sort === "hometown") {
+      const ae = !hometownPlaces(a).length;
+      const be = !hometownPlaces(b).length;
+      if (ae !== be) return ae ? 1 : -1;
+    }
+    return cmp(a, b) * dir;
+  });
 }
 
 function activeFilterCount() {
@@ -499,7 +551,7 @@ function renderFilters() {
 
   const intro = document.createElement("p");
   intro.className = "hint";
-  intro.textContent = "まずは自分の類から。見学するときは号館でも探せます。";
+  intro.textContent = "オープンラボやオープンキャンパスでは、号館から探すと居室が見つけやすいです。まずは自分の類からでも絞れます。";
   box.appendChild(intro);
 
   box.appendChild(
@@ -717,6 +769,7 @@ function renderToolbar(n) {
     ["guide", "掲載順"],
     ["name", "研究室の名前"],
     ["room", "号館・部屋"],
+    ["hometown", "出身地"],
     ["updated", "更新が新しい"],
     ["saved", "気になるを上に"],
   ]) {
@@ -764,7 +817,18 @@ function renderWelcome() {
   box.replaceChildren();
   const p = document.createElement("p");
   p.textContent =
-    "このサイトは非公式です。自分の類を選んで、気になる研究室は星で保存できます。";
+    "オープンラボやオープンキャンパスで、居室がどこにあるか探しやすくするための非公式サイトです。";
+  const actions = document.createElement("div");
+  actions.className = "welcome-actions";
+  const go = document.createElement("button");
+  go.type = "button";
+  go.textContent = "号館から見る";
+  go.addEventListener("click", () => {
+    state.view = "building";
+    state.tipHidden = true;
+    persist();
+    paint();
+  });
   const ok = document.createElement("button");
   ok.type = "button";
   ok.textContent = "わかった";
@@ -773,7 +837,8 @@ function renderWelcome() {
     persist();
     renderWelcome();
   });
-  box.append(p, ok);
+  actions.append(go, ok);
+  box.append(p, actions);
 }
 
 function renderInterest() {
@@ -805,7 +870,11 @@ function renderViewHint() {
   if (state.view === "building") {
     el.hidden = false;
     el.textContent =
-      "見学に行くときの目安です。部屋は変わっていることがあるので、行く前にHPで確認してください。";
+      "オープンラボやオープンキャンパスで回るときの目安です。部屋は変わっていることがあるので、行く前にHPで確認してください。";
+  } else if (state.sort === "hometown") {
+    el.hidden = false;
+    el.textContent =
+      "公式ラボガイドに載っている出身地です。未掲載の研究室は最後にまとめています。";
   } else {
     el.hidden = true;
     el.textContent = "";
@@ -960,6 +1029,12 @@ function cardEl(lab, opts = {}) {
   const room = document.createElement("div");
   room.className = "room";
   if (lab.room) room.append(document.createTextNode(lab.room));
+  const home = hometownLabel(lab);
+  if (home) {
+    const place = document.createElement("span");
+    place.textContent = home;
+    room.appendChild(place);
+  }
   if (lab.urls.length) {
     const b = document.createElement("span");
     b.className = "badge";
@@ -1020,7 +1095,12 @@ function renderResults() {
     return;
   }
 
-  const groupedDefault = state.view !== "building" && !state.q && !state.programs.size && !state.onlySaved;
+  const groupedDefault =
+    state.view !== "building" &&
+    state.sort !== "hometown" &&
+    !state.q &&
+    !state.programs.size &&
+    !state.onlySaved;
   const groups = new Map();
   if (state.view === "building") {
     for (const lab of rows) {
@@ -1030,6 +1110,25 @@ function renderResults() {
         groups.get(key).push(lab);
       }
     }
+  } else if (state.sort === "hometown") {
+    for (const lab of rows) {
+      for (const key of hometownGroupKeys(lab)) {
+        if (!groups.has(key)) groups.set(key, []);
+        groups.get(key).push(lab);
+      }
+    }
+    const dir = state.sortDir < 0 ? -1 : 1;
+    const ordered = [...groups.keys()].sort((a, b) => {
+      const ac = hometownCodeForName(a);
+      const bc = hometownCodeForName(b);
+      if (ac === 999 && bc !== 999) return 1;
+      if (bc === 999 && ac !== 999) return -1;
+      return (ac - bc || a.localeCompare(b, "ja")) * dir;
+    });
+    const sorted = new Map();
+    for (const key of ordered) sorted.set(key, groups.get(key));
+    groups.clear();
+    for (const [key, labs] of sorted) groups.set(key, labs);
   } else if (groupedDefault) {
     for (const lab of rows) {
       const key = `${shortGroup(lab.group)} · ${shortProgram(lab.program)}`;
@@ -1249,6 +1348,7 @@ function renderDetail(lab, { focusClose } = {}) {
     ["専攻", lab.majors.join("、")],
     ["分野", lab.fields.join("、")],
     ["居室", lab.room || "—"],
+    ["出身地", hometownLabel(lab) || "—"],
     ["更新", lab.updatedAt || "—"],
   ];
   for (const [k, v] of rows) {

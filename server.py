@@ -35,7 +35,7 @@ BIKO_KEEP = {
 
 NUM_PREFIX = re.compile(r"^\d+\.")
 BUILDING_RE = re.compile(r"[東西]\d+号館")
-# UEC Atlas の people 正規化に合わせた異体字
+# 人名の異体字を常用漢字へ寄せる
 KANJI_VARIANT = str.maketrans({
     "廣": "広",
     "髙": "高",
@@ -126,6 +126,7 @@ def slim_official_lab(src: dict) -> dict:
         "yumenabi": [u for u in (src.get("yumenabi") or []) if u],
         "videouec": [u for u in (src.get("videouec") or []) if u],
         "image_path": official_image(src.get("image_path") or ""),
+        "birthplace": [x for x in (src.get("birthplace") or []) if str(x).strip()],
     }
 
 
@@ -139,6 +140,31 @@ def split_urls(raw: str) -> list[str]:
 def buildings_of(room: str) -> list[str]:
     found = BUILDING_RE.findall(room or "")
     return list(dict.fromkeys(found))
+
+
+def parse_birthplaces(raw) -> list[dict]:
+    """公式ラボガイドの出身地。都道府県コード付きの値だけ残す。"""
+    out: list[dict] = []
+    seen: set[tuple[int, str]] = set()
+    for item in raw or []:
+        text = str(item).strip()
+        if not text:
+            continue
+        m = re.match(r"^(\d+)\.(.+)$", text)
+        if m:
+            code = int(m.group(1))
+            name = m.group(2).strip()
+        else:
+            code = 999
+            name = strip_num(text)
+        if not name:
+            continue
+        key = (code, name)
+        if key in seen:
+            continue
+        seen.add(key)
+        out.append({"code": code, "name": name})
+    return out
 
 
 def parse_emails(raw: str) -> list[str]:
@@ -216,6 +242,7 @@ def load_labs() -> list[dict]:
             "emails": mail.get("emails") or [],
             "emailSource": mail.get("emailSource") or "",
             "image": official_image(src.get("image_path") or ""),
+            "birthplaces": parse_birthplaces(src.get("birthplace") or []),
         })
 
     by_faculty: dict[str, list[int]] = {}

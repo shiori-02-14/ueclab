@@ -4,30 +4,28 @@
 
 # UEC ラボ（非公式）
 
-電気通信大学の[公式ラボガイド](https://www.uec.ac.jp/arc/laboguide.html)を、配属先探し向けに検索しやすくした**非公式**の研究室ブラウザです。
+電気通信大学の[公式ラボガイド](https://www.uec.ac.jp/arc/laboguide.html)をもとに、オープンラボやオープンキャンパスで**居室がどこにあるか**探しやすくした**非公式**の研究室ブラウザです。
 
 > [!WARNING]
 > このプロジェクトは [しおり🔖](https://shiori-02-14.github.io/Homepage/works.html) が作成・運営しており、**大学の公式なプロジェクトではありません。**
 > 電気通信大学は運営・監修・後援していません。情報の正確性や完全性は保証しません。連絡・見学・出願の前に、必ず [公式ラボガイド](https://www.uec.ac.jp/arc/laboguide.html) と各研究室のサイトを確認してください。
 
-This is an **unofficial** lab directory for the University of Electro-Communications (UEC). It is not affiliated with the university. Always verify with the [official lab guide](https://www.uec.ac.jp/arc/laboguide.html).
+This is an **unofficial** lab directory for finding rooms at the University of Electro-Communications (UEC) during open lab / open campus. It is not affiliated with the university. Always verify with the [official lab guide](https://www.uec.ac.jp/arc/laboguide.html).
 
-公開サイト（GitHub Pages を有効にしたあと）: https://shiori-02-14.github.io/ueclab/
+[公開サイト](https://shiori-02-14.github.io/ueclab/) · [このサイトについて / 利用規約](https://shiori-02-14.github.io/ueclab/about.html)
 
-[このサイトについて / 利用規約](web/about.html) · [TERMS.md](TERMS.md)
-
-運営ポリシーと利用規約の構成は、同じ大学コミュニティの [UEC Atlas](https://github.com/uec-atlas/uec-atlas) を参考にしています。
+運営ポリシーと利用規約の構成は [UEC Atlas](https://github.com/uec-atlas/uec-atlas) を参考にしました。UEC Atlas とは無関係の別プロジェクトです。
 
 ## できること
 
-- 研究室名・教員・分野・キーワード・号館の全文検索（`/` で検索欄へ）
+- 研究室名・教員・分野・キーワード・号館・出身地の全文検索（`/` で検索欄へ）
 - 類・教育プログラム・専攻・研究分野・号館・HP / 動画の有無で絞り込み
-- リスト / カード / 号館別の表示切替
-- 掲載順・名前・号館・更新日・気になる優先での並び替え
+- リスト / カード / **号館別**の表示切替（オープンラボ・オープンキャンパス向け）
+- 掲載順・名前・号館・出身地・更新日・気になる優先での並び替え
 - 詳細パネルから研究室 HP・動画・公式ラボガイド・メールへ
 - 「気になる」とメモ（この端末のブラウザにだけ保存。サーバには送りません）
 
-公開データは**名前・キーワード・居室・公開メール・リンク**と、公式ラボガイドの**写真 URL** までにしています。ラボガイドの本文は載せません。写真ファイルはリポジトリに置かず、公式サイト上の画像を参照します。連絡と研究内容の正本は公式ラボガイドと各研究室のサイトを見てください。
+公開データは**名前・キーワード・居室・公式ラボガイドに載っている出身地・公開メール・リンク**と、公式ラボガイドの**写真 URL** までにしています。ラボガイドの本文は載せません。写真ファイルはリポジトリに置かず、公式サイト上の画像を参照します。連絡と研究内容の正本は公式ラボガイドと各研究室のサイトを見てください。
 
 ## 動かし方
 
@@ -53,12 +51,9 @@ macOS では `ラボガイドを開く.command` でも `web/index.html` を開�
 
 ## 公開（GitHub Pages）
 
-`web/` を GitHub Pages で配信します。ブランチの `/docs` ではなく、Actions から上げます。
+`web/` を GitHub Pages で配信します。ブランチの `/docs` ではなく、Actions から上げます。リポジトリの **Settings → Pages → Source** は **GitHub Actions** です。`main` へ push すると `.github/workflows/pages.yml` が `web/` を公開します。
 
-1. GitHub のリポジトリで **Settings → Pages → Source** を **GitHub Actions** にする
-2. `main` へ push する（ワークフロー `.github/workflows/pages.yml` が `web/` を公開する）
-
-URL は `https://shiori-02-14.github.io/ueclab/` になります。手元で静的確認するときは `python3 server.py --build` のあと `web/` を配信してください。
+URL は https://shiori-02-14.github.io/ueclab/ です。手元で静的確認するときは `python3 server.py --build` のあと `web/` を配信してください。
 
 ## 構成
 
@@ -114,4 +109,4 @@ ueclab/
 
 Issue と Pull Request の送り方は [CONTRIBUTING.md](CONTRIBUTING.md) を見てください。
 
-作成・運営: [しおり🔖](https://shiori-02-14.github.io/Homepage/works.html)。関連プロジェクト: 大学データを Linked Open Data として公開している [UEC Atlas](https://github.com/uec-atlas/uec-atlas)。
+作成・運営: [しおり🔖](https://shiori-02-14.github.io/Homepage/works.html)。

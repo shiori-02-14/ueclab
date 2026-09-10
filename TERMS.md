@@ -1,8 +1,8 @@
 # 利用規約
 
-UEC ラボ（非公式）のサイトおよびデータは、以下の利用規約のもとで提供されます。画面上の案内は [このサイトについて](web/about.html) にもあります。作成・運営は [しおり🔖](https://shiori-02-14.github.io/Homepage/works.html) です。電気通信大学の公式なプロジェクトではありません。
+UEC ラボ（非公式）のサイトおよびデータは、以下の利用規約のもとで提供されます。画面上の案内は [このサイトについて](https://shiori-02-14.github.io/ueclab/about.html) にもあります。作成・運営は [しおり🔖](https://shiori-02-14.github.io/Homepage/works.html) です。電気通信大学の公式なプロジェクトではありません。
 
-運営ポリシーと利用規約の構成は、同じ大学コミュニティの [UEC Atlas](https://github.com/uec-atlas/uec-atlas) を参考にしています。
+運営ポリシーと利用規約の構成は [UEC Atlas](https://github.com/uec-atlas/uec-atlas) を参考にしました。UEC Atlas とは無関係の別プロジェクトです。
 
 最終更新: 2026-09-10
 

@@ -2,9 +2,9 @@
 
 Issue と Pull Request を歓迎します。このプロジェクトは [しおり🔖](https://shiori-02-14.github.io/Homepage/works.html) が作成しています。電気通信大学の公式プロジェクトではないので、大学を代表する表現は入れないでください。
 
-ソースコードは MIT、独自メタデータは CC BY-NC-SA 4.0 です。貢献するときは、このライセンスに同意したものとします。詳細は [TERMS.md](TERMS.md) と [このサイトについて](web/about.html) を見てください。
+ソースコードは MIT、独自メタデータは CC BY-NC-SA 4.0 です。貢献するときは、このライセンスに同意したものとします。詳細は [TERMS.md](TERMS.md) と [このサイトについて](https://shiori-02-14.github.io/ueclab/about.html) を見てください。
 
-運営の考え方は [UEC Atlas](https://github.com/uec-atlas/uec-atlas) を参考にしています。
+運営の考え方は [UEC Atlas](https://github.com/uec-atlas/uec-atlas) を参考にしました。UEC Atlas とは無関係の別プロジェクトです。
 
 ## 貢献の方法
 

@@ -586,9 +586,15 @@ select.sort {
 }
 .welcome[hidden] { display: none; }
 .welcome p { margin: 0; flex: 1 1 16em; min-width: 0; }
-.welcome button {
+.welcome-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 14px;
   margin-left: auto;
   flex-shrink: 0;
+  align-items: center;
+}
+.welcome button {
   border: 0;
   background: transparent;
   color: var(--accent);
@@ -1350,7 +1356,14 @@ select.sort {
     font-size: 13px;
     overflow-wrap: anywhere;
   }
-  .welcome { display: none !important; }
+  .welcome {
+    display: flex;
+    font-size: 12px;
+    padding: 8px 10px;
+    margin-bottom: 8px;
+    gap: 8px;
+  }
+  .welcome-actions { margin-left: 0; }
   .interest {
     display: flex;
     flex-wrap: wrap;
