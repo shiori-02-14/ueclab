@@ -65,6 +65,83 @@ const THEMES = [
   "シミュレーション",
 ];
 
+const SYN_GROUPS = [
+  ["AI", "人工知能", "機械学習", "深層学習", "ディープラーニング", "ニューラル", "生成AI", "ChatGPT", "LLM"],
+  ["ロボット", "robot", "ロボティクス", "robotics", "ヒューマノイド", "ソフトロボット"],
+  ["VR", "バーチャルリアリティ", "仮想現実", "AR", "MR", "XR", "メタバース"],
+  ["セキュリティ", "security", "情報セキュリティ", "暗号", "サイバー"],
+  ["IoT", "センサネットワーク", "センサー"],
+  ["データサイエンス", "ビッグデータ", "データマイニング", "データ分析"],
+  ["画像認識", "画像処理", "コンピュータビジョン", "映像"],
+  ["音声認識", "音声処理", "音声"],
+  ["自然言語処理", "NLP", "言語処理", "翻訳"],
+  ["脳", "脳科学", "神経", "認知科学", "認知"],
+  ["無線通信", "5G", "電波", "ワイヤレス"],
+  ["量子", "量子コンピュータ", "量子情報", "量子力学"],
+  ["レーザー", "光学", "フォトニクス", "光工学"],
+  ["ナノテクノロジー", "ナノテク", "ナノ材料"],
+  [
+    "ダイエット",
+    "体重",
+    "食生活",
+    "身体活動",
+    "エネルギーバランス",
+    "栄養",
+    "肥満",
+    "カロリー",
+    "フィットネス",
+    "食事",
+    "生活習慣",
+    "体重コントロール",
+    "基礎代謝",
+  ],
+  ["医療", "医用", "生体計測", "医用工学"],
+  ["宇宙", "航空", "衛星", "ロケット"],
+  ["教育", "学習支援", "eラーニング"],
+  ["プログラミング", "ソフトウェア", "コード"],
+  ["HCI", "インタフェース", "インタラクション", "UX"],
+  ["ゲーム", "エンタメ"],
+  ["超伝導", "超電導"],
+  ["シミュレーション", "数値計算", "HPC", "並列計算"],
+];
+
+function normSearch(text) {
+  return String(text || "")
+    .normalize("NFKC")
+    .toLowerCase()
+    .replace(/[\u3041-\u3096]/g, (ch) => String.fromCharCode(ch.charCodeAt(0) + 0x60))
+    .replace(/[ 　・、。,./／]/g, "");
+}
+
+function hasTerm(blob, term) {
+  if (!term) return false;
+  if (term.length >= 4 || /[^a-z0-9]/.test(term)) return blob.includes(term);
+  const safe = term.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+  return new RegExp(`(^|[^a-z0-9])${safe}([^a-z0-9]|$)`).test(blob);
+}
+
+const SYN_LOOKUP = (() => {
+  const map = new Map();
+  for (const group of SYN_GROUPS) {
+    const terms = [...new Set(group.map(normSearch).filter((t) => t.length >= 2))];
+    for (const term of terms) {
+      const cur = map.get(term) || [];
+      cur.push(terms);
+      map.set(term, cur);
+    }
+  }
+  return map;
+})();
+
+function tokenMatches(blob, token) {
+  const t = normSearch(token);
+  if (!t) return true;
+  if (hasTerm(blob, t)) return true;
+  const groups = SYN_LOOKUP.get(t);
+  if (!groups) return false;
+  return groups.some((aliases) => aliases.some((alias) => hasTerm(blob, alias)));
+}
+
 const state = {
   labs: [],
   saved: new Map(),
@@ -79,8 +156,8 @@ const state = {
   onlySaved: false,
   view: "list",
   sort: "guide",
+  sortDir: 1,
   selectedId: null,
-  compare: new Set(),
   tipHidden: false,
 };
 
@@ -103,8 +180,11 @@ function loadStore() {
     if (data && (data.view === "list" || data.view === "cards" || data.view === "building")) {
       state.view = data.view;
     }
-    if (data && ["guide", "name", "room", "updated"].includes(data.sort)) {
+    if (data && ["guide", "name", "room", "updated", "saved"].includes(data.sort)) {
       state.sort = data.sort;
+    }
+    if (data && (data.sortDir === 1 || data.sortDir === -1)) {
+      state.sortDir = data.sortDir;
     }
     if (data && Array.isArray(data.groups)) {
       state.groups = new Set(data.groups.filter((g) => GROUP_ORDER.includes(g)));
@@ -129,6 +209,7 @@ function persist() {
         items,
         view: state.view,
         sort: state.sort,
+        sortDir: state.sortDir,
         groups: [...state.groups],
         tipHidden: state.tipHidden,
       })
@@ -205,39 +286,43 @@ function matches(lab) {
   if (state.buildings.size && !lab.buildings.some((b) => state.buildings.has(b))) return false;
   if (state.hasHp && !lab.urls.length) return false;
   if (state.hasVideo && !lab.videos.length) return false;
-  const q = state.q.trim().toLowerCase();
+  const q = state.q.trim();
   if (!q) return true;
   const note = (state.saved.get(lab.id) || {}).memo || "";
-  const blob = [
-    lab.name,
-    lab.faculty,
-    lab.program,
-    lab.group,
-    lab.title,
-    lab.description,
-    lab.guidebook,
-    lab.room,
-    lab.message,
-    lab.email,
-    note,
-    ...(lab.keywords || []),
-    ...(lab.fields || []),
-    ...(lab.majors || []),
-  ]
-    .join("\n")
-    .toLowerCase();
-  return q.split(/\s+/).every((token) => blob.includes(token));
+  const blob = normSearch(
+    [
+      lab.name,
+      lab.faculty,
+      lab.program,
+      lab.group,
+      lab.title,
+      lab.guidebook,
+      lab.room,
+      note,
+      ...(lab.keywords || []),
+      ...(lab.fields || []),
+      ...(lab.majors || []),
+    ].join("\n")
+  );
+  return q.split(/\s+/).every((token) => tokenMatches(blob, token));
 }
 
 function filtered() {
   const rows = state.labs.filter(matches);
   const sorters = {
     guide: (a, b) => a.id - b.id,
-    name: (a, b) => a.name.localeCompare(b.name, "ja"),
-    updated: (a, b) => (b.updatedAt || "").localeCompare(a.updatedAt || ""),
-    room: (a, b) => (a.room || "zzz").localeCompare(b.room || "zzz", "ja"),
+    name: (a, b) => a.name.localeCompare(b.name, "ja") || a.id - b.id,
+    updated: (a, b) => (b.updatedAt || "").localeCompare(a.updatedAt || "") || a.id - b.id,
+    room: (a, b) => {
+      const aa = buildingRank(a.buildings[0] || a.room || "");
+      const bb = buildingRank(b.buildings[0] || b.room || "");
+      return aa[0] - bb[0] || aa[1] - bb[1] || (a.room || "").localeCompare(b.room || "", "ja") || a.id - b.id;
+    },
+    saved: (a, b) => Number(isSaved(b.id)) - Number(isSaved(a.id)) || a.id - b.id,
   };
-  return rows.sort(sorters[state.sort] || sorters.guide);
+  const cmp = sorters[state.sort] || sorters.guide;
+  const dir = state.sortDir < 0 ? -1 : 1;
+  return rows.sort((a, b) => cmp(a, b) * dir);
 }
 
 function activeFilterCount() {
@@ -367,10 +452,30 @@ function filterBlock(title, items, selected, onToggle, startOpen = false, displa
   return wrap;
 }
 
+function pruneFilters() {
+  const inGroup = state.labs.filter((lab) => !state.groups.size || state.groups.has(lab.group));
+  if (state.groups.size) {
+    const programs = new Set(inGroup.map((lab) => lab.program));
+    for (const program of [...state.programs]) {
+      if (!programs.has(program)) state.programs.delete(program);
+    }
+  }
+  const inProg = inGroup.filter((lab) => !state.programs.size || state.programs.has(lab.program));
+  const majors = new Set(inProg.flatMap((lab) => lab.majors || []));
+  const fields = new Set(inProg.flatMap((lab) => lab.fields || []));
+  const buildings = new Set(inProg.flatMap((lab) => lab.buildings || []));
+  for (const major of [...state.majors]) if (!majors.has(major)) state.majors.delete(major);
+  for (const field of [...state.fields]) if (!fields.has(field)) state.fields.delete(field);
+  for (const building of [...state.buildings]) if (!buildings.has(building)) state.buildings.delete(building);
+}
+
 function renderFilters() {
+  pruneFilters();
   const box = $("filters");
   box.replaceChildren();
   const all = state.labs;
+  const inGroup = all.filter((lab) => !state.groups.size || state.groups.has(lab.group));
+  const inProg = inGroup.filter((lab) => !state.programs.size || state.programs.has(lab.program));
 
   const head = document.createElement("div");
   head.className = "filters-head";
@@ -413,10 +518,11 @@ function renderFilters() {
   box.appendChild(
     filterBlock(
       "プログラム",
-      countsFor(all, (l) => l.program, PROGRAM_ORDER),
+      countsFor(inGroup, (l) => l.program, PROGRAM_ORDER),
       state.programs,
       (v, on) => {
         on ? state.programs.add(v) : state.programs.delete(v);
+        renderFilters();
         paint();
       },
       state.groups.size > 0 || state.programs.size > 0,
@@ -426,18 +532,20 @@ function renderFilters() {
   box.appendChild(
     filterBlock(
       "大学院（進学する人）",
-      countsFor(all, (l) => l.majors, MAJOR_ORDER),
+      countsFor(inProg, (l) => l.majors, MAJOR_ORDER),
       state.majors,
       (v, on) => {
         on ? state.majors.add(v) : state.majors.delete(v);
         paint();
-      }
+      },
+      false,
+      shortMajor
     )
   );
   box.appendChild(
     filterBlock(
       "興味のある分野",
-      countsFor(all, (l) => l.fields, FIELD_ORDER),
+      countsFor(inProg, (l) => l.fields, FIELD_ORDER),
       state.fields,
       (v, on) => {
         on ? state.fields.add(v) : state.fields.delete(v);
@@ -448,7 +556,7 @@ function renderFilters() {
   box.appendChild(
     filterBlock(
       "号館（見学）",
-      countsFor(all, (l) => l.buildings, "building"),
+      countsFor(inProg, (l) => l.buildings, "building"),
       state.buildings,
       (v, on) => {
         on ? state.buildings.add(v) : state.buildings.delete(v);
@@ -506,8 +614,13 @@ function shortProgram(name) {
   return String(name || "").replace(/プログラム$/, "");
 }
 
+function shortMajor(name) {
+  return String(name || "").replace(/専攻$/, "");
+}
+
 function groupLabel(lab) {
-  return lab.guidebook || shortGroup(lab.group) || lab.group || "";
+  const name = shortGroup(lab && lab.group) || (lab && lab.group) || "";
+  return String(name).replace(/[-−]\d+.*$/, "").trim();
 }
 
 function renderToolbar(n) {
@@ -591,14 +704,20 @@ function renderToolbar(n) {
     view.appendChild(b);
   }
 
+  const sortWrap = document.createElement("div");
+  sortWrap.className = "sort-field";
+  const sortLabel = document.createElement("span");
+  sortLabel.className = "sort-label";
+  sortLabel.textContent = "並び替え";
   const sort = document.createElement("select");
   sort.className = "sort";
   sort.setAttribute("aria-label", "並び替え");
   for (const [v, t] of [
     ["guide", "掲載順"],
-    ["name", "名前順"],
-    ["room", "号館順"],
-    ["updated", "新しい順"],
+    ["name", "研究室の名前"],
+    ["room", "号館・部屋"],
+    ["updated", "更新が新しい"],
+    ["saved", "気になるを上に"],
   ]) {
     const o = document.createElement("option");
     o.value = v;
@@ -608,13 +727,27 @@ function renderToolbar(n) {
   }
   sort.addEventListener("change", () => {
     state.sort = sort.value;
+    state.sortDir = 1;
     persist();
     paint();
   });
+  const dir = document.createElement("button");
+  dir.type = "button";
+  dir.className = "sort-dir" + (state.sortDir < 0 ? " on" : "");
+  dir.setAttribute("aria-pressed", state.sortDir < 0 ? "true" : "false");
+  dir.setAttribute("aria-label", state.sortDir < 0 ? "逆順を解除" : "逆順にする");
+  dir.title = state.sortDir < 0 ? "いま逆順です。押すと元に戻します" : "逆順にする";
+  dir.textContent = "逆順";
+  dir.addEventListener("click", () => {
+    state.sortDir = state.sortDir < 0 ? 1 : -1;
+    persist();
+    paint();
+  });
+  sortWrap.append(sortLabel, sort, dir);
 
   const tools = document.createElement("div");
   tools.className = "toolbar-end";
-  tools.append(count, view, sort);
+  tools.append(count, view, sortWrap);
   bar.appendChild(tools);
 }
 
@@ -732,27 +865,11 @@ function renderActiveFilters() {
 }
 
 function thumbEl(lab) {
-  if (!lab.image) {
-    const ph = document.createElement("div");
-    ph.className = "thumb-ph";
-    ph.setAttribute("aria-hidden", "true");
-    ph.textContent = (lab.faculty || lab.name || "?").trim().charAt(0);
-    return ph;
-  }
-  const img = document.createElement("img");
-  img.className = "thumb";
-  img.alt = "";
-  img.loading = "lazy";
-  img.referrerPolicy = "no-referrer";
-  img.src = lab.image;
-  img.addEventListener("error", () => {
-    const ph = document.createElement("div");
-    ph.className = "thumb-ph";
-    ph.setAttribute("aria-hidden", "true");
-    ph.textContent = (lab.faculty || lab.name || "?").trim().charAt(0);
-    img.replaceWith(ph);
-  });
-  return img;
+  const ph = document.createElement("div");
+  ph.className = "thumb-ph";
+  ph.setAttribute("aria-hidden", "true");
+  ph.textContent = (lab.faculty || lab.name || "?").trim().charAt(0);
+  return ph;
 }
 
 function alsoLabel(lab) {
@@ -979,16 +1096,9 @@ function section(title) {
   return wrap;
 }
 
-function mailLink(lab) {
-  const a = document.createElement("a");
-  a.href =
-    "mailto:" +
-    lab.email +
-    "?subject=" +
-    encodeURIComponent(lab.name + "の見学について");
-  a.textContent = "メールで問い合わせ";
-  a.className = lab.urls.length ? "" : "primary";
-  return a;
+function firstHttp(text) {
+  const m = String(text || "").match(/https?:\/\/[^\s]+/);
+  return m ? m[0] : "";
 }
 
 function renderDetail(lab, { focusClose } = {}) {
@@ -1011,14 +1121,6 @@ function renderDetail(lab, { focusClose } = {}) {
 
   const hero = document.createElement("div");
   hero.className = "detail-hero";
-  if (lab.image) {
-    const img = document.createElement("img");
-    img.className = "hero";
-    img.alt = lab.faculty || "";
-    img.referrerPolicy = "no-referrer";
-    img.src = lab.image;
-    hero.appendChild(img);
-  }
   const heroText = document.createElement("div");
   heroText.className = "detail-hero-text";
   const kicker = document.createElement("div");
@@ -1046,32 +1148,6 @@ function renderDetail(lab, { focusClose } = {}) {
     paint();
     renderDetail(lab, { focusClose: false });
   });
-  const cmp = document.createElement("button");
-  cmp.type = "button";
-  const inCompare = state.compare.has(lab.id);
-  const compareFull = !inCompare && state.compare.size >= 3;
-  cmp.className = "cmp-btn" + (inCompare ? " on" : "");
-  cmp.textContent = inCompare ? "比較から外す" : compareFull ? "比較は3件まで" : "ほかとくらべる";
-  cmp.disabled = compareFull;
-  cmp.title = "最大3件まで並べて見られます";
-  cmp.addEventListener("click", () => {
-    if (state.compare.has(lab.id)) state.compare.delete(lab.id);
-    else {
-      if (state.compare.size >= 3) return;
-      state.compare.add(lab.id);
-    }
-    renderCompare();
-    renderDetail(lab, { focusClose: false });
-  });
-
-  if (lab.message) {
-    const sec = section("先生からのメッセージ");
-    const msg = document.createElement("div");
-    msg.className = "msg";
-    msg.textContent = lab.message;
-    sec.appendChild(msg);
-    bodyWrap.appendChild(sec);
-  }
 
   if (lab.keywords?.length) {
     const sec = section("キーワード");
@@ -1101,7 +1177,9 @@ function renderDetail(lab, { focusClose } = {}) {
     if (i === 0) a.classList.add("primary");
     links.appendChild(a);
   });
-  if (lab.email) links.appendChild(mailLink(lab));
+  const officialBtn = linkBtn("https://www.uec.ac.jp/arc/laboguide.html", "公式ラボガイドで見る");
+  if (!lab.urls.length) officialBtn.classList.add("primary");
+  links.appendChild(officialBtn);
   lab.videos.forEach((u, i) => links.appendChild(linkBtn(u, lab.videos.length > 1 ? `動画 ${i + 1}` : "紹介動画を見る")));
   lab.extraUrls.forEach((u) => links.appendChild(linkBtn(u, "追加リンク")));
   lab.yumenabi.forEach((u) => links.appendChild(linkBtn(u, "夢ナビ")));
@@ -1115,26 +1193,18 @@ function renderDetail(lab, { focusClose } = {}) {
   }
   const contactHint = document.createElement("p");
   contactHint.className = "save-hint";
-  contactHint.textContent = lab.email
-    ? "メールする前に、研究室HPの連絡方法があればそちらを優先してください。"
-    : "連絡方法は研究室HPを見てください。";
+  contactHint.textContent =
+    "メールアドレスと顔写真、ラボガイドの本文は掲載していません。連絡方法と研究内容は研究室HPか公式ラボガイドを見てください。";
   next.appendChild(contactHint);
   const official = document.createElement("p");
   official.className = "save-hint";
-  official.append("このページは非公式です。正本は ");
-  official.appendChild(linkBtn("https://www.uec.ac.jp/arc/laboguide.html", "公式ラボガイド"));
-  official.append(" を確認してください。");
+  official.append("このページは非公式です。 ");
+  const about = document.createElement("a");
+  about.href = "about.html";
+  about.textContent = "このサイトについて";
+  official.appendChild(about);
   next.appendChild(official);
   bodyWrap.appendChild(next);
-
-  if (lab.description) {
-    const sec = section("どんな研究？");
-    const body = document.createElement("p");
-    body.className = "body";
-    body.textContent = lab.description;
-    sec.appendChild(body);
-    bodyWrap.appendChild(sec);
-  }
 
   const kv = document.createElement("dl");
   kv.className = "kv";
@@ -1150,6 +1220,14 @@ function renderDetail(lab, { focusClose } = {}) {
     dt.textContent = k;
     const dd = document.createElement("dd");
     dd.textContent = v || "—";
+    kv.append(dt, dd);
+  }
+  const syllabus = firstHttp(lab.roomSource);
+  if (syllabus) {
+    const dt = document.createElement("dt");
+    dt.textContent = "居室の出典";
+    const dd = document.createElement("dd");
+    dd.appendChild(linkBtn(syllabus, "公開シラバス"));
     kv.append(dt, dd);
   }
   if (lab.alsoIds.length) {
@@ -1173,20 +1251,6 @@ function renderDetail(lab, { focusClose } = {}) {
   info.appendChild(kv);
   bodyWrap.appendChild(info);
 
-  if (lab.strength || lab.trouble || lab.birthplace?.length || lab.hobbies?.length) {
-    const extra = document.createElement("p");
-    extra.className = "extra-note";
-    extra.textContent = [
-      lab.birthplace?.length ? "出身・ゆかり: " + lab.birthplace.join(" / ") : "",
-      lab.hobbies?.length ? "趣味: " + lab.hobbies.join("、") : "",
-      lab.strength ? "自慢: " + lab.strength : "",
-      lab.trouble ? "あるある: " + lab.trouble : "",
-    ]
-      .filter(Boolean)
-      .join("　");
-    bodyWrap.appendChild(extra);
-  }
-
   const saveSec = section("自分用メモ");
   const memo = document.createElement("textarea");
   memo.className = "memo";
@@ -1209,134 +1273,10 @@ function renderDetail(lab, { focusClose } = {}) {
 
   const foot = document.createElement("div");
   foot.className = "detail-foot";
-  foot.append(fav, cmp);
-  if (state.compare.size >= 2) {
-    const go = document.createElement("button");
-    go.type = "button";
-    go.className = "go-compare";
-    go.textContent = `${state.compare.size}件を並べて見る`;
-    go.addEventListener("click", showCompareTable);
-    foot.appendChild(go);
-  }
+  foot.append(fav);
 
   el.append(bar, scroll, foot);
   if (focusClose) close.focus();
-}
-
-function renderCompare() {
-  const bar = $("compare");
-  if (!state.compare.size) {
-    bar.hidden = true;
-    bar.replaceChildren();
-    return;
-  }
-  bar.hidden = false;
-  bar.replaceChildren();
-  const label = document.createElement("div");
-  label.className = "compare-label";
-  label.textContent = `くらべる ${state.compare.size}/3`;
-  const items = document.createElement("div");
-  items.className = "compare-items";
-  for (const id of state.compare) {
-    const lab = byId(id);
-    const b = document.createElement("button");
-    b.type = "button";
-    b.textContent = (lab.name.replace(/ 研究室$/, "") || lab.name) + " ×";
-    b.title = "比較から外す";
-    b.addEventListener("click", () => {
-      state.compare.delete(id);
-      renderCompare();
-      if (state.selectedId) renderDetail(byId(state.selectedId));
-    });
-    items.appendChild(b);
-  }
-  const go = document.createElement("button");
-  go.type = "button";
-  go.className = "go";
-  go.textContent = state.compare.size < 2 ? "もう1件選ぶ" : "並べて見る";
-  go.disabled = state.compare.size < 2;
-  go.addEventListener("click", showCompareTable);
-  bar.append(label, items, go);
-}
-
-function showCompareTable() {
-  const labs = [...state.compare].map(byId).filter(Boolean);
-  const root = $("detail-root");
-  const el = $("detail");
-  document.body.classList.add("detail-open");
-  root.hidden = false;
-  el.replaceChildren();
-  const bar = document.createElement("div");
-  bar.className = "detail-bar";
-  const barName = document.createElement("div");
-  barName.className = "detail-bar-name";
-  barName.textContent = "研究室比較";
-  const close = document.createElement("button");
-  close.type = "button";
-  close.className = "close";
-  close.textContent = "閉じる";
-  close.addEventListener("click", closeDetail);
-  bar.append(barName, close);
-  const wrap = document.createElement("div");
-  wrap.className = "table-wrap detail-scroll";
-  wrap.style.padding = "16px 20px";
-  const table = document.createElement("table");
-  table.className = "compare-table";
-  const fields = [
-    ["研究室", (l) => l.name],
-    ["研究テーマ", (l) => l.title],
-    ["プログラム", (l) => shortProgram(l.program)],
-    ["居室", (l) => l.room || "—"],
-    ["キーワード", (l) => (l.keywords || []).join("、")],
-    ["メッセージ", (l) => l.message || "—"],
-    ["HP", (l) => l.urls[0] || "なし"],
-    ["メール", (l) => l.email || ""],
-    ["概要", (l) => l.description],
-  ];
-  const thead = document.createElement("thead");
-  const hr = document.createElement("tr");
-  hr.appendChild(document.createElement("th"));
-  for (const lab of labs) {
-    const th = document.createElement("th");
-    const b = document.createElement("button");
-    b.type = "button";
-    b.className = "linkish";
-    b.textContent = lab.name;
-    b.addEventListener("click", () => openLab(lab.id));
-    th.appendChild(b);
-    hr.appendChild(th);
-  }
-  thead.appendChild(hr);
-  const tb = document.createElement("tbody");
-  for (const [label, fn] of fields) {
-    const tr = document.createElement("tr");
-    const th = document.createElement("th");
-    th.textContent = label;
-    tr.appendChild(th);
-    for (const lab of labs) {
-      const td = document.createElement("td");
-      const val = fn(lab);
-      if (label === "HP" && String(val).startsWith("http")) {
-        const a = document.createElement("a");
-        a.href = val;
-        a.target = "_blank";
-        a.rel = "noopener noreferrer";
-        a.textContent = "開く";
-        td.appendChild(a);
-      } else if (label === "メール" && val) {
-        const a = document.createElement("a");
-        a.href = "mailto:" + val;
-        a.textContent = val;
-        td.appendChild(a);
-      } else td.textContent = val;
-      tr.appendChild(td);
-    }
-    tb.appendChild(tr);
-  }
-  table.append(thead, tb);
-  wrap.appendChild(table);
-  el.append(bar, wrap);
-  if (!isCompact()) close.focus();
 }
 
 function paint() {
@@ -1345,7 +1285,6 @@ function paint() {
   renderWelcome();
   renderInterest();
   renderResults();
-  renderCompare();
   if (state.selectedId) markActiveCard(state.selectedId);
 }
 

@@ -4,11 +4,21 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
     <meta name="description" content="電気通信大学の研究室を探す非公式サイトです。大学公式ではありません。正本は公式ラボガイドを確認してください。" />
-    <meta name="theme-color" content="#1d4f91" />
+    <meta name="theme-color" content="#17288B" />
     <title>UEC ラボ（非公式）</title>
+    <link rel="icon" href="favicon.png" type="image/png" />
+    <link rel="apple-touch-icon" href="apple-touch-icon.png" />
+    <meta property="og:image" content="https://shiori-02-14.github.io/ueclab/logo.png" />
+    <meta property="og:title" content="UEC ラボ（非公式）" />
+    <meta property="og:description" content="電気通信大学の研究室を探す非公式サイトです。大学公式ではありません。正本は公式ラボガイドを確認してください。" />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="ja_JP" />
+    <meta name="twitter:card" content="summary" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      rel="icon"
-      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%231d4f91'/%3E%3Ctext x='16' y='22' text-anchor='middle' fill='white' font-size='15' font-family='sans-serif' font-weight='700'%3EU%3C/text%3E%3C/svg%3E"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&family=Noto+Sans+JP:wght@400;500;700&display=swap"
+      rel="stylesheet"
     />
     <link rel="stylesheet" href="styles.css" />
   </head>
@@ -16,11 +26,20 @@
     <a class="skip" href="#results">一覧へスキップ</a>
 
     <header class="top">
-      <div class="brand">
-        <p class="eyebrow">電気通信大学 · 非公式</p>
-        <h1>UEC ラボ <span class="unofficial">非公式</span></h1>
-        <p class="lede">大学の公式サイトではありません</p>
-      </div>
+      <nav class="site-nav" aria-label="サイト">
+        <a class="site-logo" href="index.html" aria-label="UEC ラボ ホーム">
+          <img class="site-logo-img" src="logo.png" alt="UEC ラボ" width="873" height="264" />
+          <span class="unofficial">非公式</span>
+        </a>
+        <ul class="site-menu">
+          <li><a href="index.html" aria-current="page">探す</a></li>
+          <li><a href="about.html">About</a></li>
+          <li class="nav-extra">
+            <a href="https://github.com/shiori-02-14/ueclab" target="_blank" rel="noopener noreferrer">GitHub</a>
+          </li>
+        </ul>
+      </nav>
+      <h1 class="sr">UEC ラボ（非公式）</h1>
       <label class="search">
         <svg class="search-icon" viewBox="0 0 24 24" aria-hidden="true">
           <circle cx="10.5" cy="10.5" r="6.5" fill="none" stroke="currentColor" stroke-width="1.8" />
@@ -43,9 +62,16 @@
       <div class="top-stats" id="top-stats"></div>
       <p class="site-notice">
         <strong>非公式</strong>
-        このページは大学・公式ラボガイドとは無関係です。情報の正本は
-        <a href="https://www.uec.ac.jp/arc/laboguide.html" target="_blank" rel="noopener noreferrer">公式ラボガイド</a>
-        を確認してください。
+        <span class="notice-long">
+          このページは大学・公式ラボガイドとは無関係です。情報の正本は
+          <a href="https://www.uec.ac.jp/arc/laboguide.html" target="_blank" rel="noopener noreferrer">公式ラボガイド</a>
+          を確認してください。
+          <a href="about.html">このサイトについて</a>
+        </span>
+        <span class="notice-short">
+          大学公式ではありません。正本は
+          <a href="https://www.uec.ac.jp/arc/laboguide.html" target="_blank" rel="noopener noreferrer">公式ラボガイド</a>。
+        </span>
       </p>
     </header>
 
@@ -58,10 +84,29 @@
         <div class="active-filters" id="active-filters" hidden></div>
         <p class="view-hint" id="view-hint" hidden></p>
         <div id="results" class="results"></div>
-        <p class="site-foot">
-          有志による非公式の研究室検索です。電気通信大学は運営に関与していません。
-          <a href="https://www.uec.ac.jp/arc/laboguide.html" target="_blank" rel="noopener noreferrer">公式ラボガイド</a>
-        </p>
+        <footer class="site-foot">
+          <div class="foot-brand">
+            <a class="site-logo" href="index.html" aria-label="UEC ラボ ホーム">
+              <img class="site-logo-img" src="logo.png" alt="UEC ラボ" width="873" height="264" />
+            </a>
+            <p>
+              <a href="https://shiori-02-14.github.io/Homepage/works.html" target="_blank" rel="noopener noreferrer">しおり</a>
+              による非公式の研究室検索です。電気通信大学は運営に関与していません。
+            </p>
+          </div>
+          <nav aria-label="Documents">
+            <h2 class="foot-title">Documents</h2>
+            <a href="about.html">About</a>
+            <a href="about.html#terms">利用規約</a>
+            <a href="https://github.com/shiori-02-14/ueclab" target="_blank" rel="noopener noreferrer">GitHub</a>
+          </nav>
+          <nav aria-label="Links">
+            <h2 class="foot-title">Links</h2>
+            <a href="https://www.uec.ac.jp/arc/laboguide.html" target="_blank" rel="noopener noreferrer">公式ラボガイド</a>
+            <a href="https://shiori-02-14.github.io/Homepage/works.html" target="_blank" rel="noopener noreferrer">しおり</a>
+            <a href="https://uec-atlas.org/about/" target="_blank" rel="noopener noreferrer">UEC Atlas</a>
+          </nav>
+        </footer>
       </main>
     </div>
 
@@ -72,7 +117,6 @@
       <article class="detail" id="detail" role="dialog" aria-modal="true" aria-labelledby="detail-title"></article>
     </div>
 
-    <div class="compare" id="compare" hidden></div>
     <script src="labs-data.js"></script>
     <script src="app.js"></script>
   </body>

@@ -1,0 +1,5 @@
+blank_issues_enabled: true
+contact_links:
+  - name: 公式ラボガイド
+    url: https://www.uec.ac.jp/arc/laboguide.html
+    about: 大学公式の研究室情報はこちらです。このリポジトリでは公式サイト本体を修正できません。

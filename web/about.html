@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta
+      name="description"
+      content="UEC ラボは電気通信大学の非公式研究室ブラウザです。大学公式ではありません。運営ポリシーと利用規約を掲載しています。"
+    />
+    <meta name="theme-color" content="#17288B" />
+    <title>About | UEC ラボ（非公式）</title>
+    <link rel="icon" href="favicon.png" type="image/png" />
+    <link rel="apple-touch-icon" href="apple-touch-icon.png" />
+    <meta property="og:title" content="About | UEC ラボ（非公式）" />
+    <meta property="og:description" content="UEC ラボは電気通信大学の非公式研究室ブラウザです。大学公式ではありません。運営ポリシーと利用規約を掲載しています。" />
+    <meta property="og:image" content="https://shiori-02-14.github.io/ueclab/logo.png" />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="ja_JP" />
+    <meta name="twitter:card" content="summary" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&family=Noto+Sans+JP:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body class="doc">
+    <a class="skip" href="#doc">本文へスキップ</a>
+
+    <nav class="site-nav" aria-label="サイト">
+      <a class="site-logo" href="index.html" aria-label="UEC ラボ ホーム">
+        <img class="site-logo-img" src="logo.png" alt="UEC ラボ" width="873" height="264" />
+        <span class="unofficial">非公式</span>
+      </a>
+      <ul class="site-menu">
+        <li><a href="index.html">探す</a></li>
+        <li><a href="about.html" aria-current="page">About</a></li>
+        <li class="nav-extra">
+          <a href="https://github.com/shiori-02-14/ueclab" target="_blank" rel="noopener noreferrer">GitHub</a>
+        </li>
+      </ul>
+    </nav>
+
+    <p class="site-notice">
+      <strong>非公式</strong>
+      <span class="notice-long">
+        このページは大学・公式ラボガイドとは無関係です。情報の正本は
+        <a href="https://www.uec.ac.jp/arc/laboguide.html" target="_blank" rel="noopener noreferrer">公式ラボガイド</a>
+        を確認してください。
+      </span>
+      <span class="notice-short">
+        大学公式ではありません。正本は
+        <a href="https://www.uec.ac.jp/arc/laboguide.html" target="_blank" rel="noopener noreferrer">公式ラボガイド</a>。
+      </span>
+    </p>
+
+    <main class="doc-main" id="doc">
+      <nav class="crumbs" aria-label="パンくずリスト">
+        <ol>
+          <li><a href="index.html">Home</a></li>
+          <li aria-current="page">About</li>
+        </ol>
+      </nav>
+
+      <section id="overview">
+        <h1>About UEC ラボ</h1>
+        <h2 id="about">UEC ラボとは</h2>
+        <p>
+          UEC ラボは、電気通信大学の研究室を、配属先探し向けに検索しやすくした<strong class="nowrap">非公式</strong>のブラウザです。
+        </p>
+        <p>
+          電気通信大学の学生には、大学生活を支えるアプリケーションを自分たちで作る文化があります。公式ラボガイドの情報は公開されていますが、類・号館・キーワードから横断して探すには手間がかかります。本プロジェクトは、すでに公開されている情報を組み合わせて検索できるようにすることで、研究室選びを少し楽にすることを目指しています。
+        </p>
+        <p>
+          このプロジェクトは
+          <a href="https://shiori-02-14.github.io/Homepage/works.html" target="_blank" rel="noopener noreferrer">しおり</a>
+          が作成・運営しています。<strong>電気通信大学の公式なサイトではありません</strong>。大学は運営・監修・後援していません。情報の正確性や完全性は保証しないため、連絡・見学・出願の前には必ず公式ラボガイドと各研究室のサイトを確認してください。
+        </p>
+      </section>
+
+      <section>
+        <h2 id="operator">運営</h2>
+        <p>
+          運営は
+          <a href="https://shiori-02-14.github.io/Homepage/works.html" target="_blank" rel="noopener noreferrer">しおり</a>
+          です。他の作品は
+          <a href="https://shiori-02-14.github.io/Homepage/works.html" target="_blank" rel="noopener noreferrer">作品一覧</a>
+          を見てください。本サイトに関する連絡は、
+          <a href="https://github.com/shiori-02-14/ueclab/issues" target="_blank" rel="noopener noreferrer">GitHub の Issue</a>
+          へお願いします。
+        </p>
+      </section>
+
+      <section>
+        <h2 id="sources">データの出典</h2>
+        <p>データの出典と関連ドキュメントは、以下を参照してください。</p>
+        <ul>
+          <li>
+            <a href="https://www.uec.ac.jp/arc/laboguide.html" target="_blank" rel="noopener noreferrer">公式ラボガイド</a>
+            （2026-09-10 時点の公開情報。大学から提供を受けた内部データではありません）
+          </li>
+          <li><code>https://www.uec.ac.jp/arc/assets/labs.json</code>（タイトル・キーワード・公開 URL。本文と写真は取り込んでいません）</li>
+          <li>公開シラバス（居室。連絡先のメールは掲載していません）</li>
+          <li>
+            <a href="https://github.com/shiori-02-14/ueclab" target="_blank" rel="noopener noreferrer">GitHub</a>
+            （ソースコード）
+          </li>
+        </ul>
+      </section>
+
+      <section>
+        <h2 id="policy">運営ポリシー</h2>
+        <p>UEC ラボは、以下のポリシーに基づいて運営されます。</p>
+        <dl class="doc-policy">
+          <div>
+            <dt>オープンアクセス</dt>
+            <dd>すべてのデータは、以下に定める利用規約のもとで、誰でも自由にアクセス、利用、共有できます。</dd>
+          </div>
+          <div>
+            <dt>コミュニティ主導</dt>
+            <dd>誰もがデータの収集、検証、更新に参加できる仕組みを提供し、継続的な改善を図ります。</dd>
+          </div>
+          <div>
+            <dt>情報保護</dt>
+            <dd>
+              未公開の顔写真、学内限定の連絡先、成績など、公開されていない個人情報は扱いません。
+              公式ラボガイドの本文、教員の顔写真、メールアドレスも再掲載しません。
+              公開するのは研究室名・教員名・類・プログラム・キーワード・居室と、研究室 HP など公開 URL へのリンクまでです。
+              取り下げの依頼があれば対応します。
+            </dd>
+          </div>
+          <div>
+            <dt>情報の収集</dt>
+            <dd>
+              大学の公式 Web サイト、または学内機関の公式 Web サイト等から収集された情報をもとにデータを生成し、必要に応じて加筆・修正を行います。収集にあたっては、過度なサーバー負荷を避けるように、リクエスト数や間隔の制御およびローカルキャッシュの利用を行います。
+            </dd>
+          </div>
+        </dl>
+      </section>
+
+      <section>
+        <h2 id="correction">データの修正・削除</h2>
+        <p>
+          誤りや不足がある場合、掲載の取り下げを希望する場合は、
+          <a href="https://github.com/shiori-02-14/ueclab/issues" target="_blank" rel="noopener noreferrer">GitHub の Issue</a>
+          または Pull Request を作成して報告・修正にご協力ください。公式ラボガイド本体の修正は、大学の公式窓口へお願いします。
+        </p>
+      </section>
+
+      <section>
+        <h1 id="terms">利用規約</h1>
+        <p>
+          UEC ラボのデータは、以下の利用規約のもとで提供されます。リポジトリ上の全文は
+          <a href="https://github.com/shiori-02-14/ueclab/blob/main/TERMS.md" target="_blank" rel="noopener noreferrer">TERMS.md</a>
+          です。
+        </p>
+
+        <h2 id="disclaimer">免責事項</h2>
+        <p>
+          本プロジェクトのデータおよびソフトウェアは、現状のまま提供されます。UEC ラボは、データの正確性、完全性、信頼性を保証しません。データの利用により生じたいかなる損害についても、一切責任を負いません。
+        </p>
+        <p>また、データ構造の変更やデータの削除等を予告なく行うことがあります。あらかじめご了承ください。</p>
+
+        <h2 id="license">ライセンス・著作権</h2>
+        <p>
+          本プロジェクトが公開するデータは、電気通信大学の公式 Web サイト、または学内機関の公式 Web サイトから収集された情報をもとにしており、これらの情報に関連する著作権は各公開元に帰属します。
+        </p>
+        <p>
+          本プロジェクトが独自に生成・付与したメタデータおよびデータ構造は、
+          <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.ja" target="_blank" rel="noopener noreferrer">CC BY-NC-SA 4.0</a>
+          ライセンスのもとで提供されます。ただし、電気通信大学の学生および教職員によるデータの利用は、本規約において非営利利用の範囲内であるとみなします。
+        </p>
+        <p>
+          Web サイトおよびデータの加工・公開に関するソースコードの著作権は、本プロジェクトの参加者に帰属し、
+          <a href="https://github.com/shiori-02-14/ueclab/blob/main/LICENSE" target="_blank" rel="noopener noreferrer">MIT ライセンス</a>
+          のもとで提供されます。
+        </p>
+        <p>
+          本プロジェクトが提供するデータを利用して作成された、データの二次的著作物（加工・改変したデータ）の利用・配布にあたっても、CC BY-NC-SA 4.0 が適用されます。
+        </p>
+        <p>
+          ただし、本データを読み込んで利用し、またはビルド時に組み込んで動作するアプリケーションのソースコードについては、データの二次的著作物とはみなしません。開発者は、プログラム部分に対して MIT や GPL などの任意のライセンスを独自に設定して公開・配布できます。アプリケーション内に含まれるデータそのものに対する制約（BY-NC-SA、および元データの権利者に帰属する著作権）は維持されます。
+        </p>
+
+        <h2 id="prohibited">禁止事項</h2>
+        <p>UEC ラボのデータを利用する際には、以下の行為を禁止します。</p>
+        <ul>
+          <li>プロジェクトの趣旨に反する商業利用をすること</li>
+          <li>電気通信大学の公式なプロジェクトであるかのように誤認される方法で、本プロジェクトやそのデータを利用すること</li>
+          <li>本プロジェクトや大学公式サイトに過度な負荷をかけること</li>
+          <li>本プロジェクトが提供するデータを悪用して、第三者のプライバシーを侵害すること</li>
+          <li>掲載情報やリンク先の連絡先への無差別な勧誘、宣伝、迷惑メール</li>
+          <li>その他、法令や公序良俗に反する行為</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2 id="privacy">この端末に残る情報</h2>
+        <p>
+          「気になる」研究室とメモは、この端末のブラウザ（<code>localStorage</code>）にだけ保存します。サーバへは送りません。アカウントはありません。
+        </p>
+        <p>
+          運営ポリシーと利用規約の構成は、同じ大学コミュニティの
+          <a href="https://uec-atlas.org/about/" target="_blank" rel="noopener noreferrer">UEC Atlas</a>
+          を参考にしています。
+        </p>
+      </section>
+    </main>
+
+    <footer class="site-foot">
+      <div class="foot-brand">
+        <a class="site-logo" href="index.html" aria-label="UEC ラボ ホーム">
+          <img class="site-logo-img" src="logo.png" alt="UEC ラボ" width="873" height="264" />
+        </a>
+        <p>
+          <a href="https://shiori-02-14.github.io/Homepage/works.html" target="_blank" rel="noopener noreferrer">しおり</a>
+          による非公式の研究室検索です。電気通信大学は運営に関与していません。
+        </p>
+      </div>
+      <nav aria-label="Documents">
+        <h2 class="foot-title">Documents</h2>
+        <a href="about.html">About</a>
+        <a href="about.html#terms">利用規約</a>
+        <a href="https://github.com/shiori-02-14/ueclab" target="_blank" rel="noopener noreferrer">GitHub</a>
+      </nav>
+      <nav aria-label="Links">
+        <h2 class="foot-title">Links</h2>
+        <a href="https://www.uec.ac.jp/arc/laboguide.html" target="_blank" rel="noopener noreferrer">公式ラボガイド</a>
+        <a href="https://shiori-02-14.github.io/Homepage/works.html" target="_blank" rel="noopener noreferrer">しおり</a>
+        <a href="https://uec-atlas.org/about/" target="_blank" rel="noopener noreferrer">UEC Atlas</a>
+      </nav>
+    </footer>
+  </body>
+</html>

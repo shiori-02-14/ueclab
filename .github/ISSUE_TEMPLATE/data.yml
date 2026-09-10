@@ -1,0 +1,31 @@
+name: データの修正・取り下げ
+description: 掲載の誤り、不足、またはデータの削除を依頼します
+title: "[データ] "
+labels: ["data"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        このサイトは非公式です。公式ラボガイド本体の修正は大学の公式窓口へお願いします。
+  - type: dropdown
+    id: kind
+    attributes:
+      label: 種類
+      options:
+        - 誤りの報告
+        - 不足の指摘
+        - 掲載の取り下げ
+    validations:
+      required: true
+  - type: input
+    id: lab
+    attributes:
+      label: 研究室名
+      placeholder: 例: ○○ 研究室
+  - type: textarea
+    id: detail
+    attributes:
+      label: 内容
+      description: どの項目か、正しい情報、出典 URL があれば書いてください。取り下げの場合は対象（氏名、居室、リンクなど）を特定してください。既存 ID を変える提案なら、その理由も書いてください。
+    validations:
+      required: true

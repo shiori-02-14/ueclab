@@ -16,12 +16,34 @@ ROOT = Path(__file__).resolve().parent
 WEB = ROOT / "web"
 DATA = ROOT / "data"
 CATALOG = ROOT / "catalog.csv"
-EMAILS = ROOT / "emails.csv"
 OFFICIAL = DATA / "official-labs.json"
 PORT = int(sys.argv[1]) if len(sys.argv) > 1 and sys.argv[1].isdigit() else 8765
+# 公開してよい備考キー。本文・写真・メッセージなど転載リスクのある項目は載せない
+BIKO_KEEP = {
+    "専攻",
+    "ラボガイド番号",
+    "ラボガイド更新",
+    "出典",
+    "居室出典",
+    "出張講義",
+    "VideoUEC",
+    "夢ナビ",
+    "追加URL",
+}
 
 NUM_PREFIX = re.compile(r"^\d+\.")
 BUILDING_RE = re.compile(r"[東西]\d+号館")
+# UEC Atlas の people 正規化に合わせた異体字
+KANJI_VARIANT = str.maketrans({
+    "廣": "広",
+    "髙": "高",
+    "邉": "辺",
+    "邊": "辺",
+    "﨑": "崎",
+    "𠮷": "吉",
+    "萓": "萱",
+    "兒": "児",
+})
 
 
 def strip_num(value: str) -> str:
@@ -36,7 +58,8 @@ def clean_field(value: str) -> str:
 
 
 def norm_name(value: str) -> str:
-    return re.sub(r"[\s　]+", " ", (value or "").strip())
+    text = re.sub(r"[\s　]+", " ", (value or "").strip())
+    return text.translate(KANJI_VARIANT)
 
 
 def parse_biko(raw: str) -> dict[str, str]:
@@ -57,6 +80,44 @@ def parse_biko(raw: str) -> dict[str, str]:
     return parsed
 
 
+def slim_catalog_biko(raw: str) -> str:
+    kept: list[str] = []
+    for part in (raw or "").split(" ｜ "):
+        part = part.strip()
+        if not part:
+            continue
+        if ": " in part:
+            key, val = part.split(": ", 1)
+        elif ":" in part:
+            key, val = part.split(":", 1)
+        else:
+            kept.append(part)
+            continue
+        if key.strip() in BIKO_KEEP:
+            kept.append(f"{key.strip()}: {val.strip()}")
+    return " ｜ ".join(kept)
+
+
+def slim_official_lab(src: dict) -> dict:
+    """公式 labs.json から、公開してよい識別情報とリンクだけ残す。"""
+    return {
+        "order": src.get("order"),
+        "guidebook_name": src.get("guidebook_name") or "",
+        "name": src.get("name") or "",
+        "updatedAt": src.get("updatedAt") or "",
+        "group": src.get("group") or "",
+        "program": src.get("program") or "",
+        "major": src.get("major") or [],
+        "title": src.get("title") or "",
+        "keywords": src.get("keywords") or [],
+        "fields": src.get("fields") or [],
+        "url": [u for u in (src.get("url") or []) if u],
+        "visiting_url": [u for u in (src.get("visiting_url") or []) if u],
+        "yumenabi": [u for u in (src.get("yumenabi") or []) if u],
+        "videouec": [u for u in (src.get("videouec") or []) if u],
+    }
+
+
 def split_urls(raw: str) -> list[str]:
     if not raw:
         return []
@@ -69,30 +130,8 @@ def buildings_of(room: str) -> list[str]:
     return list(dict.fromkeys(found))
 
 
-def load_emails() -> dict[tuple[str, str], dict]:
-    if not EMAILS.exists():
-        return {}
-    out: dict[tuple[str, str], dict] = {}
-    with EMAILS.open(encoding="utf-8-sig", newline="") as fh:
-        for row in csv.DictReader(fh):
-            name = norm_name(row.get("研究室名") or "")
-            program = (row.get("学科") or "").strip()
-            email = (row.get("メールアドレス") or "").strip()
-            if not (name and email):
-                continue
-            out[(name, program)] = {
-                "email": email,
-                "emailSource": (row.get("出典URL") or "").strip(),
-            }
-    return out
-
-
 def load_labs() -> list[dict]:
     official = json.loads(OFFICIAL.read_text(encoding="utf-8"))["labs"]
-    emails = load_emails()
-    emails_by_name = {}
-    for (name, _program), info in emails.items():
-        emails_by_name.setdefault(name, info)
     with CATALOG.open(encoding="utf-8-sig", newline="") as fh:
         catalog = list(csv.DictReader(fh))
     if len(official) != len(catalog):
@@ -100,7 +139,8 @@ def load_labs() -> list[dict]:
 
     labs = []
     for src, row in zip(official, catalog):
-        biko = parse_biko(row.get("備考") or "")
+        src = slim_official_lab(src)
+        biko = parse_biko(slim_catalog_biko(row.get("備考") or ""))
         urls = [u for u in (src.get("url") or []) if u]
         hp = (row.get("公式HP") or "").strip()
         if hp and hp not in urls:
@@ -108,18 +148,17 @@ def load_labs() -> list[dict]:
         extra = split_urls(biko.get("追加URL", ""))
         room = (row.get("号館・部屋") or "").strip()
         majors = [strip_num(m) for m in (src.get("major") or [])]
-        lab = {
+        labs.append({
             "id": int(row["ID"]),
             "order": src.get("order"),
             "name": norm_name(row["研究室名"] or src.get("name") or ""),
-            "faculty": (row.get("所属教員") or "").strip(),
+            "faculty": norm_name(row.get("所属教員") or ""),
             "group": row.get("学部") or src.get("group") or "",
             "program": row.get("学科") or strip_num(src.get("program") or ""),
             "majors": majors,
             "guidebook": src.get("guidebook_name") or biko.get("ラボガイド番号") or "",
             "updatedAt": (src.get("updatedAt") or "")[:10],
             "title": src.get("title") or "",
-            "description": src.get("description") or "",
             "keywords": src.get("keywords") or [],
             "fields": [clean_field(f) for f in (src.get("fields") or [])],
             "campus": (row.get("主キャンパス") or "").strip(),
@@ -127,27 +166,11 @@ def load_labs() -> list[dict]:
             "buildings": buildings_of(room),
             "urls": urls,
             "extraUrls": extra,
-            "image": src.get("image_path") or "",
-            "message": src.get("message") or "",
-            "birthplace": [strip_num(x) for x in (src.get("birthplace") or [])],
-            "hobbies": src.get("hobbies") or [],
-            "visiting": src.get("visiting") or "",
             "visitingUrls": src.get("visiting_url") or [],
             "yumenabi": src.get("yumenabi") or [],
             "videos": src.get("videouec") or [],
-            "strength": src.get("strength") or "",
-            "trouble": src.get("trouble") or "",
-            "resolution": src.get("resolution") or "",
             "roomSource": biko.get("居室出典") or "",
-            "reviewStatus": (row.get("口コミステータス") or "").strip(),
-            "email": "",
-            "emailSource": "",
-        }
-        mail = emails.get((lab["name"], lab["program"])) or emails_by_name.get(lab["name"])
-        if mail:
-            lab["email"] = mail["email"]
-            lab["emailSource"] = mail["emailSource"]
-        labs.append(lab)
+        })
 
     by_faculty: dict[str, list[int]] = {}
     for lab in labs:
@@ -158,11 +181,39 @@ def load_labs() -> list[dict]:
     return labs
 
 
+def rewrite_public_sources() -> None:
+    """手元のソースから本文・写真URL・メッセージを外す。"""
+    payload = json.loads(OFFICIAL.read_text(encoding="utf-8"))
+    labs = payload.get("labs")
+    if not isinstance(labs, list):
+        raise RuntimeError("official-labs.json の形が想定と違います")
+    slim = {
+        "source": payload.get("source") or "https://www.uec.ac.jp/arc/assets/labs.json",
+        "note": "本文・写真URL・メッセージ等は含めていません。正本は公式ラボガイドを見てください。",
+        "labs": [slim_official_lab(lab) for lab in labs],
+    }
+    OFFICIAL.write_text(json.dumps(slim, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+
+    with CATALOG.open(encoding="utf-8-sig", newline="") as fh:
+        reader = csv.DictReader(fh)
+        fieldnames = reader.fieldnames
+        if not fieldnames:
+            raise RuntimeError("catalog.csv にヘッダがありません")
+        rows = list(reader)
+    for row in rows:
+        row["備考"] = slim_catalog_biko(row.get("備考") or "")
+    with CATALOG.open("w", encoding="utf-8-sig", newline="") as fh:
+        writer = csv.DictWriter(fh, fieldnames=fieldnames)
+        writer.writeheader()
+        writer.writerows(rows)
+
+
 def write_labs_js(labs: list[dict] | None = None) -> Path:
     payload = json.dumps({"labs": labs if labs is not None else load_labs()}, ensure_ascii=False)
     dest = WEB / "labs-data.js"
     dest.write_text(
-        "/* 自動生成。更新: python3 server.py --build */\n"
+        "/* 自動生成。更新: python3 server.py --build\n"
+        " * 公開データは識別情報・キーワード・リンクのみ。本文・写真・メールは含めない。 */\n"
         f"window.__LABS_DATA__ = {payload};\n",
         encoding="utf-8",
     )
@@ -192,6 +243,14 @@ class Handler(SimpleHTTPRequestHandler):
         body = json.dumps(payload, ensure_ascii=False).encode("utf-8")
         self._send(code, body, "application/json; charset=utf-8")
 
+    def send_error(self, code: int, message=None, explain=None) -> None:
+        if code == 404:
+            page = WEB / "404.html"
+            if page.exists():
+                self._send(404, page.read_bytes(), "text/html; charset=utf-8")
+                return
+        super().send_error(code, message, explain)
+
     def do_GET(self) -> None:
         parsed = urlparse(self.path)
         path = unquote(parsed.path)
@@ -220,8 +279,11 @@ def main() -> None:
         sys.exit(f"catalog.csv が見つかりません: {CATALOG}")
     if not OFFICIAL.exists():
         sys.exit(f"公式データが見つかりません: {OFFICIAL}")
+    if "--sanitize" in sys.argv:
+        rewrite_public_sources()
+        print("ソースを公開向けに整えました（本文・写真URL・メッセージを除外）", flush=True)
     dest = write_labs_js()
-    if "--build" in sys.argv:
+    if "--build" in sys.argv or "--sanitize" in sys.argv:
         print(f"書き出しました: {dest}", flush=True)
         return
     httpd = ThreadingHTTPServer(("127.0.0.1", PORT), Handler)
