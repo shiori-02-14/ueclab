@@ -71,7 +71,7 @@
         <input
           id="q"
           type="search"
-          placeholder="西10号館、AI、先生の名前"
+          placeholder="例　西10号館、AI、先生の名前"
           autocomplete="off"
           autocorrect="off"
           spellcheck="false"
@@ -82,23 +82,22 @@
         <button type="button" class="search-clear" id="q-clear" hidden>クリア</button>
       </label>
       <div class="top-stats" id="top-stats"></div>
-      <p class="site-notice">
-        <strong>非公式</strong>
-        <span class="notice-long">
-          このページは大学・公式ラボガイドとは無関係です。情報の正本は
-          <a href="https://www.uec.ac.jp/arc/laboguide.html" target="_blank" rel="noopener noreferrer">公式ラボガイド</a>
-          を確認してください。
-          <a href="about.html">このサイトについて</a>
-        </span>
-        <span class="notice-short">大学公式ではありません。正本は<a href="https://www.uec.ac.jp/arc/laboguide.html" target="_blank" rel="noopener noreferrer">公式ラボガイド</a>。</span>
-      </p>
     </header>
+    <p class="site-notice">
+      <strong>非公式</strong>
+      <span class="notice-long">
+        このページは大学・公式ラボガイドとは無関係です。情報の正本は
+        <a href="https://www.uec.ac.jp/arc/laboguide.html" target="_blank" rel="noopener noreferrer">公式ラボガイド</a>
+        を確認してください。
+        <a href="about.html">このサイトについて</a>
+      </span>
+      <span class="notice-short">大学公式ではありません。正本は<a href="https://www.uec.ac.jp/arc/laboguide.html" target="_blank" rel="noopener noreferrer">公式ラボガイド</a>。</span>
+    </p>
 
     <div class="shell">
       <aside class="filters" id="filters" aria-label="絞り込み"></aside>
       <main class="main" id="main">
         <div class="toolbar" id="toolbar"></div>
-        <div class="welcome" id="welcome" hidden></div>
         <div class="interest" id="interest"></div>
         <div class="active-filters" id="active-filters" hidden></div>
         <p class="view-hint" id="view-hint" hidden></p>
@@ -110,20 +109,24 @@
             </a>
             <p>
               <a href="https://shiori-02-14.github.io/Homepage/works.html" target="_blank" rel="noopener noreferrer">しおり🔖</a>
-              による非公式サイトです。オープンラボやオープンキャンパスで居室を探しやすくするためのものです。電気通信大学は運営に関与していません。
+              による非公式サイトです。オープンラボやオープンキャンパスで居室を探しやすくするもので、電気通信大学は運営に関与していません。データは公式ラボガイドを参考に定期的に更新します。
             </p>
           </div>
-          <nav aria-label="Documents">
-            <h2 class="foot-title">Documents</h2>
-            <a href="about.html">About</a>
-            <a href="about.html#terms">利用規約</a>
-            <a href="https://github.com/shiori-02-14/ueclab" target="_blank" rel="noopener noreferrer">GitHub</a>
-          </nav>
-          <nav aria-label="Links">
-            <h2 class="foot-title">Links</h2>
-            <a href="https://www.uec.ac.jp/arc/laboguide.html" target="_blank" rel="noopener noreferrer">公式ラボガイド</a>
-            <a href="https://shiori-02-14.github.io/Homepage/works.html" target="_blank" rel="noopener noreferrer">しおり🔖</a>
-          </nav>
+          <div class="foot-navs">
+            <nav aria-label="このサイト">
+              <h2 class="foot-title">このサイト</h2>
+              <a href="about.html">About</a>
+              <a href="about.html#terms">利用規約</a>
+              <a href="https://github.com/shiori-02-14/ueclab" target="_blank" rel="noopener noreferrer">GitHub</a>
+            </nav>
+            <nav aria-label="リンク">
+              <h2 class="foot-title">リンク</h2>
+              <a href="https://www.uec.ac.jp/" target="_blank" rel="noopener noreferrer">電気通信大学</a>
+              <a href="https://www.uec.ac.jp/arc/laboguide.html" target="_blank" rel="noopener noreferrer">公式ラボガイド</a>
+              <a href="https://shiori-02-14.github.io/Homepage/works.html" target="_blank" rel="noopener noreferrer">しおり🔖</a>
+            </nav>
+          </div>
+          <p class="foot-meta">データは CC BY-NC-SA 4.0、コードは MIT です。</p>
         </footer>
       </main>
     </div>

@@ -43,6 +43,8 @@ python3 server.py --no-open
 
 ## データの更新
 
+掲載データは公式ラボガイドを参考に定期的に更新します。手元で差し替えるときは次のとおりです。
+
 ```bash
 python3 scripts/fetch_official.py
 python3 server.py --build

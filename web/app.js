@@ -151,6 +151,7 @@ const state = {
   majors: new Set(),
   fields: new Set(),
   buildings: new Set(),
+  hometowns: new Set(),
   hasHp: false,
   hasVideo: false,
   onlySaved: false,
@@ -158,7 +159,6 @@ const state = {
   sort: "guide",
   sortDir: 1,
   selectedId: null,
-  tipHidden: false,
 };
 
 let lastFocus = null;
@@ -177,7 +177,7 @@ function loadStore() {
       const memo = String(row.memo || "");
       if (on || memo) state.saved.set(n, { on, memo });
     }
-    if (data && (data.view === "list" || data.view === "cards" || data.view === "building")) {
+    if (data && (data.view === "list" || data.view === "cards" || data.view === "building" || data.view === "hometown")) {
       state.view = data.view;
     }
     if (data && ["guide", "name", "room", "updated", "saved", "hometown"].includes(data.sort)) {
@@ -189,7 +189,6 @@ function loadStore() {
     if (data && Array.isArray(data.groups)) {
       state.groups = new Set(data.groups.filter((g) => GROUP_ORDER.includes(g)));
     }
-    if (data && data.tipHidden) state.tipHidden = true;
   } catch (err) {
     console.warn(err);
   }
@@ -211,7 +210,6 @@ function persist() {
         sort: state.sort,
         sortDir: state.sortDir,
         groups: [...state.groups],
-        tipHidden: state.tipHidden,
       })
     );
   } catch (err) {
@@ -253,11 +251,96 @@ function buildingRank(name) {
 }
 
 const HOMETOWN_NONE = "出身地の掲載なし";
+const REGION_ORDER = [
+  "北海道・東北地方",
+  "関東地方",
+  "中部地方",
+  "近畿地方",
+  "中国地方",
+  "四国地方",
+  "九州・沖縄地方",
+  "日本国外・その他",
+];
+const REGION_CODE = {
+  "北海道・東北地方": 51,
+  関東地方: 52,
+  中部地方: 53,
+  近畿地方: 54,
+  中国地方: 55,
+  四国地方: 56,
+  "九州・沖縄地方": 57,
+  "日本国外・その他": 58,
+};
+const PREF_TO_REGION = {
+  1: 0,
+  2: 0,
+  3: 0,
+  4: 0,
+  5: 0,
+  6: 0,
+  7: 0,
+  8: 1,
+  9: 1,
+  10: 1,
+  11: 1,
+  12: 1,
+  13: 1,
+  14: 1,
+  15: 2,
+  16: 2,
+  17: 2,
+  18: 2,
+  19: 2,
+  20: 2,
+  21: 2,
+  22: 2,
+  23: 2,
+  24: 3,
+  25: 3,
+  26: 3,
+  27: 3,
+  28: 3,
+  29: 3,
+  30: 3,
+  31: 4,
+  32: 4,
+  33: 4,
+  34: 4,
+  35: 4,
+  36: 5,
+  37: 5,
+  38: 5,
+  39: 5,
+  40: 6,
+  41: 6,
+  42: 6,
+  43: 6,
+  44: 6,
+  45: 6,
+  46: 6,
+  47: 6,
+};
 
 function hometownPlaces(lab) {
   const places = lab && lab.birthplaces ? lab.birthplaces : [];
   const prefs = places.filter((p) => p && p.code > 0 && p.code <= 47 && p.name);
   return prefs.length ? prefs : places.filter((p) => p && p.name);
+}
+
+function regionNameForPlace(place) {
+  if (!place || !place.name) return "";
+  if (place.code >= 51 && place.code <= 58) return place.name;
+  const idx = PREF_TO_REGION[place.code];
+  return idx == null ? "" : REGION_ORDER[idx];
+}
+
+function hometownRegions(lab) {
+  const names = new Set();
+  for (const place of lab && lab.birthplaces ? lab.birthplaces : []) {
+    const name = regionNameForPlace(place);
+    if (name) names.add(name);
+  }
+  return [...names];
 }
 
 function hometownLabel(lab) {
@@ -266,29 +349,33 @@ function hometownLabel(lab) {
     .join("・");
 }
 
+function hometownBlob(lab) {
+  return [hometownLabel(lab), ...hometownRegions(lab)].filter(Boolean).join(" ");
+}
+
 function hometownRank(lab) {
-  const places = hometownPlaces(lab);
-  if (!places.length) return [999, ""];
-  const best = [...places].sort(
+  const regions = hometownRegions(lab);
+  if (!regions.length) return [999, 999, ""];
+  const region = Math.min(...regions.map((name) => REGION_CODE[name] || 500));
+  const prefs = hometownPlaces(lab).filter((p) => p.code > 0 && p.code <= 47);
+  if (!prefs.length) return [region, 99, hometownLabel(lab)];
+  const best = [...prefs].sort(
     (a, b) => a.code - b.code || String(a.name).localeCompare(String(b.name), "ja")
   )[0];
-  return [best.code, best.name || ""];
+  return [region, best.code, best.name || ""];
 }
 
 function hometownGroupKeys(lab) {
-  const places = hometownPlaces(lab);
-  if (!places.length) return [HOMETOWN_NONE];
-  return [...new Set(places.map((p) => p.name))];
+  let regions = hometownRegions(lab);
+  if (state.hometowns.size) {
+    regions = regions.filter((name) => state.hometowns.has(name));
+  }
+  return regions.length ? regions : [HOMETOWN_NONE];
 }
 
 function hometownCodeForName(name) {
   if (name === HOMETOWN_NONE) return 999;
-  for (const lab of state.labs) {
-    for (const p of lab.birthplaces || []) {
-      if (p && p.name === name) return p.code;
-    }
-  }
-  return 500;
+  return REGION_CODE[name] || 500;
 }
 
 function countsFor(list, keyFn, order) {
@@ -323,6 +410,10 @@ function matches(lab) {
   if (state.majors.size && !lab.majors.some((m) => state.majors.has(m))) return false;
   if (state.fields.size && !lab.fields.some((f) => state.fields.has(f))) return false;
   if (state.buildings.size && !lab.buildings.some((b) => state.buildings.has(b))) return false;
+  if (state.hometowns.size) {
+    const regions = hometownRegions(lab);
+    if (!regions.some((r) => state.hometowns.has(r))) return false;
+  }
   if (state.hasHp && !lab.urls.length) return false;
   if (state.hasVideo && !lab.videos.length) return false;
   const q = state.q.trim();
@@ -337,7 +428,7 @@ function matches(lab) {
       lab.title,
       lab.guidebook,
       lab.room,
-      hometownLabel(lab),
+      hometownBlob(lab),
       note,
       ...(lab.emails || []),
       ...(lab.keywords || []),
@@ -363,15 +454,15 @@ function filtered() {
     hometown: (a, b) => {
       const aa = hometownRank(a);
       const bb = hometownRank(b);
-      return aa[0] - bb[0] || aa[1].localeCompare(bb[1], "ja") || a.id - b.id;
+      return aa[0] - bb[0] || aa[1] - bb[1] || aa[2].localeCompare(bb[2], "ja") || a.id - b.id;
     },
   };
   const cmp = sorters[state.sort] || sorters.guide;
   const dir = state.sortDir < 0 ? -1 : 1;
   return rows.sort((a, b) => {
-    if (state.sort === "hometown") {
-      const ae = !hometownPlaces(a).length;
-      const be = !hometownPlaces(b).length;
+    if (state.sort === "hometown" || state.view === "hometown") {
+      const ae = !hometownRegions(a).length;
+      const be = !hometownRegions(b).length;
       if (ae !== be) return ae ? 1 : -1;
     }
     return cmp(a, b) * dir;
@@ -385,6 +476,7 @@ function activeFilterCount() {
     state.majors.size +
     state.fields.size +
     state.buildings.size +
+    state.hometowns.size +
     (state.hasHp ? 1 : 0) +
     (state.hasVideo ? 1 : 0) +
     (state.onlySaved ? 1 : 0) +
@@ -398,6 +490,7 @@ function clearFilters() {
   state.majors.clear();
   state.fields.clear();
   state.buildings.clear();
+  state.hometowns.clear();
   state.hasHp = false;
   state.hasVideo = false;
   state.onlySaved = false;
@@ -427,6 +520,14 @@ function scrollResultsTop() {
 function syncTopOffset() {
   const top = document.querySelector(".top");
   if (top) document.documentElement.style.setProperty("--top-h", `${top.offsetHeight}px`);
+  const nav = document.querySelector(".site-nav");
+  const search = document.querySelector(".top .search");
+  if (nav && search) {
+    document.documentElement.style.setProperty(
+      "--compact-sticky",
+      `${nav.offsetHeight + search.offsetHeight}px`
+    );
+  }
 }
 
 function closeFilters() {
@@ -517,9 +618,11 @@ function pruneFilters() {
   const majors = new Set(inProg.flatMap((lab) => lab.majors || []));
   const fields = new Set(inProg.flatMap((lab) => lab.fields || []));
   const buildings = new Set(inProg.flatMap((lab) => lab.buildings || []));
+  const hometowns = new Set(inProg.flatMap((lab) => hometownRegions(lab)));
   for (const major of [...state.majors]) if (!majors.has(major)) state.majors.delete(major);
   for (const field of [...state.fields]) if (!fields.has(field)) state.fields.delete(field);
   for (const building of [...state.buildings]) if (!buildings.has(building)) state.buildings.delete(building);
+  for (const hometown of [...state.hometowns]) if (!hometowns.has(hometown)) state.hometowns.delete(hometown);
 }
 
 function renderFilters() {
@@ -617,6 +720,17 @@ function renderFilters() {
       }
     )
   );
+  box.appendChild(
+    filterBlock(
+      "出身地・ゆかりの地",
+      countsFor(inProg, (l) => hometownRegions(l), REGION_ORDER),
+      state.hometowns,
+      (v, on) => {
+        on ? state.hometowns.add(v) : state.hometowns.delete(v);
+        paint();
+      }
+    )
+  );
 
   const extraWrap = document.createElement("details");
   extraWrap.className = "filter-block";
@@ -687,6 +801,7 @@ function renderToolbar(n) {
     state.majors.size +
     state.fields.size +
     state.buildings.size +
+    state.hometowns.size +
     (state.hasHp ? 1 : 0) +
     (state.hasVideo ? 1 : 0);
   const nFilters = extra + state.groups.size + (state.onlySaved ? 1 : 0);
@@ -732,8 +847,11 @@ function renderToolbar(n) {
   const count = document.createElement("div");
   count.className = "count";
   count.setAttribute("aria-live", "polite");
-  count.textContent =
-    n === state.labs.length && !activeFilterCount() ? `${n}件` : `${state.labs.length}件中 ${n}件`;
+  count.textContent = isCompact()
+    ? `${n}件`
+    : n === state.labs.length && !activeFilterCount()
+      ? `${n}件`
+      : `${state.labs.length}件中 ${n}件`;
 
   const view = document.createElement("div");
   view.className = "seg";
@@ -743,10 +861,12 @@ function renderToolbar(n) {
     ["list", "リスト"],
     ["cards", "カード"],
     ["building", "号館"],
+    ["hometown", "出身地"],
   ]) {
     const b = document.createElement("button");
     b.type = "button";
     b.className = state.view === id ? "on" : "";
+    b.dataset.view = id;
     b.textContent = label;
     b.setAttribute("aria-pressed", state.view === id ? "true" : "false");
     b.addEventListener("click", () => {
@@ -805,49 +925,13 @@ function renderToolbar(n) {
   bar.appendChild(tools);
 }
 
-function renderWelcome() {
-  const box = $("welcome");
-  if (!box) return;
-  if (state.tipHidden || savedCount() || state.q.trim() || activeFilterCount()) {
-    box.hidden = true;
-    box.replaceChildren();
-    return;
-  }
-  box.hidden = false;
-  box.replaceChildren();
-  const p = document.createElement("p");
-  p.textContent =
-    "オープンラボやオープンキャンパスで、居室がどこにあるか探しやすくするための非公式サイトです。";
-  const actions = document.createElement("div");
-  actions.className = "welcome-actions";
-  const go = document.createElement("button");
-  go.type = "button";
-  go.textContent = "号館から見る";
-  go.addEventListener("click", () => {
-    state.view = "building";
-    state.tipHidden = true;
-    persist();
-    paint();
-  });
-  const ok = document.createElement("button");
-  ok.type = "button";
-  ok.textContent = "わかった";
-  ok.addEventListener("click", () => {
-    state.tipHidden = true;
-    persist();
-    renderWelcome();
-  });
-  actions.append(go, ok);
-  box.append(p, actions);
-}
-
 function renderInterest() {
   const box = $("interest");
   if (!box) return;
   box.replaceChildren();
   const label = document.createElement("span");
   label.className = "label";
-  label.textContent = "テーマから探す";
+  label.textContent = isCompact() ? "テーマ" : "テーマから探す";
   box.appendChild(label);
   const q = state.q.trim();
   for (const theme of THEMES) {
@@ -867,14 +951,17 @@ function renderInterest() {
 function renderViewHint() {
   const el = $("view-hint");
   if (!el) return;
+  const compact = isCompact();
   if (state.view === "building") {
     el.hidden = false;
-    el.textContent =
-      "オープンラボやオープンキャンパスで回るときの目安です。部屋は変わっていることがあるので、行く前にHPで確認してください。";
-  } else if (state.sort === "hometown") {
+    el.textContent = compact
+      ? "当日回るときの目安です。部屋はHPで確認してください。"
+      : "オープンラボやオープンキャンパスで回るときの目安です。部屋は変わっていることがあるので、行く前にHPで確認してください。";
+  } else if (state.view === "hometown" || state.sort === "hometown") {
     el.hidden = false;
-    el.textContent =
-      "公式ラボガイドに載っている出身地です。未掲載の研究室は最後にまとめています。";
+    el.textContent = compact
+      ? "公式ラボガイドの出身地・ゆかりの地を、地方ごとにまとめています。"
+      : "公式ラボガイドの出身地・ゆかりの地を、地方ごとにまとめています。都道府県だけの記載も、その地方に含めています。未掲載の研究室は最後です。";
   } else {
     el.hidden = true;
     el.textContent = "";
@@ -889,6 +976,7 @@ function renderActiveFilters() {
   for (const m of state.majors) items.push({ key: "majors", value: m, label: m });
   for (const f of state.fields) items.push({ key: "fields", value: f, label: f });
   for (const b of state.buildings) items.push({ key: "buildings", value: b, label: b });
+  for (const h of state.hometowns) items.push({ key: "hometowns", value: h, label: h });
   if (state.hasHp) items.push({ key: "hasHp", label: "HPあり" });
   if (state.hasVideo) items.push({ key: "hasVideo", label: "動画あり" });
   if (state.onlySaved) items.push({ key: "onlySaved", label: "気になる" });
@@ -1028,10 +1116,16 @@ function cardEl(lab, opts = {}) {
   }
   const room = document.createElement("div");
   room.className = "room";
-  if (lab.room) room.append(document.createTextNode(lab.room));
+  if (lab.room) {
+    const loc = document.createElement("span");
+    loc.className = "room-id";
+    loc.textContent = lab.room;
+    room.appendChild(loc);
+  }
   const home = hometownLabel(lab);
   if (home) {
     const place = document.createElement("span");
+    place.className = "hometown";
     place.textContent = home;
     room.appendChild(place);
   }
@@ -1097,6 +1191,7 @@ function renderResults() {
 
   const groupedDefault =
     state.view !== "building" &&
+    state.view !== "hometown" &&
     state.sort !== "hometown" &&
     !state.q &&
     !state.programs.size &&
@@ -1110,7 +1205,7 @@ function renderResults() {
         groups.get(key).push(lab);
       }
     }
-  } else if (state.sort === "hometown") {
+  } else if (state.view === "hometown" || state.sort === "hometown") {
     for (const lab of rows) {
       for (const key of hometownGroupKeys(lab)) {
         if (!groups.has(key)) groups.set(key, []);
@@ -1262,6 +1357,12 @@ function renderDetail(lab, { focusClose } = {}) {
   lead.className = "lead";
   lead.textContent = lab.title;
   heroText.append(kicker, h, lead);
+  if (lab.room) {
+    const roomLine = document.createElement("p");
+    roomLine.className = "detail-room";
+    roomLine.textContent = lab.room;
+    heroText.appendChild(roomLine);
+  }
   hero.appendChild(heroText);
 
   const bodyWrap = document.createElement("div");
@@ -1420,7 +1521,6 @@ function renderDetail(lab, { focusClose } = {}) {
 function paint() {
   persist();
   renderStats();
-  renderWelcome();
   renderInterest();
   renderResults();
   if (state.selectedId) markActiveCard(state.selectedId);
@@ -1430,11 +1530,16 @@ function bind() {
   $("q").addEventListener("input", (ev) => {
     state.q = ev.target.value;
     syncSearchClear();
-    renderWelcome();
     renderInterest();
     renderResults();
     renderStats();
     scrollResultsTop();
+  });
+  $("q").addEventListener("keydown", (ev) => {
+    if (ev.key === "Enter") {
+      ev.preventDefault();
+      ev.target.blur();
+    }
   });
   $("q-clear").addEventListener("click", () => setSearch(""));
   $("filter-scrim").addEventListener("click", () => {
@@ -1463,7 +1568,17 @@ function bind() {
     else closeDetail();
   });
   syncTopOffset();
-  window.addEventListener("resize", syncTopOffset);
+  let compact = isCompact();
+  window.addEventListener("resize", () => {
+    syncTopOffset();
+    const now = isCompact();
+    if (now !== compact) {
+      compact = now;
+      renderInterest();
+      renderViewHint();
+      renderToolbar(filtered().length);
+    }
+  });
   const top = document.querySelector(".top");
   if (top && typeof ResizeObserver !== "undefined") {
     new ResizeObserver(syncTopOffset).observe(top);
